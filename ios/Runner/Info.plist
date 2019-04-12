@@ -43,3 +43,5 @@
 	<false/>
 </dict>
 </plist>
+<!-- TODO Facebook Login API -->
+<!-- https://pub.dartlang.org/packages/flutter_facebook_login#-readme-tab- -->
