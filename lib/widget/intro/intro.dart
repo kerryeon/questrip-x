@@ -3,7 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/net/login/lib.dart';
-import 'package:questrip/resources.dart';
+import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 import 'package:questrip/widget/common/bootstrap.dart';
 
@@ -20,16 +20,17 @@ class IntroWidget extends Bootstrapper {
   Widget buildWidget(BuildContext context) {
     _context = context;
     _login();
-    return Container(
-        decoration: BoxDecoration(color: Colors.white),
-        child: Container(
-            margin: const EdgeInsets.only(left: 100.0, right: 100.0),
-            child: Center(
-                child: SvgPicture.asset(R.drawable.logo,
+    return Scaffold(
+        body: Container(
+            decoration: BoxDecoration(color: Colors.white),
+            child: Container(
+                margin: const EdgeInsets.only(left: 100.0, right: 100.0),
+                child: Center(
+                    child: SvgPicture.asset(R.drawable.logo,
+                    )
                 )
             )
-        )
-    );
+        ));
   }
 
   /// 로그인을 시도합니다.
@@ -37,10 +38,7 @@ class IntroWidget extends Bootstrapper {
 
   /// 로그인에 성공한 경우의 이벤트입니다.
   /// 메인화면으로 이동합니다.
-  void _onSuccess() {
-    // TODO to be implemented.
-    toast(R.string.debug_todo);
-  }
+  void _onSuccess() => Navigator.popAndPushNamed(_context, R.widget.questMap);
 
   /// 로그인에 실패한 경우의 이벤트입니다.
   /// 이유를 알려주고 앱을 종료합니다.
@@ -48,9 +46,6 @@ class IntroWidget extends Bootstrapper {
 
   /// 로그인한 사용자가 등록되지 않은 회원인 경우의 이벤트입니다.
   /// 회원가입 화면으로 이동합니다.
-  void _onNewUser() {
-    // TODO to be implemented.
-    print('newbie!');
-  }
+  void _onNewUser() => Navigator.popAndPushNamed(_context, R.widget.signUp);
 
 }

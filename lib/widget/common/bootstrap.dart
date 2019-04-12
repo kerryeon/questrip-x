@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:questrip/resources.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 앱을 구동할 때, 여러 초기화 메소드를 호출합니다.
 ///
@@ -15,9 +15,9 @@ abstract class Bootstrapper extends StatelessWidget {
   /// 화면을 구성합니다.
   Widget buildWidget(BuildContext context);
 
-  /// 여러 메소드를 초기화합니다.
+  /// 여러 전역 클래스들을 초기화합니다.
   void _init(BuildContext context) {
-    R.init(context);
+    R.initString(context);
   }
 
 }
