@@ -31,6 +31,7 @@ void request(String uri, void onSuccess(Map<String, Object> response),
     }
     // 네트워크 연결이 좋지 않은 경우의 이벤트를 호출합니다.
   }).catchError((e) {
+    print(e);
     onFailure(Failed.NETWORK_FAILURE);
   });
 }
