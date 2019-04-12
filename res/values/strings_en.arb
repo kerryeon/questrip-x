@@ -1,1 +1,21 @@
-{}
+{
+  "app_name": "Questrip",
+
+  "intro_on_failure_canceled": "You should login to use Questrip.",
+
+  "common_alert_title": "Notice",
+  "common_alert_confirm": "Confirm",
+  "common_alert_cancel": "Cancel",
+  "common_alert_canceled": "Canceled.",
+  "common_alert_choose_yes": "Yes",
+  "common_alert_choose_no": "No",
+  "common_alert_button_next": "Next",
+  "common_alert_button_prev": "Prev",
+  "common_alert_button_submit": "Submit",
+  "common_alert_field_close_app": "Do you want to close Questrip?",
+  "common_failure_unknown": "Unknown Error.",
+  "common_failure_internal": "Sorry, but try later.",
+  "common_failure_network": "Please check your network status and try again.",
+
+  "debug_todo": "To be implemented."
+}
