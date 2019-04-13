@@ -50,7 +50,6 @@
   "shop_field_title": "상점",
   "shop_unit_money": "원",
 
-  "permission_format": "Questrip 을 사용하기 위해선 %s에 접근하기 위한 권한이 필요합니다. 권한 승인에 동의하십니까?",
   "permission_denied": "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.",
   "permission_camera": "사진 촬영",
   "permission_location": "위치 정보",

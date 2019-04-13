@@ -1,6 +1,5 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/data/quest.dart';
-import 'package:questrip/lib.dart';
 
 /// 마커를 생성합니다.
 ///
@@ -9,7 +8,7 @@ import 'package:questrip/lib.dart';
 class QuestMapMarker {
 
   /// 퀘스트 정보를 토대로 마커를 생성합니다.
-  static Marker fromQuest(final Quest quest, final Runnable onTap) {
+  static Marker fromQuest(final Quest quest, final void Function(Quest) onTap) {
     final String markerIdVal = quest.title;
     final MarkerId markerId = MarkerId(markerIdVal);
     return Marker(
@@ -17,7 +16,7 @@ class QuestMapMarker {
       position: quest.latLng,
       icon: getMarkerIcon(quest),
       infoWindow: InfoWindow(title: markerIdVal),
-      onTap: onTap,
+      onTap: () => onTap(quest),
     );
   }
 

@@ -11,11 +11,11 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 class SignUpWidget extends StatelessWidget {
 
-  final SignUpController _manager = SignUpController();
+  final SignUpController _controller = SignUpController();
 
   @override
   Widget build(BuildContext context) {
-    _manager.init(context);
+    _controller.init(context);
     return Scaffold(
         body: WillPopScope(
             onWillPop: () => dialogExit(context),
@@ -27,7 +27,7 @@ class SignUpWidget extends StatelessWidget {
                     child: InkWell(child: Center(
                         child: SvgPicture.asset(R.drawable.bug,
                         )
-                    ), onTap: _manager.onNext)
+                    ), onTap: _controller.onNext)
                 )
             ))
     );

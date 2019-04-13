@@ -12,22 +12,23 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 class QuestMapState extends State<QuestMapWidget> {
 
-  final QuestMapController _manager = QuestMapController();
+  final QuestMapController _controller = QuestMapController();
 
   @override
   Widget build(BuildContext context) {
-    _manager.init(context);
+    _controller.init(context);
     return Scaffold(
         body: WillPopScope(
             onWillPop: () => dialogExit(context),
             child: GoogleMap(
-              initialCameraPosition: _manager.kPositionInit,
+              initialCameraPosition: _controller.kPositionInit,
               mapType: MapType.normal,
-              markers: _manager.markers,
-              onMapCreated: (c) => _manager.initMap(c, setState),
-              onCameraIdle: _manager.updateMarkers,
+              markers: _controller.markers,
+              onMapCreated: (c) => _controller.initMap(c, setState),
+              onCameraIdle: _controller.updateMarkers,
               compassEnabled: false,
               myLocationEnabled: false,
+              onTap: (_) => _controller.closeAll(),
             ))
     );
   }
