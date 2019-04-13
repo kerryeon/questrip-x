@@ -1,3 +1,4 @@
+import 'package:questrip/data/account.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/net/lib.dart';
@@ -43,6 +44,10 @@ void _onSuccess(String token, Runnable onSuccess, OnFailure onFailure, Runnable 
 /// 서버로부터 로그인 결과를 수신한 경우의 이벤트입니다.
 void _onReceived(Map<String, Object> response, Runnable onSuccess,
     OnFailure onFailure, Runnable onNewUser) {
+  // 사용자 정보를 저장합니다.
+  final Account account = Account.fromJSON(response['data']);
+  R.initAccount(account);
+  // 결과에 맞는 이벤트를 호출합니다.
   if (response['sign_in']) onSuccess();
   else if (response['sign_up']) onNewUser();
   else onFailure(Failed.INTERNAL);

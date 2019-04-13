@@ -2,9 +2,11 @@ import 'dart:async';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:questrip/data/quest.dart';
 import 'package:questrip/manager/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
+import 'package:questrip/widget/common/alert.dart';
 
 /// 메인화면의 동작을 담당합니다.
 ///
@@ -17,8 +19,10 @@ class QuestMapManager extends Manager {
 
   Completer<GoogleMapController> _controller = Completer();
 
+  List<Quest> quests;
+
   /// 맵뷰를 초기화합니다.
-  void initMap(GoogleMapController controller) async {
+  void initMap(final GoogleMapController controller) async {
     _controller.complete(controller);
     _tryShowMyLocation();
     _tryLoadQuests();
@@ -38,8 +42,20 @@ class QuestMapManager extends Manager {
 
   /// 퀘스트 목록을 불러옵니다.
   /// 만약 실패하면, 그 이유를 알려줍니다.
-  void _tryLoadQuests() async {
-    // request(R.uri.meQuest, )
+  void _tryLoadQuests() async => request(
+      R.uri.meQuest, _onLoadQuests,
+      (e) => dialogFailed(context, e)
+  );
+
+  /// 퀘스트 목록을 성공적으로 불러온 경우의 이벤트입니다.
+  void _onLoadQuests(final Map<String, Object> response) async {
+    final List<Object> raw = response['list'];
+    quests = raw.map((q) => Quest.fromJSON(q)).toList();
+    _updateMarkers();
+  }
+
+  /// 마커를 다시 그립니다.
+  void _updateMarkers() async {
     // TODO to be implemented.
   }
 
