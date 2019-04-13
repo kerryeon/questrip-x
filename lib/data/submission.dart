@@ -37,4 +37,12 @@ class Submission {
       rating: response['rating'],
   );
 
+  /// [a]와 [b]의 제출일자를 비교합니다.
+  /// [b]가 더 최근에 제출됐으면 +를 반환합니다.
+  static int compareDate(Submission a, Submission b) => b.date - a.date;
+
+  /// [a]와 [b]의 추천수를 비교합니다.
+  /// [b]가 추천을 더 많이 받았다면 +를 반환합니다.
+  static int compareRating(Submission a, Submission b) => b.rating - a.rating;
+
 }

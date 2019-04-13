@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 ///
 /// 담당자: 김호
 ///
-class Manager {
+class IController {
 
   BuildContext _context;
 

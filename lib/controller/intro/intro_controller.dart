@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/lib.dart';
-import 'package:questrip/manager/lib.dart';
+import 'package:questrip/controller/lib.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/net/login/lib.dart';
 import 'package:questrip/res/lib.dart';
@@ -10,7 +10,7 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 /// 담당자: 김호, 이동욱
 ///
-class IntroManager extends Manager {
+class IntroController extends IController {
 
   /// 객체를 초기화합니다.
   @override

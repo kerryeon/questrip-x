@@ -1,3 +1,4 @@
+import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
 
 /// 퀘스트에 대한 자세한 정보를 담고 있는 클래스입니다.
@@ -52,5 +53,12 @@ class Quest {
       rating: response['rating'],
       isCleared: response['is_cleared'],
   );
+
+  /// 위경도 정보를 반환합니다.
+  LatLng get latLng => LatLng(latitude, longitude);
+
+  /// [a]와 [b]의 인기도를 비교합니다.
+  /// [b]가 더 인기있으면 +를 반환합니다.
+  static int compareRating(Quest a, Quest b) => b.rating - a.rating;
 
 }
