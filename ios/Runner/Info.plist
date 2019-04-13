@@ -66,5 +66,16 @@
         <string>fbauth2</string>
         <string>fbshareextension</string>
     </array>
+
+    <!-- Google Maps API -->
+    <key>io.flutter.embedded_views_preview</key>
+    <true/>
+
+    <!-- Location API -->
+    <!-- TODO Description -->
+    <key>NSLocationAlwaysUsageDescription</key>
+    <string>Need NSLocationAlwaysUsageDescription</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Need NSLocationWhenInUseUsageDescription</string>
 </dict>
 </plist>
