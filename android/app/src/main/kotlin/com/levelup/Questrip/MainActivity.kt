@@ -1,4 +1,4 @@
-package com.levelup.questrip
+package com.levelup.Questrip
 
 import android.os.Bundle
 

@@ -37,7 +37,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.levelup.questrip"
+        applicationId "com.levelup.Questrip"
         minSdkVersion 16
         targetSdkVersion 28
         versionCode flutterVersionCode.toInteger()

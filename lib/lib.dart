@@ -7,4 +7,5 @@ import 'package:flutter/services.dart';
 
 typedef Runnable = void Function();
 
+/// 앱을 종료합니다.
 void exit() => SystemChannels.platform.invokeMethod('SystemNavigator.pop');

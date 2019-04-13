@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:questrip/manager/intro/sign_up_manager.dart';
+import 'package:questrip/manager/intro/terms_manager.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 
@@ -9,9 +9,9 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 /// 담당자: 김호, 이동욱
 ///
-class SignUpWidget extends StatelessWidget {
+class TermsWidget extends StatelessWidget {
 
-  final SignUpManager _manager = SignUpManager();
+  final TermsManager _manager = TermsManager();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class SignUpWidget extends StatelessWidget {
                     child: InkWell(child: Center(
                         child: SvgPicture.asset(R.drawable.bug,
                         )
-                    ), onTap: _manager.onNext)
+                    ), onTap: _manager.onConfirmTerms)
                 )
             ))
     );
