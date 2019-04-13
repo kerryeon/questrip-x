@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:questrip/manager/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
 
@@ -10,18 +10,15 @@ import 'package:questrip/res/lib.dart';
 ///
 /// 담당자: 김호
 ///
-class QuestMapManager {
+class QuestMapManager extends Manager {
 
   static const double _ZOOM_RATING = 7.25;
   static const double _ZOOM_DISTANCE = 8.25;
 
-  BuildContext context;
-
   Completer<GoogleMapController> _controller = Completer();
 
-  /// 객체를 초기화합니다.
-  void init(BuildContext context, GoogleMapController controller) async {
-    this.context = context;
+  /// 맵뷰를 초기화합니다.
+  void initMap(GoogleMapController controller) async {
     _controller.complete(controller);
     _tryShowMyLocation();
     _tryLoadQuests();

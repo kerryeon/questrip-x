@@ -1,4 +1,4 @@
-import 'package:questrip/lib.dart';
+import 'package:questrip/manager/lib.dart';
 
 /// 인트로 화면을 담당하는 클래스입니다.
 /// 로고를 약 1초간 보여준 후, 로그인을 시도합니다.

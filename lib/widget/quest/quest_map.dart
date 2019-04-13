@@ -16,13 +16,14 @@ class QuestMapState extends State<QuestMapWidget> {
 
   @override
   Widget build(BuildContext context) {
+    _manager.init(context);
     return Scaffold(
         body: WillPopScope(
             onWillPop: () => dialogExit(context),
             child: GoogleMap(
               mapType: MapType.normal,
               initialCameraPosition: _manager.kPositionInit,
-              onMapCreated: (c) => _manager.init(context, c),
+              onMapCreated: (c) => _manager.initMap(c),
             ))
     );
   }

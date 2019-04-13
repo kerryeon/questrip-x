@@ -1,4 +1,4 @@
-import 'package:questrip/lib.dart';
+import 'package:questrip/manager/lib.dart';
 
 /// 회원가입 화면을 동작을 담당합니다.
 ///

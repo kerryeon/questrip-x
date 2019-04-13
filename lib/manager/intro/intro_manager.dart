@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/lib.dart';
+import 'package:questrip/manager/lib.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/net/login/lib.dart';
 import 'package:questrip/res/lib.dart';
