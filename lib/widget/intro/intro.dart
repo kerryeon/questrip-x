@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:questrip/manager/intro/intro_manager.dart';
+import 'package:questrip/controller/intro/intro_controller.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/bootstrap.dart';
 
@@ -11,7 +11,7 @@ import 'package:questrip/widget/common/bootstrap.dart';
 ///
 class IntroWidget extends Bootstrapper {
 
-  final IntroManager _manager = IntroManager();
+  final IntroController _manager = IntroController();
 
   @override
   Widget buildWidget(BuildContext context) {
