@@ -11,11 +11,11 @@ import 'package:questrip/widget/common/bootstrap.dart';
 ///
 class IntroWidget extends Bootstrapper {
 
-  final IntroController _manager = IntroController();
+  final IntroController _controller = IntroController();
 
   @override
   Widget buildWidget(BuildContext context) {
-    _manager.init(context);
+    _controller.init(context);
     return Scaffold(
         body: Container(
             decoration: BoxDecoration(color: Colors.white),

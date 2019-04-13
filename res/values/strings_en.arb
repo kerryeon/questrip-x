@@ -3,6 +3,11 @@
 
   "intro_on_failure_canceled": "You should login to use Questrip.",
 
+  "permission_denied": "Sorry, but you must accept permissions for using Questrip.",
+  "permission_camera": "Camera",
+  "permission_location": "Location",
+  "permission_internet": "Internet",
+
   "common_alert_title": "Notice",
   "common_alert_confirm": "Confirm",
   "common_alert_cancel": "Cancel",

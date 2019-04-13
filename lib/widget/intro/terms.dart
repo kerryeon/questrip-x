@@ -11,11 +11,11 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 class TermsWidget extends StatelessWidget {
 
-  final TermsController _manager = TermsController();
+  final TermsController _controller = TermsController();
 
   @override
   Widget build(BuildContext context) {
-    _manager.init(context);
+    _controller.init(context);
     return Scaffold(
         body: WillPopScope(
             onWillPop: () => dialogExit(context),
@@ -27,7 +27,7 @@ class TermsWidget extends StatelessWidget {
                     child: InkWell(child: Center(
                         child: SvgPicture.asset(R.drawable.bug,
                         )
-                    ), onTap: _manager.onConfirmTerms)
+                    ), onTap: _controller.onConfirmTerms)
                 )
             ))
     );

@@ -24,6 +24,7 @@ class QuestMapController extends IController {
   final Set<Marker> markers = <Marker>{};
 
   List<Quest> quests;
+  Quest currentQuest;
 
   /// 맵뷰를 초기화합니다.
   void initMap(
@@ -33,6 +34,29 @@ class QuestMapController extends IController {
     _setState.complete(setState);
     _tryShowMyLocation();
     _tryLoadQuests();
+  }
+
+  /// 마커를 다시 그립니다.
+  void updateMarkers() async {
+    if (quests == null) return;
+    // 기존의 마커는 모두 지웁니다.
+    _removeMarkers();
+    // 새로 그립니다.
+    (await _questsInCamera).forEach(_addMarker);
+    // 화면을 갱신합니다.
+    _updateState();
+  }
+
+  /// 메뉴창을 엽니다.
+  void openMenu() {
+    _closeQuest();
+    // TODO to be implemented.
+  }
+
+  /// 메뉴창과 퀘스트 정보창을 닫습니다.
+  void closeAll() {
+    _closeMenu();
+    _closeQuest();
   }
 
   /// 현재 위치를 보여줍니다.
@@ -63,17 +87,6 @@ class QuestMapController extends IController {
     _tryShowMyLocation();
   }
 
-  /// 마커를 다시 그립니다.
-  void updateMarkers() async {
-    if (quests == null) return;
-    // 기존의 마커는 모두 지웁니다.
-    _removeMarkers();
-    // 새로 그립니다.
-    (await _questsInCamera).forEach(_addMarker);
-    // 화면을 갱신합니다.
-    _updateState();
-  }
-
   /// 현재 화면에 보일 수 있는 퀘스트를 선출합니다.
   Future<Iterable<Quest>> get _questsInCamera async {
     final GoogleMapController controller = await _controller.future;
@@ -86,7 +99,8 @@ class QuestMapController extends IController {
 
   /// 마커를 하나 그립니다.
   void _addMarker(final Quest quest) async =>
-      markers.add(QuestMapMarker.fromQuest(quest, () => print('tapped')));
+      // TODO to be implemented.
+      markers.add(QuestMapMarker.fromQuest(quest, _onTouchMarker));
 
   /// 마커를 모두 지웁니다.
   void _removeMarkers() => markers.clear();
@@ -95,6 +109,30 @@ class QuestMapController extends IController {
   void _updateState() async {
     final void Function(Runnable) setState = await _setState.future;
     setState(() {});
+  }
+
+  /// 마커를 터치한 경우의 이벤트입니다.
+  /// 메뉴창을 닫고, 퀘스트 설명창을 보여줍니다.
+  void _onTouchMarker(final Quest quest) {
+    _closeMenu();
+    // TODO to be implemented.
+  }
+
+  /// 리더보드 버튼을 터치한 경우의 이벤트입니다.
+  /// 리더보드 화면으로 넘어갑니다.
+  void _onShowLeaderBoard(final Quest quest) {
+    // TODO to be implemented.
+  }
+
+  /// 메뉴창을 닫습니다.
+  void _closeMenu() {
+    // TODO to be implemented.
+  }
+
+  /// 퀘스트 설명창을 닫습니다.
+  void _closeQuest() {
+    currentQuest = null;
+    // TODO to be implemented.
   }
 
   /// 맵뷰가 처음 보여줄 위치를 반환합니다.

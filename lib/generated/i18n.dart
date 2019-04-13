@@ -35,6 +35,10 @@ class S implements WidgetsLocalizations {
   String get common_failure_unknown => "Unknown Error.";
   String get debug_todo => "To be implemented.";
   String get intro_on_failure_canceled => "You should login to use Questrip.";
+  String get permission_camera => "Camera";
+  String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
+  String get permission_internet => "Internet";
+  String get permission_location => "Location";
 }
 
 class $ko_KR extends S {
@@ -60,11 +64,17 @@ class $ko_KR extends S {
   @override
   String get common_alert_button_submit => "제출하기";
   @override
+  String get permission_denied => "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.";
+  @override
+  String get permission_camera => "사진 촬영";
+  @override
   String get common_alert_choose_yes => "예";
   @override
   String get intro_on_failure_canceled => "로그인하셔야 앱을 사용하실 수 있습니다.";
   @override
   String get common_alert_button_prev => "이전";
+  @override
+  String get permission_location => "위치 정보";
   @override
   String get common_alert_canceled => "취소하였습니다.";
   @override
@@ -73,6 +83,8 @@ class $ko_KR extends S {
   String get debug_todo => "구현 예정입니다.";
   @override
   String get app_name => "Questrip";
+  @override
+  String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
 }
