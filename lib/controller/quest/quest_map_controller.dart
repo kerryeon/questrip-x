@@ -21,6 +21,7 @@ class QuestMapController extends IController {
 
   final Completer<GoogleMapController> _controller = Completer();
   final Completer<void Function(Runnable)> _setState = Completer();
+  /// 마커 목록입니다.
   final Set<Marker> markers = <Marker>{};
 
   List<Quest> quests;

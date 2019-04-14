@@ -3,6 +3,30 @@
 
   "intro_on_failure_canceled": "You should login to use Questrip.",
 
+  "sign_up_field_welcome": "Welcome!",
+  "sign_up_field_nickname": "Nickname",
+  "sign_up_field_year": "Year",
+  "sign_up_field_month": "Month",
+  "sign_up_field_day": "Day",
+  "sign_up_field_address": "Address",
+  "sign_up_field_address_detail": "Address (Detail)",
+  "sign_up_alert_nickname": "Please check your nickname.",
+  "sign_up_alert_birthday": "Please check your date of birth.",
+  "sign_up_alert_address": "Please check your address.",
+
+  "terms_field_terms": "Terms\nHello world.",
+  "terms_button_agree": "I agree to the above terms.",
+  "terms_alert_rejected": "Sorry. Due to internal circumstances, sign-up can not be temporarily done.",
+  "terms_alert_welcome": "Congratulations! All Questrip features are now available.",
+
+  "config_field_title": "Config",
+  "config_alert_logout": "Are you sure you want to logout?",
+  "config_alert_sign_off": "Are you sure you want to unsubscribe Questrip? You cannot recover an unsubscribed account.",
+  "config_alert_sign_off_success": "Thank you for loving Questrip.\n We look forward to coming back.",
+  "config_button_logout": "Logout",
+  "config_button_sign_off": "Withdrawal",
+  "config_button_open_source": "Open Source Terms",
+
   "permission_denied": "Sorry, but you must accept permissions for using Questrip.",
   "permission_camera": "Camera",
   "permission_location": "Location",

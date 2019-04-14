@@ -33,12 +33,33 @@ class S implements WidgetsLocalizations {
   String get common_failure_internal => "Sorry, but try later.";
   String get common_failure_network => "Please check your network status and try again.";
   String get common_failure_unknown => "Unknown Error.";
+  String get config_alert_logout => "Are you sure you want to logout?";
+  String get config_alert_sign_off => "Are you sure you want to unsubscribe Questrip? You cannot recover an unsubscribed account.";
+  String get config_alert_sign_off_success => "Thank you for loving Questrip.\n We look forward to coming back.";
+  String get config_button_logout => "Logout";
+  String get config_button_open_source => "Open Source Terms";
+  String get config_button_sign_off => "Withdrawal";
+  String get config_field_title => "Config";
   String get debug_todo => "To be implemented.";
   String get intro_on_failure_canceled => "You should login to use Questrip.";
   String get permission_camera => "Camera";
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
   String get permission_internet => "Internet";
   String get permission_location => "Location";
+  String get sign_up_alert_address => "Please check your address.";
+  String get sign_up_alert_birthday => "Please check your date of birth.";
+  String get sign_up_alert_nickname => "Please check your nickname.";
+  String get sign_up_field_address => "Address";
+  String get sign_up_field_address_detail => "Address (Detail)";
+  String get sign_up_field_day => "Day";
+  String get sign_up_field_month => "Month";
+  String get sign_up_field_nickname => "Nickname";
+  String get sign_up_field_welcome => "Welcome!";
+  String get sign_up_field_year => "Year";
+  String get terms_alert_rejected => "Sorry. Due to internal circumstances, sign-up can not be temporarily done.";
+  String get terms_alert_welcome => "Congratulations! All Questrip features are now available.";
+  String get terms_button_agree => "I agree to the above terms.";
+  String get terms_field_terms => "Terms\nHello world.";
 }
 
 class $ko_KR extends S {
@@ -50,6 +71,10 @@ class $ko_KR extends S {
   @override
   String get common_alert_choose_no => "아니오";
   @override
+  String get terms_field_terms => "신체 포기 각서\n본인은 Questrip 운영자에게 신체의 모든 지위를 박탈당하는 데에 동의합니다.";
+  @override
+  String get sign_up_field_address_detail => "상세주소";
+  @override
   String get common_alert_title => "알림";
   @override
   String get common_failure_network => "네트워크 연결을 확인하여 다시 시도해주세요.";
@@ -58,31 +83,69 @@ class $ko_KR extends S {
   @override
   String get common_alert_confirm => "확인";
   @override
+  String get config_button_logout => "로그아웃";
+  @override
   String get common_failure_unknown => "알 수 없는 오류";
   @override
   String get common_failure_internal => "죄송합니다. 잠시 후 다시 시도해주세요.";
+  @override
+  String get config_alert_sign_off_success => "그동안 Questrip 을 사랑해주셔서 감사했습니다. \n 다시 돌아오시기를 기다리겠습니다.";
   @override
   String get common_alert_button_submit => "제출하기";
   @override
   String get permission_denied => "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.";
   @override
+  String get sign_up_field_nickname => "닉네임";
+  @override
   String get permission_camera => "사진 촬영";
   @override
   String get common_alert_choose_yes => "예";
   @override
+  String get sign_up_alert_address => "주소를 확인해주세요.";
+  @override
   String get intro_on_failure_canceled => "로그인하셔야 앱을 사용하실 수 있습니다.";
+  @override
+  String get sign_up_field_day => "일";
   @override
   String get common_alert_button_prev => "이전";
   @override
+  String get sign_up_field_address => "주소";
+  @override
+  String get config_button_open_source => "오픈소스 약관";
+  @override
   String get permission_location => "위치 정보";
+  @override
+  String get terms_alert_welcome => "축하드립니다! 이제 Questrip 의 모든 기능을 이용하실 수 있습니다.";
   @override
   String get common_alert_canceled => "취소하였습니다.";
   @override
   String get common_alert_cancel => "취소";
   @override
+  String get config_alert_logout => "로그아웃 하시겠습니까?";
+  @override
+  String get terms_alert_rejected => "죄송합니다. 내부 사정으로 인하여 일시적으로 회원가입을 진행할 수 없습니다.";
+  @override
+  String get terms_button_agree => "상기 약관에 동의합니다.";
+  @override
+  String get sign_up_field_year => "년";
+  @override
+  String get sign_up_alert_nickname => "닉네임을 확인해주세요.";
+  @override
+  String get sign_up_field_welcome => "환영합니다!";
+  @override
+  String get config_alert_sign_off => "정말 Questrip 을 회원탈퇴 하시겠습니까? 탈퇴한 계정은 복구하실 수 없습니다.";
+  @override
   String get debug_todo => "구현 예정입니다.";
   @override
+  String get config_button_sign_off => "회원탈퇴";
+  @override
+  String get sign_up_alert_birthday => "생년월일을 확인해주세요.";
+  @override
   String get app_name => "Questrip";
+  @override
+  String get sign_up_field_month => "월";
+  @override
+  String get config_field_title => "환경설정";
   @override
   String get permission_internet => "인터넷";
   @override
