@@ -1,16 +1,16 @@
-import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:flutter_kakao_login/flutter_kakao_login.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/net/login/lib.dart';
 
 /// Facebook Login API 에 로그인을 시도합니다.
 /// 
 /// 담당자: 김호
-class FacebookLoginManager extends ILoginManager {
+class KakaoLoginManager extends ILoginManager {
 
-  FacebookLogin api;
+  FlutterKakaoLogin api;
 
-  FacebookLoginManager() {
-    api = FacebookLogin();
+  KakaoLoginManager() {
+    api = FlutterKakaoLogin();
   }
 
   /// 로그인을 시도합니다.
@@ -22,16 +22,14 @@ class FacebookLoginManager extends ILoginManager {
       onSuccess(await accessToken);
       return;
     }
-    final result = await api.logInWithReadPermissions(['email']);
+    final result = await api.logIn();
 
     switch (result.status) {
-      case FacebookLoginStatus.loggedIn:
+      case KakaoLoginStatus.loggedIn:
         onSuccess(await accessToken);
         break;
-      case FacebookLoginStatus.cancelledByUser:
-        onFailure(Failed.USER_CANCELED);
-        break;
-      case FacebookLoginStatus.error:
+      case KakaoLoginStatus.loggedOut:
+      case KakaoLoginStatus.error:
         onFailure(Failed.NETWORK_FAILURE);
         break;
     }
@@ -47,6 +45,6 @@ class FacebookLoginManager extends ILoginManager {
 
   /// 로그인 API 명칭을 반환합니다.
   @override
-  String get apiName => 'facebook';
+  String get apiName => 'kakao';
 
 }

@@ -24,7 +24,11 @@ class TermsController extends IController {
   /// 회원가입에 성공한 경우의 이벤트입니다.
   /// 축하 메세지를 띄운 후, 메인화면으로 이동합니다.
   void _onSuccess() => dialog(context, R.string.terms_alert_welcome,
-      onConfirm: () => Navigator.popAndPushNamed(context, R.widget.questMap));
+      onConfirm: () {
+        Navigator.popAndPushNamed(context, R.widget.questMap);
+        // TODO to be implemented.
+        // TODO 회원가입 정보 (로컬)저장.
+      });
 
   /// 회원가입에 실패한 경우의 이벤트입니다.
   /// 사용자에게 그 이유를 알립니다.
