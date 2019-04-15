@@ -45,4 +45,8 @@ class FacebookLoginManager extends ILoginManager {
   @override
   Future<String> get accessToken async => (await api.currentAccessToken).token;
 
+  /// 로그인 API 명칭을 반환합니다.
+  @override
+  String get apiName => 'facebook';
+
 }
