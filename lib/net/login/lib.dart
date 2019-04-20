@@ -2,7 +2,6 @@ import 'package:questrip/data/account.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/net/lib.dart';
-import 'package:questrip/net/login/facebook.dart';
 import 'package:questrip/net/login/kakao.dart';
 import 'package:questrip/res/lib.dart';
 

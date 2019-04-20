@@ -14,6 +14,7 @@
   "sign_up_alert_birthday": "생년월일을 확인해주세요.",
   "sign_up_alert_address": "주소를 확인해주세요.",
 
+  "terms_field_title": "이용약관",
   "terms_field_terms": "신체 포기 각서\n본인은 Questrip 운영자에게 신체의 모든 지위를 박탈당하는 데에 동의합니다.",
   "terms_button_agree": "상기 약관에 동의합니다.",
   "terms_alert_rejected": "죄송합니다. 내부 사정으로 인하여 일시적으로 회원가입을 진행할 수 없습니다.",

@@ -3,8 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/res/widgets.dart';
 import 'package:questrip/widget/intro/intro.dart';
-import 'package:questrip/widget/intro/sign_up.dart';
-import 'package:questrip/widget/intro/terms.dart';
 
 /// 앱을 구동합니다.
 /// 
@@ -20,7 +18,7 @@ void main() {
           accentColor: const Color(0xffffd740),
           canvasColor: const Color(0xFFfafafa),
         ),
-        home: TermsWidget(),
+        home: IntroWidget(),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,

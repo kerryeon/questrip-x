@@ -16,16 +16,13 @@ class TermsWidget extends StatelessWidget {
   Widget termsText({double width, double height}) {
     /// 약관동의 내용 위젯입니다.
     return Container(
-      child: Text('약관내용\n TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST TEST ',
+      child: Text(R.string.terms_field_terms,
         style: TextStyle(fontSize: 12.0, color: Colors.black54),
         textAlign: TextAlign.left,
       ),
       height: height,
       width: width,
     );
-  }
-  void checkAgree(bool value) {
-    /// 약관동의 체크 이벤트입니다.
   }
 
   @override
@@ -34,7 +31,6 @@ class TermsWidget extends StatelessWidget {
     return Scaffold(
         body: WillPopScope(
             onWillPop: () => dialogExit(context),
-            // TODO to be implemented.
             child: Container(
                 decoration: BoxDecoration(
                     color: Colors.white,
@@ -43,16 +39,16 @@ class TermsWidget extends StatelessWidget {
                         topRight: const Radius.circular(40.0))
                 ),
                 child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
                     Container(
                         margin: const EdgeInsets.only(left: 15.0, right: 15.0),
                         child: Center(
                             child: SvgPicture.asset(
-                              'plane.xml',
-                              fit:BoxFit.contain
+                                'plane.xml',
+                                fit:BoxFit.contain
                             )
                         )
                     ),
@@ -72,59 +68,63 @@ class TermsWidget extends StatelessWidget {
                                 width: 1
                             )
                         ),
-                        child: Text("이용약관",
+                        child: Text(R.string.terms_field_title,
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontSize:20.0,
-                            color: const Color(0xFF191919),
-                            fontWeight: FontWeight.w400,
-                            fontFamily: "Roboto"),
+                              fontSize:20.0,
+                              color: const Color(0xFF191919),
+                              fontWeight: FontWeight.w400,
+                              fontFamily: "Roboto"),
                         )
                     ),
                     SingleChildScrollView(
                       child: Stack(
-                        children: <Widget>[
-                          Container(
-                            margin: const EdgeInsets.only(left: 15.0, right: 15.0),
-                            padding: const EdgeInsets.all(10.0),
-                            width: 300.0,
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.amber,
-                                width: 1,
+                          children: <Widget>[
+                            Container(
+                              margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+                              padding: const EdgeInsets.all(10.0),
+                              width: 300.0,
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.amber,
+                                  width: 1,
+                                ),
+                                borderRadius: new BorderRadius.only(
+                                    bottomLeft: const Radius.circular(15.0),
+                                    bottomRight: const Radius.circular(15.0)
+                                ),
                               ),
-                              borderRadius: new BorderRadius.only(
-                                  bottomLeft: const Radius.circular(15.0),
-                                  bottomRight: const Radius.circular(15.0)
-                              ),
+                              child: termsText(width: 400, height: 400),
                             ),
-                            child: termsText(width: 400, height: 400),
-                          ),
-                        ]
+                          ]
                       ),
                     ),
 
                     Container(
                         margin: const EdgeInsets.only(top: 15.0, right: 25.0),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          mainAxisSize: MainAxisSize.max,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: <Widget>[
-                            Text(
-                              "상기 약관에 동의합니다.",
-                              style: TextStyle(
-                                  fontSize:12.0,
-                                  color: const Color(0xFF000000),
-                                  fontWeight: FontWeight.w200,
-                                  fontFamily: "Roboto"),
-                            ),
-                            Checkbox(key:null, onChanged: checkAgree, value:true),
-                          ]
-                      )
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: <Widget>[
+                              Text(
+                                R.string.terms_button_agree,
+                                style: TextStyle(
+                                    fontSize:12.0,
+                                    color: const Color(0xFF000000),
+                                    fontWeight: FontWeight.w200,
+                                    fontFamily: "Roboto"),
+                              ),
+                              Checkbox(
+                                  key: null,
+                                  onChanged: (_) => _controller.onConfirmTerms(),
+                                  value: false
+                              ),
+                            ]
+                        )
                     )
-                ],
-              )
+                  ],
+                )
             )
         )
     );
