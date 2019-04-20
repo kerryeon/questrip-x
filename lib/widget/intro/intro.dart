@@ -18,11 +18,11 @@ class IntroWidget extends Bootstrapper {
     _controller.init(context);
     return Scaffold(
         body: Container(
-            decoration: BoxDecoration(color: Colors.white),
+            decoration: BoxDecoration(color: Colors.amber),
             child: Container(
                 margin: const EdgeInsets.only(left: 100.0, right: 100.0),
                 child: Center(
-                    child: SvgPicture.asset(R.drawable.logo,
+                    child: SvgPicture.asset(R.drawable.bug,
                     )
                 )
             )

@@ -14,6 +14,7 @@
   "sign_up_alert_birthday": "Please check your date of birth.",
   "sign_up_alert_address": "Please check your address.",
 
+  "terms_field_title": "Terms",
   "terms_field_terms": "Terms\nHello world.",
   "terms_button_agree": "I agree to the above terms.",
   "terms_alert_rejected": "Sorry. Due to internal circumstances, sign-up can not be temporarily done.",

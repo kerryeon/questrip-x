@@ -60,6 +60,7 @@ class S implements WidgetsLocalizations {
   String get terms_alert_welcome => "Congratulations! All Questrip features are now available.";
   String get terms_button_agree => "I agree to the above terms.";
   String get terms_field_terms => "Terms\nHello world.";
+  String get terms_field_title => "Terms";
 }
 
 class $ko_KR extends S {
@@ -70,6 +71,8 @@ class $ko_KR extends S {
 
   @override
   String get common_alert_choose_no => "아니오";
+  @override
+  String get terms_field_title => "이용약관";
   @override
   String get terms_field_terms => "신체 포기 각서\n본인은 Questrip 운영자에게 신체의 모든 지위를 박탈당하는 데에 동의합니다.";
   @override

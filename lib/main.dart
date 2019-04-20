@@ -12,6 +12,12 @@ void main() {
   R.init();
   runApp(
       MaterialApp(
+        theme: new ThemeData(
+          primarySwatch: Colors.amber,
+          primaryColor: const Color(0xffffc107),
+          accentColor: const Color(0xffffd740),
+          canvasColor: const Color(0xFFfafafa),
+        ),
         home: IntroWidget(),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
