@@ -3,6 +3,8 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/res/widgets.dart';
 import 'package:questrip/widget/intro/intro.dart';
+import 'package:questrip/widget/intro/sign_up.dart';
+import 'package:questrip/widget/intro/terms.dart';
 
 /// 앱을 구동합니다.
 /// 
@@ -12,7 +14,13 @@ void main() {
   R.init();
   runApp(
       MaterialApp(
-        home: IntroWidget(),
+        theme: new ThemeData(
+          primarySwatch: Colors.amber,
+          primaryColor: const Color(0xffffc107),
+          accentColor: const Color(0xffffd740),
+          canvasColor: const Color(0xFFfafafa),
+        ),
+        home: TermsWidget(),
         localizationsDelegates: [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate,
