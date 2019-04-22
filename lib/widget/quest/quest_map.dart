@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:questrip/controller/quest/quest_map_controller.dart';
+import 'package:questrip/controller/quest/quest_map.dart';
 import 'package:questrip/widget/common/alert.dart';
 
 /// 메인화면을 담당하는 클래스입니다.

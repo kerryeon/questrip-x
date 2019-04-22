@@ -13,6 +13,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="Questrip"
+        android:usesCleartextTraffic="true"
         android:icon="@drawable/logo">
         <activity
             android:name=".MainActivity"

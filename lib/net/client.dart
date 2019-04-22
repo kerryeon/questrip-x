@@ -16,6 +16,7 @@ void request(String uri, void onSuccess(Map<String, Object> response),
     // 데이터를 싣습니다.
     data ??= {};
     data['token'] = await getAccessToken();
+    print(json.encode(data));
     request.add(utf8.encode(json.encode(data)));
     // 데이터를 수신하고 요청을 종료합니다.
     final HttpClientResponse response = await request.close();
@@ -39,11 +40,10 @@ void request(String uri, void onSuccess(Map<String, Object> response),
 /// 서버에 사용자 행위를 요청합니다.
 void requestAccept(String uri, Runnable onSuccess, OnFailure onFailure, {
   Map<String, Object> data, final String key: 'accept'
-}) async {
-  request(uri, (r) => r[key]
-      ? onSuccess()
-      : onFailure(Failed.REJECTED), onFailure);
-}
+}) async => request(uri, (r) => r[key]
+    ? onSuccess()
+    : onFailure(Failed.REJECTED), onFailure,
+    data: data);
 
 /// 요청 경로를 생성합니다.
 String _composeURI(final String uri) {

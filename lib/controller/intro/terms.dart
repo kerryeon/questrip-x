@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/net/lib.dart';
+import 'package:questrip/net/login/lib.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 
@@ -17,18 +18,16 @@ class TermsController extends IController {
   /// 회원가입을 시도합니다.
   void onConfirmTerms() {
     btnLock();
-    // TODO to be implemented.
-    requestAccept(R.uri.signUp, _onSuccess, _onFailure);
+    var data = R.account.toJSON();
+    data['api'] = getApiName;
+    requestAccept(R.uri.signUp, _onSuccess, _onFailure,
+        data: data);
   }
 
   /// 회원가입에 성공한 경우의 이벤트입니다.
   /// 축하 메세지를 띄운 후, 메인화면으로 이동합니다.
   void _onSuccess() => dialog(context, R.string.terms_alert_welcome,
-      onConfirm: () {
-        Navigator.popAndPushNamed(context, R.widget.questMap);
-        // TODO to be implemented.
-        // TODO 회원가입 정보 (로컬)저장.
-      });
+      onConfirm: () => Navigator.popAndPushNamed(context, R.widget.questMap));
 
   /// 회원가입에 실패한 경우의 이벤트입니다.
   /// 사용자에게 그 이유를 알립니다.

@@ -30,7 +30,7 @@ class KakaoLoginManager extends ILoginManager {
         break;
       case KakaoLoginStatus.loggedOut:
       case KakaoLoginStatus.error:
-        onFailure(Failed.NETWORK_FAILURE);
+        onFailure(Failed.INTERNAL);
         break;
     }
   }

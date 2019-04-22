@@ -39,12 +39,15 @@ void tryLogin(Runnable onSuccess, OnFailure onFailure, Runnable onNewUser) {
 /// 사용자의 엑세스 토큰을 반환합니다.
 Future<String> getAccessToken() => ILoginManager._instance.accessToken;
 
+/// 로그인 API 명칭을 반환합니다.
+String get getApiName => ILoginManager._instance.apiName;
+
 /// API 로그인에 성공한 경우의 이벤트입니다.
 /// 서버에도 로그인을 시도합니다.
 void _onSuccess(String token, Runnable onSuccess, OnFailure onFailure, Runnable onNewUser) =>
     request(R.uri.signIn,
             (r) => _onReceived(r, onSuccess, onFailure, onNewUser), onFailure,
-        data: {'api': ILoginManager._instance.apiName});
+        data: {'api': getApiName});
 
 /// 서버로부터 로그인 결과를 수신한 경우의 이벤트입니다.
 void _onReceived(Map<String, Object> response, Runnable onSuccess,
