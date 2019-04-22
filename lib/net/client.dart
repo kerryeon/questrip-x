@@ -39,11 +39,10 @@ void request(String uri, void onSuccess(Map<String, Object> response),
 /// 서버에 사용자 행위를 요청합니다.
 void requestAccept(String uri, Runnable onSuccess, OnFailure onFailure, {
   Map<String, Object> data, final String key: 'accept'
-}) async {
-  request(uri, (r) => r[key]
-      ? onSuccess()
-      : onFailure(Failed.REJECTED), onFailure);
-}
+}) async => request(uri, (r) => r[key]
+    ? onSuccess()
+    : onFailure(Failed.REJECTED), onFailure,
+    data: data);
 
 /// 요청 경로를 생성합니다.
 String _composeURI(final String uri) {

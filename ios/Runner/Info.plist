@@ -93,5 +93,12 @@
     <string>Need NSLocationAlwaysUsageDescription</string>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string>Need NSLocationWhenInUseUsageDescription</string>
+
+    <!-- CrossDomain -->
+    <key>NSAppTransportSecurity</key>
+    <dict>
+        <key>NSAllowsArbitraryLoads</key>
+        <true/>
+    </dict>
 </dict>
 </plist>

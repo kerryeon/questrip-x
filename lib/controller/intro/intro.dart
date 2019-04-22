@@ -14,8 +14,8 @@ class IntroController extends IController {
 
   /// 객체를 초기화합니다.
   @override
-  void init(BuildContext context) async {
-    super.init(context);
+  void init(BuildContext context, {void Function(Runnable) setState}) async {
+    super.init(context, setState: setState);
     _requestPermission();
   }
 
@@ -23,7 +23,7 @@ class IntroController extends IController {
   /// 획득에 성공하면 로그인을 시도합니다.
   void _requestPermission() async =>
       await R.requestPermission()
-          ? tryLogin(_onSuccess, _onFailed, _onNewUser)
+          ? tryLogin(_onSuccess, _onFailure, _onNewUser)
           : _onPermissionDenied();
 
   /// 로그인에 성공한 경우의 이벤트입니다.
@@ -32,7 +32,7 @@ class IntroController extends IController {
 
   /// 로그인에 실패한 경우의 이벤트입니다.
   /// 이유를 알려주고 앱을 종료합니다.
-  void _onFailed(Failed failed) => dialogFailed(context, failed, onConfirm: exit);
+  void _onFailure(Failed failed) => dialogFailed(context, failed, onConfirm: exit);
 
   /// 로그인한 사용자가 등록되지 않은 회원인 경우의 이벤트입니다.
   /// 회원가입 화면으로 이동합니다.

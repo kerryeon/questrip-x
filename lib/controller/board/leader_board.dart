@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/data/submission.dart';
 import 'package:questrip/controller/lib.dart';
+import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
@@ -19,8 +20,8 @@ class ILeaderBoardController extends IController {
 
   /// 객체를 초기화합니다.
   @override
-  void init(BuildContext context) async {
-    super.init(context);
+  void init(BuildContext context, {void Function(Runnable) setState}) async {
+    super.init(context, setState: setState);
     _downloadSubmissions();
   }
 

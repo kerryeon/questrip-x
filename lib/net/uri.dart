@@ -23,4 +23,7 @@ class URI {
   // images
   String get pathImage => "/u/img/";
 
+  // External
+  String get address => "http://203.255.3.181:9494/address.html";
+
 }

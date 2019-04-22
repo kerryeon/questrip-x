@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:questrip/controller/intro/intro_controller.dart';
+import 'package:questrip/controller/intro/intro.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/bootstrap.dart';
 

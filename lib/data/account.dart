@@ -29,4 +29,12 @@ class Account {
       addressDetail: response['address_detail'],
   );
 
+  /// 서버로 전송 가능한 JSON 형식의 데이터를 반환합니다.
+  Map<String, Object> toJSON() => {
+    'nickname': nickname,
+    'birthday': birthday,
+    'address': address,
+    'address_detail': addressDetail,
+  };
+
 }

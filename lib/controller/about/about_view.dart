@@ -1,4 +1,4 @@
-import 'package:questrip/controller/board/leader_board_controller.dart';
+import 'package:questrip/controller/board/leader_board.dart';
 
 /// 내 퀘스트 목록 화면의 동작을 담당합니다.
 ///
