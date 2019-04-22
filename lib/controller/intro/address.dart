@@ -1,6 +1,9 @@
+import 'dart:io';
+
 import 'package:flutter_inappbrowser/flutter_inappbrowser.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/lib.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 주소 불러오기 화면의 동작을 담당합니다.
 /// 사용자의 집주소를 API 를 통해 불러옵니다.
@@ -17,8 +20,7 @@ class AddressController extends IController {
     _browser.onSuccess = onSuccess;
     _browser.onFailure = onFailure;
     _browser.open(
-        url: "http://203.255.3.181:9494/address.html",
-        // url: "http://naver.com/",
+        url: R.uri.address,
         options: {
           "allowsLinkPreview": false,
           "hideUrlBar": true,
@@ -55,7 +57,9 @@ class _AddressWebView extends InAppBrowser {
   void onLoadResource(WebResourceResponse response, WebResourceRequest request) {
     final result = Uri.parse(response.url).queryParameters;
     if (! result.containsKey('sq') || result['sq'].length < 4) return;
-    final addressQuery = Uri.decodeComponent(result['sq']);
+    final addressQuery = Platform.isIOS
+        ? Uri.decodeComponent(result['sq'])
+        : result['sq'];
     final address = addressQuery.split('|')[2];
     isCleared = true;
     close();
