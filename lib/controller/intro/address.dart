@@ -17,7 +17,8 @@ class AddressController extends IController {
     _browser.onSuccess = onSuccess;
     _browser.onFailure = onFailure;
     _browser.open(
-        url: "http://questrip.ivyro.net/getAddress.php",
+        url: "http://203.255.3.181:9494/address.html",
+        // url: "http://naver.com/",
         options: {
           "allowsLinkPreview": false,
           "hideUrlBar": true,
@@ -53,8 +54,8 @@ class _AddressWebView extends InAppBrowser {
   @override
   void onLoadResource(WebResourceResponse response, WebResourceRequest request) {
     final result = Uri.parse(response.url).queryParameters;
-    if (! result.containsKey('type')) return;
-    final addressQuery = result['sq'];
+    if (! result.containsKey('sq') || result['sq'].length < 4) return;
+    final addressQuery = Uri.decodeComponent(result['sq']);
     final address = addressQuery.split('|')[2];
     isCleared = true;
     close();

@@ -16,7 +16,6 @@ void request(String uri, void onSuccess(Map<String, Object> response),
     // 데이터를 싣습니다.
     data ??= {};
     data['token'] = await getAccessToken();
-    print(json.encode(data));
     request.add(utf8.encode(json.encode(data)));
     // 데이터를 수신하고 요청을 종료합니다.
     final HttpClientResponse response = await request.close();
