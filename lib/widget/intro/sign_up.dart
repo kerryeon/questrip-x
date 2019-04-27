@@ -125,7 +125,8 @@ class _SignUpState extends State<SignUpWidget> {
                         ]
                     )
                 )
-            ))
+            )
+        )
     );
   }
 }

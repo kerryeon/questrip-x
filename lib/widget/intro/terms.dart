@@ -43,6 +43,7 @@ class TermsWidget extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
+                    /// 로고
                     Container(
                         margin: const EdgeInsets.only(left: 15.0, right: 15.0),
                         child: Center(
@@ -52,6 +53,8 @@ class TermsWidget extends StatelessWidget {
                             )
                         )
                     ),
+
+                    /// 이용약관 타이틀
                     Container(
                         margin: const EdgeInsets.only(top: 100.0, left: 15.0, right: 15.0),
                         alignment: Alignment.center,
@@ -77,6 +80,8 @@ class TermsWidget extends StatelessWidget {
                               fontFamily: "Roboto"),
                         )
                     ),
+
+                    /// 이용약관
                     SingleChildScrollView(
                       child: Stack(
                           children: <Widget>[
@@ -100,6 +105,7 @@ class TermsWidget extends StatelessWidget {
                       ),
                     ),
 
+                    /// 동의 체크박스
                     Container(
                         margin: const EdgeInsets.only(top: 15.0, right: 25.0),
                         child: Row(

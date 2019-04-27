@@ -7,10 +7,9 @@ import 'package:questrip/res/common.dart';
 class Drawable extends Resource {
 
   String get logo => _routeSVG('logo');
-
   String get bug => _routeSVG('bug');
-
   String get plane => _routeSVG('black-plane');
+  String get like => _routeSVG('like');
 
   String _route(final String route) => 'res/drawable/' + route;
   String _routeSVG(final String route) => _route(route + '.svg');
