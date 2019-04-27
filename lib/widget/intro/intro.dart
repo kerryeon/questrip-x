@@ -20,9 +20,9 @@ class IntroWidget extends Bootstrapper {
         body: Container(
             decoration: BoxDecoration(color: Colors.amber),
             child: Container(
-                margin: const EdgeInsets.only(left: 100.0, right: 100.0),
+                margin: const EdgeInsets.only(left: 15.0, right: 15.0),
                 child: Center(
-                    child: SvgPicture.asset(R.drawable.bug,
+                    child: SvgPicture.asset(R.drawable.logo,
                     )
                 )
             )
