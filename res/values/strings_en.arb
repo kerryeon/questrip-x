@@ -28,6 +28,8 @@
   "config_button_sign_off": "Withdrawal",
   "config_button_open_source": "Open Source Terms",
 
+  "open_source_terms": "Open Source Terms\n TODO",
+
   "permission_denied": "Sorry, but you must accept permissions for using Questrip.",
   "permission_camera": "Camera",
   "permission_location": "Location",

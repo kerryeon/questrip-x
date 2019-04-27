@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
@@ -33,9 +34,6 @@ class ConfigController extends IController {
 
   /// 사용자가 오픈소스 약관 버튼을 누른 경우의 이벤트입니다.
   /// 오픈소스 약관 화면으로 이동합니다.
-  void showOpenSource() {
-    // TODO to be implemented.
-    print('hello');
-  }
+  void showOpenSource() => Navigator.pushNamed(context, R.widget.openSource);
 
 }

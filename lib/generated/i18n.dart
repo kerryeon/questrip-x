@@ -42,6 +42,7 @@ class S implements WidgetsLocalizations {
   String get config_field_title => "Config";
   String get debug_todo => "To be implemented.";
   String get intro_on_failure_canceled => "You should login to use Questrip.";
+  String get open_source_terms => "Open Source Terms\n TODO";
   String get permission_camera => "Camera";
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
   String get permission_internet => "Internet";
@@ -95,6 +96,8 @@ class $ko_KR extends S {
   String get config_alert_sign_off_success => "그동안 Questrip 을 사랑해주셔서 감사했습니다. \n 다시 돌아오시기를 기다리겠습니다.";
   @override
   String get common_alert_button_submit => "제출하기";
+  @override
+  String get open_source_terms => "오픈소스 약관\n 앱에 사용된 여러 오픈소스들 (Google Maps 등..)의 라이선스를 명시하는 부분입니다.";
   @override
   String get permission_denied => "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.";
   @override

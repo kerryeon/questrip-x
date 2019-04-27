@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:questrip/res/lib.dart';
 
-class OpenSource extends StatelessWidget {
+class OpenSourceWidget extends StatelessWidget {
 
   Widget termsText({double width, double height}) {
     return Container(
-      child: Text("오픈소스 약관\n 앱에 사용된 여러 오픈소스들 (Google Maps 등..)의 라이선스를 명시하는 부분입니다",
+      child: Text(R.string.open_source_terms,
         style: TextStyle(fontSize: 12.0, color: Colors.black54),
         textAlign: TextAlign.left,
       ),
@@ -55,7 +56,7 @@ class OpenSource extends StatelessWidget {
                                 width: 1
                             )
                         ),
-                        child: Text("오픈소스 약관",
+                        child: Text(R.string.config_button_open_source,
                           textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize:20.0,

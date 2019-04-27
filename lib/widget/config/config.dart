@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:questrip/controller/config/utils_controller.dart';
+import 'package:questrip/controller/config/config.dart';
+import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/components.dart';
 
-class ConfigViewWidget extends StatelessWidget {
+class ConfigWidget extends StatelessWidget {
 
   final ConfigController _controller = ConfigController();
+
   @override
   Widget build(BuildContext context) {
     _controller.init(context);
@@ -22,7 +24,7 @@ class ConfigViewWidget extends StatelessWidget {
                       Container(
                         margin: const EdgeInsets.only(top: 30.0, bottom: 30.0),
                         child: Text(
-                            "환경설정",
+                            R.string.config_field_title,
                             textAlign : TextAlign.center,
                             style: defaultTextStyle(
                                 fontSize: 30,
@@ -36,7 +38,7 @@ class ConfigViewWidget extends StatelessWidget {
                         height: 50.0,
                         child: RaisedButton(
                           onPressed: () => _controller.logout(),
-                          child: Text("로그아웃"),
+                          child: Text(R.string.config_button_logout),
                         ),
                       ),
 
@@ -45,7 +47,7 @@ class ConfigViewWidget extends StatelessWidget {
                         height: 50.0,
                         child: RaisedButton(
                           onPressed: () => _controller.signOff(),
-                          child: Text("회원탈퇴"),
+                          child: Text(R.string.config_button_sign_off),
                         ),
                       ),
 
@@ -54,7 +56,7 @@ class ConfigViewWidget extends StatelessWidget {
                         height: 50.0,
                         child: RaisedButton(
                           onPressed: () => _controller.showOpenSource(),
-                          child: Text("오픈소스 약관"),
+                          child: Text(R.string.config_button_open_source),
                         ),
                       )
                     ],
