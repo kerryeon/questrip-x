@@ -10,6 +10,8 @@ class Drawable extends Resource {
 
   String get bug => _routeSVG('bug');
 
+  String get plane => _routeSVG('black-plane');
+
   String _route(final String route) => 'res/drawable/' + route;
   String _routeSVG(final String route) => _route(route + '.svg');
 
