@@ -35,7 +35,7 @@ class OpenSourceWidget extends StatelessWidget {
                         margin: const EdgeInsets.only(left: 15.0, right: 15.0),
                         child: Center(
                             child: SvgPicture.asset(
-                                'plane.xml',
+                                R.drawable.plane,
                                 fit:BoxFit.contain
                             )
                         )
