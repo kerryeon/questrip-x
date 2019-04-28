@@ -6,9 +6,11 @@ class OpenSourceWidget extends StatelessWidget {
 
   Widget termsText({double width, double height}) {
     return Container(
-      child: Text(R.string.open_source_terms,
-        style: TextStyle(fontSize: 12.0, color: Colors.black54),
-        textAlign: TextAlign.left,
+      child: SingleChildScrollView(
+        child: Text(R.string.open_source_terms,
+          style: TextStyle(fontSize: 12.0, color: Colors.black54),
+          textAlign: TextAlign.left,
+        )
       ),
       height: height,
       width: width,
