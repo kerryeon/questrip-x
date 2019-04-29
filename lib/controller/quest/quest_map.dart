@@ -142,4 +142,18 @@ class QuestMapController extends IController {
     zoom: _ZOOM_RATING,
   );
 
+  /// 내 퀘스트 목록을 엽니다.
+  void openMyQuest() {
+    // TODO to be implemented.
+  }
+
+  /// 환경설정을 엽니다.
+  void openSettings() {
+    // TODO to be implemented.
+  }
+
+  /// 리더보드를 엽니다.
+  void openLeaderBoard() {
+    // TODO to be implemented.
+  }
 }

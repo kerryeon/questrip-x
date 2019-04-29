@@ -18,21 +18,36 @@ class QuestMapState extends State<QuestMapWidget> {
   Widget build(BuildContext context) {
     _controller.init(context);
     return Scaffold(
-        body: WillPopScope(
+        body:  WillPopScope(
             onWillPop: () => dialogExit(context),
-            child: GoogleMap(
-              initialCameraPosition: _controller.kPositionInit,
-              mapType: MapType.normal,
-              markers: _controller.markers,
-              onMapCreated: (c) => _controller.initMap(c, setState),
-              onCameraIdle: _controller.updateMarkers,
-              compassEnabled: false,
-              myLocationEnabled: false,
-              onTap: (_) => _controller.closeAll(),
-            ))
+            child: Stack(
+              children: <Widget> [
+                GoogleMap(
+                 initialCameraPosition: _controller.kPositionInit,
+                 mapType: MapType.normal,
+                 markers: _controller.markers,
+                 onMapCreated: (c) => _controller.initMap(c, setState),
+                 onCameraIdle: _controller.updateMarkers,
+                 compassEnabled: false,
+                 myLocationEnabled: false,
+                 onTap: (_) => _controller.closeAll(),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(top: 10, left: 10,),
+                    decoration: BoxDecoration(
+                      color: Colors.amber,
+                      borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                    ),
+                    child: IconButton(
+                      icon: const Icon(Icons.menu),
+                      onPressed: _controller.openMenu,
+                    )
+                ),
+          ]
+        ),
+        )
     );
   }
-
 }
 
 class QuestMapWidget extends StatefulWidget {
