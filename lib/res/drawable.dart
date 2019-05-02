@@ -9,6 +9,7 @@ class Drawable extends Resource {
   String get logo => _routeSVG('logo');
 
   String get bug => _routeSVG('bug');
+  String get plane => _routeSVG('plane');
 
   String get plane => _routeSVG('black-plane');
 

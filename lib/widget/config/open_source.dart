@@ -6,9 +6,11 @@ class OpenSourceWidget extends StatelessWidget {
 
   Widget termsText({double width, double height}) {
     return Container(
-      child: Text(R.string.open_source_terms,
-        style: TextStyle(fontSize: 12.0, color: Colors.black54),
-        textAlign: TextAlign.left,
+      child: SingleChildScrollView(
+        child: Text(R.string.open_source_terms,
+          style: TextStyle(fontSize: 12.0, color: Colors.black54),
+          textAlign: TextAlign.left,
+        )
       ),
       height: height,
       width: width,
@@ -32,16 +34,18 @@ class OpenSourceWidget extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Container(
-                        margin: const EdgeInsets.only(left: 15.0, right: 15.0),
+                        margin: const EdgeInsets.only(top: 50.0, left: 15.0, right: 15.0),
                         child: Center(
                             child: SvgPicture.asset(
-                                'plane.xml',
-                                fit:BoxFit.contain
+                                R.drawable.plane,
+                                fit:BoxFit.contain,
+                              width: 100.0,
+                              height: 100.0,
                             )
                         )
                     ),
                     Container(
-                        margin: const EdgeInsets.only(top: 100.0, left: 15.0, right: 15.0),
+                        margin: const EdgeInsets.only(left: 15.0, right: 15.0),
                         alignment: Alignment.center,
                         width: 300.0,
                         height: 50.0,
