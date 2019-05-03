@@ -20,6 +20,24 @@
   "terms_alert_rejected": "Sorry. Due to internal circumstances, sign-up can not be temporarily done.",
   "terms_alert_welcome": "Congratulations! All Questrip features are now available.",
 
+  "quest_map_field_period": "${month} ${day}, ${year}",
+
+  "view_field_title": "LeaderBoard",
+  "view_field_report": "Report",
+  "view_button_submit": "Submit",
+  "view_alert_submitted": "Submitted!",
+  "view_alert_reported": "Report has been received",
+  "view_alert_report_duplicate": "Already reported",
+  "view_alert_vote": "Would you recommend it to \"${user}\"?",
+  "view_alert_vote_duplicate": "Already recommended",
+  "view_alert_voted": "Recommended",
+
+  "leader_board_likes": "Likes",
+  "leader_board_rating": "Rating",
+  "leader_board_date": "Latest",
+
+  "about_field_title": "My quests",
+
   "config_field_title": "Config",
   "config_alert_logout": "Are you sure you want to logout?",
   "config_alert_sign_off": "Are you sure you want to unsubscribe Questrip? You cannot recover an unsubscribed account.",

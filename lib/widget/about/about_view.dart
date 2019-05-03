@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/about/about_view.dart';
+import 'package:questrip/controller/board/leader_board.dart';
+import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 
 /// 퀘스트 목록을 담당하는 클래스입니다.
@@ -12,6 +14,7 @@ class AboutViewWidget extends StatefulWidget {
 }
 
 class _AboutViewState extends State<AboutViewWidget> {
+
   final AboutViewController _controller = AboutViewController();
 
   Widget questContents() {
@@ -84,7 +87,7 @@ class _AboutViewState extends State<AboutViewWidget> {
                 children: <Widget>[
                   /// 타이틀
                   Text(
-                    "나의 도전",
+                    R.string.about_field_title,
                     textAlign : TextAlign.center,
                     style: new TextStyle(fontSize:36.0,
                         color: const Color(0xFF000000),
@@ -99,10 +102,16 @@ class _AboutViewState extends State<AboutViewWidget> {
                         mainAxisSize: MainAxisSize.max,
                         crossAxisAlignment: CrossAxisAlignment.center,
                       children: <Widget>[
-                        Text("인기 순"),
-                        Checkbox(key:null, onChanged: (_) => _controller.onCheckPopularity(), value: true),
-                        Text("최신 순"),
-                        Checkbox(key:null, onChanged: (_) => _controller.onCheckNew(), value: true)
+                        Text(R.string.leader_board_rating),
+                        Checkbox(
+                            key: null,
+                            onChanged: (_) => _controller.changeSortMode(SortMode.Rating),
+                            value: true),
+                        Text(R.string.leader_board_likes),
+                        Checkbox(
+                            key: null,
+                            onChanged: (_) => _controller.changeSortMode(SortMode.Date),
+                            value: false)
                       ],
                     )
                   ),
