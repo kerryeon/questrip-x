@@ -3,7 +3,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/res/widgets.dart';
 import 'package:questrip/widget/intro/intro.dart';
-import 'package:questrip/widget/about/about_view.dart';
 /// 앱을 구동합니다.
 /// 
 /// 담당자: 김호

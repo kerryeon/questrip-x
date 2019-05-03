@@ -73,59 +73,61 @@ class _AboutViewState extends State<AboutViewWidget> {
     return Scaffold(
         body: WillPopScope(
             onWillPop: () => dialogExit(context),
-          child: Container(
-              decoration: BoxDecoration(color: Colors.amber),
-              padding: const EdgeInsets.only(top: 80.0),
-              alignment: Alignment.center,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  /// 타이틀
-                  Text(
-                    "나의 도전",
-                    textAlign : TextAlign.center,
-                    style: new TextStyle(fontSize:36.0,
-                        color: const Color(0xFF000000),
-                        fontWeight: FontWeight.w200,
-                        fontFamily: "Roboto"),
-                  ),
-                  /// 체크박스 (인기 순, 최신 순)
-                  Container(
-                    margin: const EdgeInsets.only(left: 5.0, right: 5.0, top: 30.0),
-                    child: Row(
-                        mainAxisAlignment: MainAxisAlignment.end,
-                        mainAxisSize: MainAxisSize.max,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                      children: <Widget>[
-                        Text("인기 순"),
-                        Checkbox(key:null, onChanged: (_) => _controller.onCheckPopularity(), value: true),
-                        Text("최신 순"),
-                        Checkbox(key:null, onChanged: (_) => _controller.onCheckNew(), value: true)
-                      ],
-                    )
-                  ),
-
-                  /// 퀘스트
-                  Container(
-                      decoration: BoxDecoration(
-                          color: const Color(0xFFfafafa),
-                          borderRadius: new BorderRadius.only(
-                              topLeft: const Radius.circular(24.0),
-                              topRight: const Radius.circular(24.0)
-                          )
-                      ),
-                      child: Column(
-                          children: <Widget>[
-                          questContents(),
-                          questContents(),
-                          questContents(),
-                        ]
+          child: SingleChildScrollView(
+            child: Container(
+                decoration: BoxDecoration(color: Colors.amber),
+                padding: const EdgeInsets.only(top: 80.0),
+                alignment: Alignment.center,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    /// 타이틀
+                    Text(
+                      "나의 도전",
+                      textAlign : TextAlign.center,
+                      style: new TextStyle(fontSize:36.0,
+                          color: const Color(0xFF000000),
+                          fontWeight: FontWeight.w200,
+                          fontFamily: "Roboto"),
+                    ),
+                    /// 체크박스 (인기 순, 최신 순)
+                    Container(
+                      margin: const EdgeInsets.only(left: 5.0, right: 5.0, top: 30.0),
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          mainAxisSize: MainAxisSize.max,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text("인기 순"),
+                          Checkbox(key:null, onChanged: (_) => _controller.onCheckPopularity(), value: true),
+                          Text("최신 순"),
+                          Checkbox(key:null, onChanged: (_) => _controller.onCheckNew(), value: true)
+                        ],
                       )
-                  )
-                ]
-            )
+                    ),
+
+                    /// 퀘스트
+                    Container(
+                        decoration: BoxDecoration(
+                            color: const Color(0xFFfafafa),
+                            borderRadius: new BorderRadius.only(
+                                topLeft: const Radius.circular(24.0),
+                                topRight: const Radius.circular(24.0)
+                            )
+                        ),
+                        child: Column(
+                            children: <Widget>[
+                            questContents(),
+                            questContents(),
+                            questContents(),
+                          ]
+                        )
+                    )
+                  ]
+              )
+            ),
           )
 
         )
