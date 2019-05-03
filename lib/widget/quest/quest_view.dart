@@ -33,13 +33,25 @@ class QusetView extends State<QuestViewWidget> {
                   ),
                 ),
                 ///내용
-                Container(
-                  margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
-                  color: Colors.amber[100],
-                  child: Text(
-                    'desc\n\n\n\n\n\n\n\n\n',
-                    style: TextStyle(fontSize: 15.0),
-                    textAlign: TextAlign.left,
+                SingleChildScrollView(
+                  child: Stack(
+                    children: <Widget>[
+                      Container(
+                        height: 130,
+                        margin: const EdgeInsets.only(bottom: 10, left: 20, right: 20),
+                        padding: const EdgeInsets.all(5),
+                        color: Colors.amber[100],
+                        child: SingleChildScrollView(
+                          child: Container(
+                            width: 400,
+                            child: Text(
+                              'desc',
+                              textAlign: TextAlign.left,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
                 ///위치
@@ -83,137 +95,137 @@ class QusetView extends State<QuestViewWidget> {
                   ),
                 ),
                 ///상점 목록
-                new Row(
-                  children: <Widget>[
-                    Container(
-                      margin: const EdgeInsets.only(
-                          left: 10, bottom: 10,
-                      ),
-                      padding: const EdgeInsets.only(
-                        left: 10, right: 10,
-                      ),
-                      decoration: new BoxDecoration(
-                        color: Colors.amber[100],
-                        borderRadius: new BorderRadius.all(Radius.circular(10.0)),
-                        boxShadow: [
-                          new BoxShadow(
-                            color: Colors.amber[600],
-                            offset: new Offset(5.0, 5.0),
-                            blurRadius: 10.0,
-                          )
-                        ],
-                      ),
-                      height: 200,
-                      width: 150,
-                      child: Column(
-                          children: <Widget>[
-                            Align(
-                               alignment: Alignment.centerLeft,
-                               child: new Text(
-                                   "상점메뉴1"
-                               )),
-                            Container(
-                                decoration: new BoxDecoration(
-                                  border: Border.all(color: Colors.black),
-                                ),
-                                height: 150,
-                                width: 130,
-                                child: Text("이미지자리"),
+                SingleChildScrollView(
+                  child: Stack(
+                      children: <Widget>[
+                        Container(
+                          //width:300,
+                          height: 210,
+                          child: SingleChildScrollView(
+                            scrollDirection: Axis.horizontal,
+                            child: Row(
+                                children: <Widget>[
+                                  Container(//상점메뉴
+                                    margin: const EdgeInsets.only(
+                                      left: 10, bottom: 10,
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      left: 10, right: 10,
+                                    ),
+                                    decoration: new BoxDecoration(
+                                      color: Colors.amber[100],
+                                      borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                                    ),
+                                    height: 200,
+                                    width: 150,
+                                    child: Column(
+                                        children: <Widget>[
+                                          Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: new Text(
+                                                  "상점메뉴1"
+                                              )
+                                          ),
+                                          Container(
+                                            decoration: new BoxDecoration(
+                                              border: Border.all(color: Colors.black),
+                                            ),
+                                            height: 150,
+                                            width: 130,
+                                            child: Text("이미지자리"),
+                                          ),
+                                          Align(
+                                              alignment: Alignment.centerRight,
+                                              child: new Text(
+                                                  "0000원"
+                                              )
+                                          ),
+                                        ]
+                                    ),
+                                  ),
+                                  Container(//상점메뉴
+                                    margin: const EdgeInsets.only(
+                                      left: 10, bottom: 10,
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      left: 10, right: 10,
+                                    ),
+                                    decoration: new BoxDecoration(
+                                      color: Colors.amber[100],
+                                      borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                                    ),
+                                    height: 200,
+                                    width: 150,
+                                    child: Column(
+                                        children: <Widget>[
+                                          Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: new Text(
+                                                  "상점메뉴2"
+                                              )
+                                          ),
+                                          Container(
+                                            decoration: new BoxDecoration(
+                                              border: Border.all(color: Colors.black),
+                                            ),
+                                            height: 150,
+                                            width: 130,
+                                            child: Text(""),
+                                          ),
+                                          Align(
+                                              alignment: Alignment.centerRight,
+                                              child: new Text(
+                                                  "0000원"
+                                              )
+                                          ),
+                                        ]
+                                    ),
+                                  ),
+                                  Container(//상점메뉴
+                                    margin: const EdgeInsets.only(
+                                      left: 10, bottom: 10,
+                                    ),
+                                    padding: const EdgeInsets.only(
+                                      left: 10, right: 10,
+                                    ),
+                                    decoration: new BoxDecoration(
+                                      color: Colors.amber[100],
+                                      borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                                    ),
+                                    height: 200,
+                                    width: 150,
+                                    child: Column(
+                                        children: <Widget>[
+                                          Align(
+                                              alignment: Alignment.centerLeft,
+                                              child: new Text(
+                                                  "상점메뉴3"
+                                              )
+                                          ),
+                                          Container(
+                                            decoration: new BoxDecoration(
+                                              border: Border.all(color: Colors.black),
+                                            ),
+                                            height: 150,
+                                            width: 130,
+                                            child: Text(""),
+                                          ),
+                                          Align(
+                                              alignment: Alignment.centerRight,
+                                              child: new Text(
+                                                  "0000원"
+                                              )
+                                          ),
+                                        ]
+                                    ),
+                                  ),
+                                ]
                             ),
-                            Align(
-                                alignment: Alignment.centerRight,
-                                child: new Text(
-                                    "0000원"
-                                )),
-                            ]
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 10, bottom: 10,
-                      ),
-                      padding: const EdgeInsets.only(
-                        left: 10, right: 10,
-                      ),
-                      decoration: new BoxDecoration(
-                        color: Colors.amber[100],
-                        borderRadius: new BorderRadius.all(Radius.circular(10.0)),
-                        boxShadow: [
-                          new BoxShadow(
-                            color: Colors.amber[600],
-                            offset: new Offset(5.0, 5.0),
-                            blurRadius: 10.0,
-                          )
-                        ],
-                      ),
-                      height: 200,
-                      width: 150,
-                      child: Column(
-                          children: <Widget>[
-                            Align(
-                                alignment: Alignment.centerLeft,
-                                child: new Text(
-                                    "상점메뉴2"
-                                )),
-                            Container(
-                              decoration: new BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                              ),
-                              height: 150,
-                              width: 130,
-                            ),
-                            Align(
-                                alignment: Alignment.centerRight,
-                                child: new Text(
-                                    "0000원"
-                                )),
-                          ]
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(
-                        left: 10, bottom: 10,
-                      ),
-                      padding: const EdgeInsets.only(
-                        left: 10, right: 10,
-                      ),
-                      decoration: new BoxDecoration(
-                        color: Colors.amber[100],
-                        borderRadius: new BorderRadius.all(Radius.circular(10.0)),
-                        boxShadow: [
-                          new BoxShadow(
-                            color: Colors.amber[600],
-                            offset: new Offset(5.0, 5.0),
-                            blurRadius: 10.0,
-                          )
-                        ],
-                      ),
-                      height: 200,
-                      width: 150,
-                      child: Column(
-                          children: <Widget>[
-                            Align(
-                                alignment: Alignment.centerLeft,
-                                child: new Text(
-                                    "상점메뉴3"
-                                )),
-                            Container(
-                              decoration: new BoxDecoration(
-                                border: Border.all(color: Colors.black),
-                              ),
-                              height: 150,
-                              width: 130,
-                            ),
-                            Align(
-                                alignment: Alignment.centerRight,
-                                child: new Text(
-                                    "0000원"
-                                )),
-                          ]
-                      ),
-                    ),
-                  ],
-                )
+                          ),
+                        ),
+                      ]
+                  ),
+                ),
               ]
             ),
           ),
