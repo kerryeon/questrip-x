@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/res/common.dart';
+import 'package:questrip/widget/about/about_view.dart';
 import 'package:questrip/widget/config/config.dart';
 import 'package:questrip/widget/config/open_source.dart';
 import 'package:questrip/widget/intro/intro.dart';
@@ -19,6 +20,8 @@ class Widgets extends Resource {
 
   String get questMap => '/map';
 
+  String get aboutView => '/about/view';
+
   String get config => '/config';
   String get openSource => '/config/terms';
 
@@ -29,6 +32,7 @@ Map<String, WidgetBuilder> makeRoutes(final Widgets w) => {
   w.signUp: (BuildContext context) => SignUpWidget(),
   w.terms: (BuildContext context) => TermsWidget(),
   w.questMap: (BuildContext context) => QuestMapWidget(),
+  w.aboutView: (BuildContext context) => AboutViewWidget(),
   w.config: (BuildContext context) => ConfigWidget(),
   w.openSource: (BuildContext context) => OpenSourceWidget(),
 };

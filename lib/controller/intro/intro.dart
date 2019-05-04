@@ -28,7 +28,7 @@ class IntroController extends IController {
 
   /// 로그인에 성공한 경우의 이벤트입니다.
   /// 메인화면으로 이동합니다.
-  void _onSuccess() => Navigator.popAndPushNamed(context, R.widget.questMap);
+  void _onSuccess() => Navigator.popAndPushNamed(context, R.widget.aboutView);
 
   /// 로그인에 실패한 경우의 이벤트입니다.
   /// 이유를 알려주고 앱을 종료합니다.
