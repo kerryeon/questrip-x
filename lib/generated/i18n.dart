@@ -19,6 +19,7 @@ class S implements WidgetsLocalizations {
   @override
   TextDirection get textDirection => TextDirection.ltr;
 
+  String get about_field_title => "My quests";
   String get app_name => "Questrip";
   String get common_alert_button_next => "Next";
   String get common_alert_button_prev => "Prev";
@@ -42,6 +43,9 @@ class S implements WidgetsLocalizations {
   String get config_field_title => "Config";
   String get debug_todo => "To be implemented.";
   String get intro_on_failure_canceled => "You should login to use Questrip.";
+  String get leader_board_date => "Latest";
+  String get leader_board_likes => "Likes";
+  String get leader_board_rating => "Rating";
   String get permission_camera => "Camera";
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
   String get permission_internet => "Internet";
@@ -61,6 +65,16 @@ class S implements WidgetsLocalizations {
   String get terms_button_agree => "I agree to the above terms.";
   String get terms_field_terms => "Terms\nHello world.";
   String get terms_field_title => "Terms";
+  String get view_alert_report_duplicate => "Already reported";
+  String get view_alert_reported => "Report has been received";
+  String get view_alert_submitted => "Submitted!";
+  String get view_alert_vote_duplicate => "Already recommended";
+  String get view_alert_voted => "Recommended";
+  String get view_button_submit => "Submit";
+  String get view_field_report => "Report";
+  String get view_field_title => "LeaderBoard";
+  String quest_map_field_period(String month, String day, String year) => "${month} ${day}, ${year}";
+  String view_alert_vote(String user) => "Would you recommend it to \"${user}\"?";
 }
 
 class $ko_KR extends S {
@@ -72,8 +86,6 @@ class $ko_KR extends S {
   @override
   String get common_alert_choose_no => "아니오";
   @override
-  String get terms_field_title => "이용약관";
-  @override
   String get terms_field_terms => "신체 포기 각서\n본인은 Questrip 운영자에게 신체의 모든 지위를 박탈당하는 데에 동의합니다.";
   @override
   String get sign_up_field_address_detail => "상세주소";
@@ -84,6 +96,8 @@ class $ko_KR extends S {
   @override
   String get common_alert_field_close_app => "Questrip 을 종료하시겠습니까?";
   @override
+  String get leader_board_date => "최신순";
+  @override
   String get common_alert_confirm => "확인";
   @override
   String get config_button_logout => "로그아웃";
@@ -92,9 +106,17 @@ class $ko_KR extends S {
   @override
   String get common_failure_internal => "죄송합니다. 잠시 후 다시 시도해주세요.";
   @override
+  String get view_button_submit => "도전";
+  @override
   String get config_alert_sign_off_success => "그동안 Questrip 을 사랑해주셔서 감사했습니다. \n 다시 돌아오시기를 기다리겠습니다.";
   @override
   String get common_alert_button_submit => "제출하기";
+  @override
+  String get view_alert_report_duplicate => "이미 신고하였습니다";
+  @override
+  String get leader_board_rating => "추천순";
+  @override
+  String get view_alert_reported => "신고가 접수되었습니다";
   @override
   String get permission_denied => "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.";
   @override
@@ -134,11 +156,19 @@ class $ko_KR extends S {
   @override
   String get sign_up_alert_nickname => "닉네임을 확인해주세요.";
   @override
+  String get terms_field_title => "이용약관";
+  @override
+  String get view_field_title => "리더보드";
+  @override
   String get sign_up_field_welcome => "환영합니다!";
   @override
   String get config_alert_sign_off => "정말 Questrip 을 회원탈퇴 하시겠습니까? 탈퇴한 계정은 복구하실 수 없습니다.";
   @override
   String get debug_todo => "구현 예정입니다.";
+  @override
+  String get view_alert_vote_duplicate => "이미 추천하였습니다";
+  @override
+  String get view_alert_voted => "추천하였습니다";
   @override
   String get config_button_sign_off => "회원탈퇴";
   @override
@@ -148,11 +178,23 @@ class $ko_KR extends S {
   @override
   String get sign_up_field_month => "월";
   @override
+  String get view_alert_submitted => "제출되었습니다!";
+  @override
   String get config_field_title => "환경설정";
+  @override
+  String get leader_board_likes => "Likes";
+  @override
+  String get view_field_report => "신고하기";
+  @override
+  String get about_field_title => "내가 도전한 퀘스트";
   @override
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
+  @override
+  String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
+  @override
+  String view_alert_vote(String user) => "\"${user}\"님의 작품에 추천하시겠습니까?";
 }
 
 class $en extends S {

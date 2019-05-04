@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/about/about_view.dart';
+import 'package:questrip/controller/board/leader_board.dart';
+import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 
 /// 퀘스트 목록을 담당하는 클래스입니다.
@@ -12,6 +14,7 @@ class AboutViewWidget extends StatefulWidget {
 }
 
 class _AboutViewState extends State<AboutViewWidget> {
+
   final AboutViewController _controller = AboutViewController();
 
   Widget questContents() {

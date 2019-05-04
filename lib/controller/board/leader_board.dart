@@ -48,7 +48,7 @@ class ILeaderBoardController extends IController {
   /// 제출물을 추천순으로 정렬하여 사용자에게 보여줍니다.
   void _onDownloaded(final Map<String, Object> response) async {
     final List<Object> list = response['list'];
-    _submissions = list.map((o) => Submission.fromJSON(o));
+    _submissions = list.map((o) => Submission.fromJSON(o)).toList();
     sortWith(SortMode.Rating);
   }
 
