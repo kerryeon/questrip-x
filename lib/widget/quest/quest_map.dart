@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/controller/quest/quest_map.dart';
 import 'package:questrip/widget/common/alert.dart';
+import 'package:questrip/widget/quest/quest_view.dart';
 
 /// 메인화면을 담당하는 클래스입니다.
 /// 배경에는 지도를 띄워 퀘스트 마커를 보이게 합니다.
@@ -43,6 +44,7 @@ class QuestMapState extends State<QuestMapWidget> {
                       onPressed: _controller.openMenu,
                     )
                 ),
+                QuestViewWidget()
           ]
         ),
         )
