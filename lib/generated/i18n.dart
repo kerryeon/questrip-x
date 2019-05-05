@@ -47,9 +47,6 @@ class S implements WidgetsLocalizations {
   String get leader_board_likes => "Likes";
   String get leader_board_rating => "Rating";
   String get open_source_terms => "Open Source Terms\n TODO";
-  String get leader_board_date => "Latest";
-  String get leader_board_likes => "Likes";
-  String get leader_board_rating => "Rating";
   String get permission_camera => "Camera";
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
   String get permission_internet => "Internet";
