@@ -48,6 +48,9 @@
 
   "open_source_terms": "Open Source Terms\n TODO",
 
+  "shop_field_title": "Shop",
+  "shop_unit_money": "won",
+
   "permission_denied": "Sorry, but you must accept permissions for using Questrip.",
   "permission_camera": "Camera",
   "permission_location": "Location",

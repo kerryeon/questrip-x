@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:questrip/controller/quest/quest_menu.dart';
+import 'package:questrip/controller/quest/quest_view.dart';
 import 'package:questrip/data/quest.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/controller/lib.dart';
@@ -16,8 +18,12 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 class QuestMapController extends IController {
 
+  final QuestMenuController questMenuController = QuestMenuController();
+  final QuestViewController questViewController = QuestViewController();
+
   static const double _ZOOM_RATING = 7.25;
   static const double _ZOOM_DISTANCE = 8.25;
+  static const int    _MAX_VIEW = 10;
 
   final Completer<GoogleMapController> _controller = Completer();
   final Completer<void Function(Runnable)> _setState = Completer();
@@ -51,7 +57,7 @@ class QuestMapController extends IController {
   /// 메뉴창을 엽니다.
   void openMenu() {
     _closeQuest();
-    // TODO to be implemented.
+    questMenuController.show();
   }
 
   /// 메뉴창과 퀘스트 정보창을 닫습니다.
@@ -95,7 +101,7 @@ class QuestMapController extends IController {
     final LatLngBounds bounds = await controller.getVisibleRegion();
     // 현재 화면에 속하는 퀘스트를 추출합니다.
     // 그중, 인기가 높은 몇몇 퀘스트만 추출합니다.
-    return quests.where((q) => bounds.contains(q.latLng)).take(10);
+    return quests.where((q) => bounds.contains(q.latLng)).take(_MAX_VIEW);
   }
 
   /// 마커를 하나 그립니다.
@@ -116,24 +122,16 @@ class QuestMapController extends IController {
   /// 메뉴창을 닫고, 퀘스트 설명창을 보여줍니다.
   void _onTouchMarker(final Quest quest) {
     _closeMenu();
-    // TODO to be implemented.
-  }
-
-  /// 리더보드 버튼을 터치한 경우의 이벤트입니다.
-  /// 리더보드 화면으로 넘어갑니다.
-  void _onShowLeaderBoard(final Quest quest) {
-    // TODO to be implemented.
+    questViewController.show(quest);
   }
 
   /// 메뉴창을 닫습니다.
-  void _closeMenu() {
-    // TODO to be implemented.
-  }
+  void _closeMenu() => questMenuController.hide();
 
   /// 퀘스트 설명창을 닫습니다.
   void _closeQuest() {
     currentQuest = null;
-    // TODO to be implemented.
+    questViewController.hide();
   }
 
   /// 맵뷰가 처음 보여줄 위치를 반환합니다.

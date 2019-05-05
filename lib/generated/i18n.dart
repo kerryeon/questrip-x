@@ -43,6 +43,9 @@ class S implements WidgetsLocalizations {
   String get config_field_title => "Config";
   String get debug_todo => "To be implemented.";
   String get intro_on_failure_canceled => "You should login to use Questrip.";
+  String get leader_board_date => "Latest";
+  String get leader_board_likes => "Likes";
+  String get leader_board_rating => "Rating";
   String get open_source_terms => "Open Source Terms\n TODO";
   String get leader_board_date => "Latest";
   String get leader_board_likes => "Likes";
@@ -51,6 +54,8 @@ class S implements WidgetsLocalizations {
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
   String get permission_internet => "Internet";
   String get permission_location => "Location";
+  String get shop_field_title => "Shop";
+  String get shop_unit_money => "won";
   String get sign_up_alert_address => "Please check your address.";
   String get sign_up_alert_birthday => "Please check your date of birth.";
   String get sign_up_alert_nickname => "Please check your nickname.";
@@ -113,13 +118,13 @@ class $ko_KR extends S {
   @override
   String get common_alert_button_submit => "제출하기";
   @override
-  String get open_source_terms => "오픈소스 약관\n 앱에 사용된 여러 오픈소스들 (Google Maps 등..)의 라이선스를 명시하는 부분입니다.";
-  @override
   String get view_alert_report_duplicate => "이미 신고하였습니다";
   @override
   String get leader_board_rating => "추천순";
   @override
   String get view_alert_reported => "신고가 접수되었습니다";
+  @override
+  String get shop_unit_money => "원";
   @override
   String get permission_denied => "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.";
   @override
@@ -140,6 +145,8 @@ class $ko_KR extends S {
   String get sign_up_field_address => "주소";
   @override
   String get config_button_open_source => "오픈소스 약관";
+  @override
+  String get open_source_terms => "오픈소스 약관\n 앱에 사용된 여러 오픈소스들 (Google Maps 등..)의 라이선스를 명시하는 부분입니다.";
   @override
   String get permission_location => "위치 정보";
   @override
@@ -186,6 +193,8 @@ class $ko_KR extends S {
   String get config_field_title => "환경설정";
   @override
   String get leader_board_likes => "Likes";
+  @override
+  String get shop_field_title => "상점";
   @override
   String get view_field_report => "신고하기";
   @override

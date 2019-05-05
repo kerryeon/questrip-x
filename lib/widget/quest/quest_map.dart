@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/controller/quest/quest_map.dart';
 import 'package:questrip/widget/common/alert.dart';
+import 'package:questrip/widget/quest/quest_view.dart';
 
 /// 메인화면을 담당하는 클래스입니다.
 /// 배경에는 지도를 띄워 퀘스트 마커를 보이게 합니다.
@@ -18,24 +19,46 @@ class QuestMapState extends State<QuestMapWidget> {
   Widget build(BuildContext context) {
     _controller.init(context);
     return Scaffold(
-        body: WillPopScope(
+        body:  WillPopScope(
             onWillPop: () => dialogExit(context),
-            child: GoogleMap(
-              initialCameraPosition: _controller.kPositionInit,
-              mapType: MapType.normal,
-              markers: _controller.markers,
-              onMapCreated: (c) => _controller.initMap(c, setState),
-              onCameraIdle: _controller.updateMarkers,
-              compassEnabled: false,
-              myLocationEnabled: false,
-              onTap: (_) => _controller.closeAll(),
+            child: Stack(
+                children: <Widget> [
+                  GoogleMap(
+                    initialCameraPosition: _controller.kPositionInit,
+                    mapType: MapType.normal,
+                    markers: _controller.markers,
+                    onMapCreated: (c) => _controller.initMap(c, setState),
+                    onCameraIdle: _controller.updateMarkers,
+                    compassEnabled: false,
+                    myLocationEnabled: false,
+                    onTap: (_) => _controller.closeAll(),
+                  ),
+                  Container(
+                      margin: const EdgeInsets.only(top: 10, left: 10,),
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.menu),
+                        onPressed: _controller.openMenu,
+                      )
+                  ),
+                  Positioned(
+                      child: new Align(
+                          alignment: FractionalOffset.bottomCenter,
+                          child: QuestViewWidget(_controller.questViewController)
+                      )
+                  ),
+                ]
             ))
     );
   }
-
 }
 
 class QuestMapWidget extends StatefulWidget {
+
   @override
   State<QuestMapWidget> createState() => QuestMapState();
+
 }
