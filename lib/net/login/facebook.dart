@@ -37,6 +37,9 @@ class FacebookLoginManager extends ILoginManager {
     }
   }
 
+  /// 로그아웃합니다.
+  void logOut() async => await api.logOut();
+
   /// 이미 로그인돼있는지 검사합니다.
   @override
   Future<bool> get isLoggedIn => api.isLoggedIn;

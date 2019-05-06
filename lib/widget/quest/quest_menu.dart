@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/quest/quest_menu.dart';
+import 'package:questrip/res/lib.dart';
 
 
 class QuestMenuState extends State<QuestMenuWidget> {
@@ -11,8 +12,8 @@ class QuestMenuState extends State<QuestMenuWidget> {
   @override
   Widget build(BuildContext context) {
     _controller.init(context, setState: setState);
-    return Scaffold(
-      body: Container(
+    return Container(
+        width: 200,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
@@ -21,11 +22,11 @@ class QuestMenuState extends State<QuestMenuWidget> {
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
-            //이름
+            // 사용자 닉네임
             Container(
-              padding: const EdgeInsets.only(top: 100, left: 15.0, right: 15),
+              padding: const EdgeInsets.only(top: 100.0, left: 15.0, right: 15.0),
               decoration: BoxDecoration(
                 color: Colors.amber,
                 borderRadius: BorderRadius.only(
@@ -34,45 +35,47 @@ class QuestMenuState extends State<QuestMenuWidget> {
               ),
               width: 200,
               child: Text(
-                "이름",
+                R.account.nickname,
                 style: TextStyle(fontSize: 25.0),
               ),
             ),
-            //주소
+            // 사용자 집주소
             Container(
-              padding: const EdgeInsets.only(top: 10, bottom: 10,left: 15.0, right: 15),
+              padding: const EdgeInsets.only(
+                  top: 10.0, bottom: 10.0,
+                  left: 15.0, right: 15.0,
+              ),
               width: 200,
               color: Colors.amber,
               child: Text(
-                '주소남도 주소시 주소동 주소아파트 주소호',
+                R.account.address,
                 style: TextStyle(fontSize: 15.0),
               ),
             ),
-            //내 퀘스트
+            // 내가 도전한 퀘스트
             Container(
-              margin: const EdgeInsets.only(top: 10),
-              width: 150,
-              child:RaisedButton(
+              padding: const EdgeInsets.only(top: 10.0, left: 15.0, right: 15.0),
+              child: RaisedButton(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Icon(Icons.local_airport),
-                    Text("내 퀘스트")
+                    Text(R.string.about_field_title)
                   ],
                 ),
                 onPressed: _controller.showAbout,
                 color: Colors.amberAccent,
               ),
             ),
-            //환경설정
+            // 환경설정
             Container(
-              width: 150,
-              child:RaisedButton(
+              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+              child: RaisedButton(
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Icon(Icons.settings),
-                    Text("환경설정")
+                    Text(R.string.config_field_title)
                   ],
                 ),
                 onPressed: _controller.showSetting,
@@ -81,7 +84,6 @@ class QuestMenuState extends State<QuestMenuWidget> {
             ),
           ],
         ),
-      ),
     );
   }
 }

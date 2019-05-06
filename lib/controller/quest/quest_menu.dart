@@ -8,20 +8,18 @@ import 'package:questrip/res/lib.dart';
 ///
 class QuestMenuController extends IController {
 
+  bool visible = false;
+
   /// 내 퀘스트 목록을 엽니다.
-  void showAbout() { /* TODO to be implemented */ }
+  void showAbout() => Navigator.pushNamed(context, R.widget.aboutView);
 
   /// 환경설정을 엽니다.
   void showSetting() => Navigator.pushNamed(context, R.widget.config);
 
   /// 메뉴창을 엽니다.
-  void show() async {
-    // TODO to be implemented
-  }
+  void show() => visible = true;
 
   /// 메뉴창을 닫습니다.
-  void hide() async {
-    // TODO to be implemented
-  }
+  void hide() => visible = false;
 
 }

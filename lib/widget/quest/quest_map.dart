@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/controller/quest/quest_map.dart';
-import 'package:questrip/widget/common/alert.dart';
+import 'package:questrip/widget/quest/quest_menu.dart';
 import 'package:questrip/widget/quest/quest_view.dart';
 
 /// 메인화면을 담당하는 클래스입니다.
@@ -15,43 +15,62 @@ class QuestMapState extends State<QuestMapWidget> {
 
   final QuestMapController _controller = QuestMapController();
 
+  /// 창을 구성합니다.
+  List<Widget> get stack {
+    List<Widget> result = [
+      GoogleMap(
+        initialCameraPosition: _controller.kPositionInit,
+        mapType: MapType.normal,
+        markers: _controller.markers,
+        onMapCreated: (c) => _controller.initMap(c, setState),
+        onCameraIdle: _controller.updateMarkers,
+        compassEnabled: false,
+        myLocationEnabled: false,
+        onTap: (_) => _controller.closeAll(),
+      ),
+      Container(
+          margin: const EdgeInsets.only(top: 10, left: 10,),
+          decoration: BoxDecoration(
+            color: Colors.amber,
+            borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+          ),
+          child: IconButton(
+            icon: const Icon(Icons.menu),
+            onPressed: _controller.openMenu,
+          )
+      ),
+    ];
+    // 퀘스트 정보창
+    if (_controller.questViewController.visible)
+      result.add(
+          Positioned(
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: QuestViewWidget(_controller.questViewController),
+              )
+          ));
+    // 메뉴창
+    if (_controller.questMenuController.visible)
+      result.add(
+          Positioned(
+              child: Align(
+                alignment: FractionalOffset.topLeft,
+                child: QuestMenuWidget(_controller.questMenuController),
+              )
+          ));
+    return result;
+  }
+
   @override
   Widget build(BuildContext context) {
     _controller.init(context);
     return Scaffold(
-        body:  WillPopScope(
-            onWillPop: () => dialogExit(context),
+        body: WillPopScope(
+            onWillPop: _controller.onBackPressed,
             child: Stack(
-                children: <Widget> [
-                  GoogleMap(
-                    initialCameraPosition: _controller.kPositionInit,
-                    mapType: MapType.normal,
-                    markers: _controller.markers,
-                    onMapCreated: (c) => _controller.initMap(c, setState),
-                    onCameraIdle: _controller.updateMarkers,
-                    compassEnabled: false,
-                    myLocationEnabled: false,
-                    onTap: (_) => _controller.closeAll(),
-                  ),
-                  Container(
-                      margin: const EdgeInsets.only(top: 10, left: 10,),
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: new BorderRadius.all(Radius.circular(10.0)),
-                      ),
-                      child: IconButton(
-                        icon: const Icon(Icons.menu),
-                        onPressed: _controller.openMenu,
-                      )
-                  ),
-                  Positioned(
-                      child: new Align(
-                          alignment: FractionalOffset.bottomCenter,
-                          child: QuestViewWidget(_controller.questViewController)
-                      )
-                  ),
-                ]
-            ))
+                children: stack,
+            )
+        )
     );
   }
 }

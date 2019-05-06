@@ -58,12 +58,24 @@ class QuestMapController extends IController {
   void openMenu() {
     _closeQuest();
     questMenuController.show();
+    _updateState();
   }
 
   /// 메뉴창과 퀘스트 정보창을 닫습니다.
   void closeAll() {
     _closeMenu();
     _closeQuest();
+    _updateState();
+  }
+
+  /// 사용자가 뒤로가기 버튼을 누른 경우의 이벤트입니다.
+  /// 메뉴창, 퀘스트 정보창을 닫거나,
+  /// 혹은 앱을 종료할 것인지 물어봅니다.
+  Future<bool> onBackPressed() async {
+    if (questMenuController.visible || questViewController.visible)
+      closeAll();
+    else return dialogExit(context);
+    return false;
   }
 
   /// 현재 위치를 보여줍니다.
