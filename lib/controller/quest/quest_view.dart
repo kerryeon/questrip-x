@@ -19,10 +19,9 @@ class QuestViewController extends IController {
 
   /// 레이아웃을 보여줍니다.
   void show(final Quest quest) async {
-    print('hello world');
-    print(setState);
     _quest = quest;
     _update();
+    // TODO to be implemented
   }
 
   /// 레이아웃을 숨깁니다.
@@ -31,10 +30,7 @@ class QuestViewController extends IController {
   }
 
   /// 리더보드를 보여줍니다.
-  void showLeaderBoard() {
-    AboutViewController.initQuest(_quest);
-    Navigator.pushNamed(context, R.widget.aboutView);
-  }
+  void showLeaderBoard() => Navigator.pushNamed(context, R.widget.aboutView);
 
   /// 주어진 정보를 토대로 화면을 갱신합니다.
   void _update() => setState(() {

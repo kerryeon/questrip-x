@@ -2,7 +2,7 @@ import 'package:questrip/data/account.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/net/lib.dart';
-import 'package:questrip/net/login/kakao.dart';
+import 'package:questrip/net/login/facebook.dart';
 import 'package:questrip/res/lib.dart';
 
 typedef OnSuccess = void Function(String token);
@@ -31,7 +31,7 @@ abstract class ILoginManager {
 
 /// 로그인 프로세스를 수행합니다.
 void tryLogin(Runnable onSuccess, OnFailure onFailure, Runnable onNewUser) {
-  ILoginManager._instance = KakaoLoginManager();
+  ILoginManager._instance = FacebookLoginManager();
   ILoginManager._instance.tryLogin(
       (token) => _onSuccess(token, onSuccess, onFailure, onNewUser), onFailure);
 }

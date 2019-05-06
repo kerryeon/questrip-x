@@ -27,6 +27,10 @@ class Submission {
         assert(date != null),
         assert(rating != null);
 
+  int get year  => (this.date / 10000000000).round();
+  int get month => ((this.date / 100000000) % 100).round();
+  int get day   => ((this.date / 1000000) % 100).round();
+
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
   static Submission fromJSON(Map<String, Object> response) => Submission(
       id: response['_id'],
