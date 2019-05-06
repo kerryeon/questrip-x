@@ -1,5 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:questrip/controller/about/about_view.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/data/quest.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 퀘스트 리더보드 화면의 동작을 담당합니다.
 ///
@@ -16,10 +19,9 @@ class QuestViewController extends IController {
 
   /// 레이아웃을 보여줍니다.
   void show(final Quest quest) async {
-    print('hello world');
-    print(setState);
     _quest = quest;
     _update();
+    // TODO to be implemented
   }
 
   /// 레이아웃을 숨깁니다.
@@ -28,9 +30,7 @@ class QuestViewController extends IController {
   }
 
   /// 리더보드를 보여줍니다.
-  void showLeaderBoard() {
-    // TODO to be implemented.
-  }
+  void showLeaderBoard() => Navigator.pushNamed(context, R.widget.aboutView);
 
   /// 주어진 정보를 토대로 화면을 갱신합니다.
   void _update() => setState(() {
