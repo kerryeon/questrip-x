@@ -30,10 +30,14 @@ class KakaoLoginManager extends ILoginManager {
         break;
       case KakaoLoginStatus.loggedOut:
       case KakaoLoginStatus.error:
+        logOut();
         onFailure(Failed.INTERNAL);
         break;
     }
   }
+
+  /// 로그아웃합니다.
+  void logOut() async => await api.logOut();
 
   /// 이미 로그인돼있는지 검사합니다.
   @override

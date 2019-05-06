@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
+import 'package:questrip/net/login/lib.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 
@@ -15,7 +16,8 @@ class ConfigController extends IController {
   /// 다시 물어본 후, 로그아웃합니다.
   void logout() => dialog(context, R.string.config_alert_logout,
       onConfirm: () {
-          // TODO to be implemented.
+          logOut();
+          exit();
       },
       onCancel: () {},
   );

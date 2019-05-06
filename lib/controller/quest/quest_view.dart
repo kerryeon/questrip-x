@@ -17,27 +17,27 @@ class QuestViewController extends IController {
 
   Quest _quest;
 
+  bool visible = false;
+
   /// 레이아웃을 보여줍니다.
-  void show(final Quest quest) async {
+  void show(final Quest quest) {
+    visible = true;
     _quest = quest;
     _update();
-    // TODO to be implemented
   }
 
   /// 레이아웃을 숨깁니다.
-  void hide() async {
-    // TODO to be implemented
-  }
+  void hide() => visible = false;
 
   /// 리더보드를 보여줍니다.
   void showLeaderBoard() => Navigator.pushNamed(context, R.widget.aboutView);
 
   /// 주어진 정보를 토대로 화면을 갱신합니다.
-  void _update() => setState(() {
+  void _update() {
     cTitle = _quest.title;
     cDescription = _quest.description;
     cLocation = _quest.location;
     cTitle = _quest.title;
-  });
+  }
 
 }

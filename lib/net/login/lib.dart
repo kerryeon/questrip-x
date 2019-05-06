@@ -18,6 +18,9 @@ abstract class ILoginManager {
   void tryLogin(final OnSuccess onSuccess,
       final OnFailure onFailure);
 
+  /// 로그아웃합니다.
+  void logOut();
+
   /// 이미 로그인돼있는지 검사합니다.
   Future<bool> get isLoggedIn;
 
@@ -35,6 +38,9 @@ void tryLogin(Runnable onSuccess, OnFailure onFailure, Runnable onNewUser) {
   ILoginManager._instance.tryLogin(
       (token) => _onSuccess(token, onSuccess, onFailure, onNewUser), onFailure);
 }
+
+/// 로그아웃합니다.
+void logOut() => ILoginManager._instance.logOut();
 
 /// 사용자의 엑세스 토큰을 반환합니다.
 Future<String> getAccessToken() => ILoginManager._instance.accessToken;
