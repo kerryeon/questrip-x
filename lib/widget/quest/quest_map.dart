@@ -29,10 +29,10 @@ class QuestMapState extends State<QuestMapWidget> {
         onTap: (_) => _controller.closeAll(),
       ),
       Container(
-          margin: const EdgeInsets.only(top: 10, left: 10,),
+          margin: const EdgeInsets.only(top: 32, left: 16,),
           decoration: BoxDecoration(
             color: Colors.amber,
-            borderRadius: new BorderRadius.all(Radius.circular(10.0)),
+            borderRadius: new BorderRadius.all(Radius.circular(8.0)),
           ),
           child: IconButton(
             icon: const Icon(Icons.menu),

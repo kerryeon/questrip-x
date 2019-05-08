@@ -13,12 +13,12 @@ class QuestMenuState extends State<QuestMenuWidget> {
   Widget build(BuildContext context) {
     _controller.init(context, setState: setState);
     return Container(
-        width: 200,
+        width: 256,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: const BorderRadius.only(
-              bottomRight: const Radius.circular(40.0),
-              topRight: const Radius.circular(40.0)),
+              bottomRight: const Radius.circular(16.0),
+              topRight: const Radius.circular(16.0)),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
@@ -26,14 +26,14 @@ class QuestMenuState extends State<QuestMenuWidget> {
           children: <Widget>[
             // 사용자 닉네임
             Container(
-              padding: const EdgeInsets.only(top: 100.0, left: 15.0, right: 15.0),
+              padding: const EdgeInsets.only(top: 104.0, left: 24.0, right: 16.0),
               decoration: BoxDecoration(
                 color: Colors.amber,
                 borderRadius: BorderRadius.only(
-                    topRight: const Radius.circular(40.0)
+                    topRight: const Radius.circular(16.0)
                 ),
               ),
-              width: 200,
+              width: 256,
               child: Text(
                 R.account.nickname,
                 style: TextStyle(fontSize: 25.0),
@@ -42,10 +42,10 @@ class QuestMenuState extends State<QuestMenuWidget> {
             // 사용자 집주소
             Container(
               padding: const EdgeInsets.only(
-                  top: 10.0, bottom: 10.0,
-                  left: 15.0, right: 15.0,
+                  top: 8.0, bottom: 16.0,
+                  left: 24.0, right: 16.0,
               ),
-              width: 200,
+              width: 256,
               color: Colors.amber,
               child: Text(
                 R.account.address,
@@ -54,32 +54,48 @@ class QuestMenuState extends State<QuestMenuWidget> {
             ),
             // 내가 도전한 퀘스트
             Container(
-              padding: const EdgeInsets.only(top: 10.0, left: 15.0, right: 15.0),
+              padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
               child: RaisedButton(
+                elevation: 0.0,
+                highlightElevation: 0.0,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.amberAccent.withOpacity(0.5),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Icon(Icons.local_airport),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Icon(Icons.local_airport),
+                    ),
                     Text(R.string.about_field_title)
                   ],
                 ),
                 onPressed: _controller.showAbout,
-                color: Colors.amberAccent,
+                color: Colors.transparent,
               ),
             ),
             // 환경설정
             Container(
-              padding: const EdgeInsets.only(left: 15.0, right: 15.0),
+              padding: const EdgeInsets.only(left: 8.0, right: 8.0),
               child: RaisedButton(
+                elevation: 0.0,
+                highlightElevation: 0.0,
+                highlightColor: Colors.transparent,
+                splashColor: Colors.amberAccent.withOpacity(0.5),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
                 child: Row(
-                  mainAxisSize: MainAxisSize.min,
+                  mainAxisSize: MainAxisSize.max,
                   children: <Widget>[
-                    Icon(Icons.settings),
+                    Padding(
+                      padding: const EdgeInsets.only(right: 16.0),
+                      child: Icon(Icons.settings),
+                    ),
                     Text(R.string.config_field_title)
                   ],
                 ),
                 onPressed: _controller.showSetting,
-                color: Colors.amberAccent,
+                color: Colors.transparent,
               ),
             ),
           ],
