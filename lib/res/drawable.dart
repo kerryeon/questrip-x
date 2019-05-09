@@ -12,6 +12,7 @@ class Drawable extends Resource {
   String get like => _routeSVG('like');
 
   String get marker => _routeSVG('marker');
+  String get trophy => _routeSVG('trophy');
 
   String _route(final String route) => 'res/drawable/' + route;
   String _routeSVG(final String route) => _route(route + '.svg');
