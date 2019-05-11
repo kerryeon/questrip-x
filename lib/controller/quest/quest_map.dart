@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:questrip/controller/quest/quest_about.dart';
 import 'package:questrip/controller/quest/quest_menu.dart';
-import 'package:questrip/controller/quest/quest_view.dart';
 import 'package:questrip/data/quest.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/controller/lib.dart';
@@ -18,8 +18,8 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 class QuestMapController extends IController {
 
+  final QuestAboutController questAboutController = QuestAboutController();
   final QuestMenuController questMenuController = QuestMenuController();
-  final QuestViewController questViewController = QuestViewController();
 
   static const double _ZOOM_RATING = 7.25;
   static const double _ZOOM_DISTANCE = 8.25;
@@ -31,7 +31,6 @@ class QuestMapController extends IController {
   final Set<Marker> markers = <Marker>{};
 
   List<Quest> quests;
-  Quest currentQuest;
 
   /// 맵뷰를 초기화합니다.
   void initMap(
@@ -72,7 +71,7 @@ class QuestMapController extends IController {
   /// 메뉴창, 퀘스트 정보창을 닫거나,
   /// 혹은 앱을 종료할 것인지 물어봅니다.
   Future<bool> onBackPressed() async {
-    if (questMenuController.visible || questViewController.visible)
+    if (questAboutController.visible || questMenuController.visible)
       closeAll();
     else return dialogExit(context);
     return false;
@@ -134,17 +133,14 @@ class QuestMapController extends IController {
   /// 메뉴창을 닫고, 퀘스트 설명창을 보여줍니다.
   void _onTouchMarker(final Quest quest) {
     _closeMenu();
-    questViewController.show(quest);
+    questAboutController.show(quest);
   }
 
   /// 메뉴창을 닫습니다.
   void _closeMenu() => questMenuController.hide();
 
   /// 퀘스트 설명창을 닫습니다.
-  void _closeQuest() {
-    currentQuest = null;
-    questViewController.hide();
-  }
+  void _closeQuest() => questAboutController.hide();
 
   /// 맵뷰가 처음 보여줄 위치를 반환합니다.
   CameraPosition get kPositionInit => CameraPosition(

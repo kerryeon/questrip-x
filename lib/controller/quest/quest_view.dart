@@ -1,43 +1,30 @@
-import 'package:flutter/material.dart';
-import 'package:questrip/controller/about/about_view.dart';
-import 'package:questrip/controller/lib.dart';
+import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/data/quest.dart';
+import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
+import 'package:questrip/widget/common/alert.dart';
 
-/// 퀘스트 리더보드 화면의 동작을 담당합니다.
+/// 퀘스트 제출물 목록 화면의 동작을 담당합니다.
 ///
-/// 담당자: 김호, 이동욱
+/// 담당자: 김호
 ///
-class QuestViewController extends IController {
+class QuestViewController extends ILeaderBoardController {
 
-  String cTitle = "";
-  String cDescription = "";
-  String cLocation = "";
-  String cDateEnd = "";
+  /// 추천 기능 사용여부
+  bool get isUsableVote   => true;
+  /// 신고 기능 사용여부
+  bool get isUsableReport => true;
 
-  Quest _quest;
+  /// 조회할 퀘스트 정보
+  static Quest quest;
 
-  bool visible = false;
-
-  /// 레이아웃을 보여줍니다.
-  void show(final Quest quest) {
-    visible = true;
-    _quest = quest;
-    _update();
-  }
-
-  /// 레이아웃을 숨깁니다.
-  void hide() => visible = false;
-
-  /// 리더보드를 보여줍니다.
-  void showLeaderBoard() => Navigator.pushNamed(context, R.widget.aboutView);
-
-  /// 주어진 정보를 토대로 화면을 갱신합니다.
-  void _update() {
-    cTitle = _quest.title;
-    cDescription = _quest.description;
-    cLocation = _quest.location;
-    cTitle = _quest.title;
-  }
+  /// 제출물 목록을 다운로드합니다.
+  @override
+  void tryDownloadSubmissions() async =>
+      request(
+          R.uri.meView, onLoadSubmissions,
+              (e) => dialogFailed(context, e),
+          data: {'quest_id': quest.id},
+      );
 
 }

@@ -8,6 +8,7 @@ import 'package:questrip/widget/intro/sign_up.dart';
 import 'package:questrip/widget/intro/terms.dart';
 import 'package:questrip/widget/leader_board/full_screen.dart';
 import 'package:questrip/widget/quest/quest_map.dart';
+import 'package:questrip/widget/quest/quest_view.dart';
 
 /// 위젯 리소스를 관리합니다.
 ///
@@ -20,8 +21,9 @@ class Widgets extends Resource {
   String get terms => '/intro/terms';
 
   String get questMap => '/map';
+  String get questView => '/map/board';
 
-  String get aboutView => '/about/view';
+  String get aboutView => '/about/board';
 
   String get boardFullScreen => '/board/fullscreen';
 
@@ -35,6 +37,7 @@ Map<String, WidgetBuilder> makeRoutes(final Widgets w) => {
   w.signUp: (BuildContext context) => SignUpWidget(),
   w.terms: (BuildContext context) => TermsWidget(),
   w.questMap: (BuildContext context) => QuestMapWidget(),
+  w.questView: (BuildContext context) => QuestViewWidget(),
   w.aboutView: (BuildContext context) => AboutViewWidget(),
   w.boardFullScreen: (BuildContext context) => FullScreenWidget(),
   w.config: (BuildContext context) => ConfigWidget(),
