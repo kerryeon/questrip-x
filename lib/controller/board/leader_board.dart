@@ -6,6 +6,9 @@ import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'dart:io';
 
 /// 리더보드의 동작을 담당합니다.
 ///
@@ -91,4 +94,29 @@ abstract class ILeaderBoardController extends IController {
 enum SortMode {
   Date,     // 최신순
   Rating,   // 추천순
+}
+
+/// 리더보드에 사진을 제출하기위해 카메라앱을 호출합니다.
+class CameraPicture{
+  static void showCamera(BuildContext context) async{
+    File picture = await ImagePicker.pickImage(
+      source: ImageSource.camera,
+    );
+    if(picture != null){
+      ImageGallerySaver.save(picture.readAsBytesSync());
+      showAlertDialog(context, picture);
+    }
+  }
+}
+
+/// 리더보드에 사진을 제출하기위해 앨범으로 접근합니다.
+class GallerySelect{
+  static void showGallery(BuildContext context) async{
+    File gallery = await ImagePicker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if(gallery != null){
+      showAlertDialog(context, gallery);
+    }
+  }
 }

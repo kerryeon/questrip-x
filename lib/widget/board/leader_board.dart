@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/data/submission.dart';
 import 'package:questrip/res/lib.dart';
+import 'package:questrip/widget/common/alert.dart';
 
 class LeaderBoardState extends State<StatefulWidget> {
 
@@ -121,7 +122,9 @@ class LeaderBoardState extends State<StatefulWidget> {
     _controller.init(context, setState: setState);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-          onPressed: null,
+        onPressed: () => {
+          showSimpleDialog(context)
+        },
         child: Icon(Icons.camera_enhance),
       ),
         body: SingleChildScrollView(

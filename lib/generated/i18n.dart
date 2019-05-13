@@ -34,6 +34,9 @@ class S implements WidgetsLocalizations {
   String get common_failure_internal => "Sorry, but try later.";
   String get common_failure_network => "Please check your network status and try again.";
   String get common_failure_unknown => "Unknown Error.";
+  String get common_alert_reselect => "Reselection";
+  String get common_alert_camera => "Take a picture with a Camera";
+  String get common_alert_gallery => "Import pictures form the Gallery";
   String get config_alert_logout => "Are you sure you want to logout?";
   String get config_alert_sign_off => "Are you sure you want to unsubscribe Questrip? You cannot recover an unsubscribed account.";
   String get config_alert_sign_off_success => "Thank you for loving Questrip.\n We look forward to coming back.";
@@ -200,6 +203,12 @@ class $ko_KR extends S {
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
+  @override
+  String get common_alert_reselect => "재선택";
+  @override
+  String get common_alert_camera => "카메라로 사진촬영";
+  @override
+  String get common_alert_gallery => "앨범에서 사진 가져오기";
   @override
   String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
   @override
