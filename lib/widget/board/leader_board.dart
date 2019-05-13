@@ -50,7 +50,7 @@ class LeaderBoardState extends State<StatefulWidget> {
           ),
           /// 퀘스트 수행 사진
           Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
               child: GestureDetector(
                   onTap: () => _controller.showFullscreen(submission),
                   child: Image.network(
@@ -62,19 +62,52 @@ class LeaderBoardState extends State<StatefulWidget> {
           /// 좋아요
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Stack(
               children: <Widget>[
-                Text(
-                    "Like ${submission.rating}",
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 12.0,
+                Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                      "Like ${submission.rating}",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 12.0,
+                      )
+                  ),
+                ],
+              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    SizedBox(
+                      height: 24.0,
+                      width: 32.0,
+                      child: IconButton(
+                          icon: Icon(Icons.report),
+                          padding: EdgeInsets.all(0.0),
+                          onPressed: null,
+                          iconSize: 24.0,
+                          color: const Color(0xff000000)
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24.0,
+                      width: 32.0,
+                      child: IconButton(
+                          icon: Icon(Icons.thumb_up),
+                          padding: EdgeInsets.all(0.0),
+                          onPressed: null,
+                          iconSize: 24.0,
+                          color: const Color(0xff000000)
+                      ),
                     )
-                ),
-              ],
+                  ],
+                )
+              ]
             ),
           ),
           /// TODO to be implemented [Vote, Report]
@@ -87,6 +120,10 @@ class LeaderBoardState extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     _controller.init(context, setState: setState);
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+          onPressed: null,
+        child: Icon(Icons.camera_enhance),
+      ),
         body: SingleChildScrollView(
             child: Container(
                 decoration: BoxDecoration(color: Colors.amber),
