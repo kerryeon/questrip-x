@@ -23,6 +23,7 @@ class S implements WidgetsLocalizations {
   String get app_name => "Questrip";
   String get common_alert_button_next => "Next";
   String get common_alert_button_prev => "Prev";
+  String get common_alert_button_retry => "Retry";
   String get common_alert_button_submit => "Submit";
   String get common_alert_cancel => "Cancel";
   String get common_alert_canceled => "Canceled.";
@@ -34,9 +35,6 @@ class S implements WidgetsLocalizations {
   String get common_failure_internal => "Sorry, but try later.";
   String get common_failure_network => "Please check your network status and try again.";
   String get common_failure_unknown => "Unknown Error.";
-  String get common_alert_reselect => "Reselection";
-  String get common_alert_camera => "Take a picture with a Camera";
-  String get common_alert_gallery => "Import pictures form the Gallery";
   String get config_alert_logout => "Are you sure you want to logout?";
   String get config_alert_sign_off => "Are you sure you want to unsubscribe Questrip? You cannot recover an unsubscribed account.";
   String get config_alert_sign_off_success => "Thank you for loving Questrip.\n We look forward to coming back.";
@@ -49,6 +47,8 @@ class S implements WidgetsLocalizations {
   String get leader_board_date => "Latest";
   String get leader_board_likes => "Likes";
   String get leader_board_rating => "Rating";
+  String get leader_board_upload_camera => "Camera";
+  String get leader_board_upload_gallery => "Gallery";
   String get open_source_terms => "Open Source Terms\n TODO";
   String get permission_camera => "Camera";
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
@@ -113,6 +113,8 @@ class $ko_KR extends S {
   String get common_failure_internal => "죄송합니다. 잠시 후 다시 시도해주세요.";
   @override
   String get view_button_submit => "도전";
+  @override
+  String get leader_board_upload_gallery => "앨범에서 사진 가져오기";
   @override
   String get config_alert_sign_off_success => "그동안 Questrip 을 사랑해주셔서 감사했습니다. \n 다시 돌아오시기를 기다리겠습니다.";
   @override
@@ -192,6 +194,10 @@ class $ko_KR extends S {
   @override
   String get config_field_title => "환경설정";
   @override
+  String get common_alert_button_retry => "재선택";
+  @override
+  String get leader_board_upload_camera => "카메라로 사진촬영";
+  @override
   String get leader_board_likes => "Likes";
   @override
   String get shop_field_title => "상점";
@@ -203,12 +209,6 @@ class $ko_KR extends S {
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
-  @override
-  String get common_alert_reselect => "재선택";
-  @override
-  String get common_alert_camera => "카메라로 사진촬영";
-  @override
-  String get common_alert_gallery => "앨범에서 사진 가져오기";
   @override
   String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
   @override

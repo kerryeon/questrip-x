@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/data/submission.dart';
@@ -111,7 +113,6 @@ class LeaderBoardState extends State<StatefulWidget> {
               ]
             ),
           ),
-          /// TODO to be implemented [Vote, Report]
         ],
       ),
     );
@@ -122,9 +123,7 @@ class LeaderBoardState extends State<StatefulWidget> {
     _controller.init(context, setState: setState);
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        onPressed: () => {
-          showSimpleDialog(context)
-        },
+        onPressed: () => onClickedSubmit(context, _controller),
         child: Icon(Icons.camera_enhance),
       ),
         body: SingleChildScrollView(
@@ -204,4 +203,83 @@ class LeaderBoardState extends State<StatefulWidget> {
         )
     );
   }
+
+  /// 도전하기 버튼을 터치한 경우의 이벤트입니다.
+  /// 사진을 촬영하거나, 앨범에서 사진을 가져옵니다.
+  static void onClickedSubmit(final BuildContext context, final controller) =>
+      showDialog(
+          context: context,
+          builder: (final BuildContext context) =>
+              SimpleDialog(
+                title: Text(R.string.view_button_submit),
+                children: <Widget>[
+                  SimpleDialogOption(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      controller.submitViaCamera();
+                    },
+                    child: Text(R.string.leader_board_upload_camera),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(4.0),
+                  ),
+                  SimpleDialogOption(
+                    onPressed: () {
+                      Navigator.of(context).pop();
+                      controller.submitViaGallery();
+                    },
+                    child: Text(R.string.leader_board_upload_gallery),
+                  ),
+                ],
+              )
+      );
+
+  /// 결과물을 제출하거나, 다시 가져오거나, 취소할 수 있는 알림창을 생성합니다.
+  static void showSubmitConfirmDialog(final BuildContext context, final File image,
+      final controller) => showDialog(
+          context: context,
+          builder: (final BuildContext context) =>
+              AlertDialog(
+                title: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(R.string.view_button_submit)
+                      ],
+                    )
+                ),
+                content: Container(
+                  constraints: BoxConstraints(minWidth: 100.0, maxHeight: 250.0),
+                  child: Center(
+                    child: image == null
+                        ? Text(R.string.common_failure_unknown)
+                        : Image.file(image),
+                  ),
+                ),
+                actions: <Widget>[
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        controller.trySubmit(image);
+                      },
+                      child: Text(R.string.common_alert_button_submit)
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        onClickedSubmit(context, controller);
+                      },
+                      child: Text(R.string.common_alert_button_retry)
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        toast(R.string.common_alert_canceled);
+                      },
+                      child: Text(R.string.common_alert_cancel)
+                  )
+                ],
+              )
+      );
+
 }

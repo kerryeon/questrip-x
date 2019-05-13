@@ -1,10 +1,11 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/res/lib.dart';
-import 'package:questrip/controller/board/leader_board.dart';
-import 'dart:io';
 
 /// 알림창, Toast 팝업 다이얼로그 등의 기능을 총괄합니다.
 /// 
@@ -107,80 +108,5 @@ void _dialogAsk(final BuildContext context, final String msg,
         ],
       );
     },
-  );
-}
-
-/// 알림창을 통해서 촬영을 하거나 앨범에 접근합니다.
-void showSimpleDialog(final BuildContext context) {
-  showDialog(
-      context: context,
-      child: SimpleDialog(
-        title: Text(R.string.view_button_submit),
-        children: <Widget>[
-          SimpleDialogOption(
-            onPressed: () => {
-            CameraPicture.showCamera(context),
-            Navigator.of(context).pop()
-            },
-            child: Text(R.string.common_alert_camera),
-          ),
-          Padding(
-            padding: EdgeInsets.all(4.0),
-          ),
-          SimpleDialogOption(
-            onPressed: () => {
-            GallerySelect.showGallery(context),
-            Navigator.of(context).pop()
-            },
-            child: Text(R.string.common_alert_gallery),
-          ),
-        ],
-      )
-  );
-}
-
-/// 알림창을 통해서 결과물을 제출하거나, 다시 가져오거나, 취소합니다.
-void showAlertDialog(final BuildContext context, final File image) {
-  showDialog(
-      context: context,
-      child: AlertDialog(
-        title: Container(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text(R.string.view_button_submit)
-              ],
-            )
-        ),
-        content: Container(
-          constraints: BoxConstraints(minWidth: 100.0, maxHeight: 250.0),
-          child: Center(
-            child: image == null ? Text(R.string.common_failure_unknown) : Image.file(image),
-          ),
-        ),
-        actions: <Widget>[
-          FlatButton(
-              onPressed: () => {
-              Navigator.of(context).pop(),
-              dialog(context, R.string.view_alert_submitted, onCancel: null)
-              },
-              child: Text(R.string.common_alert_button_submit)
-          ),
-          FlatButton(
-              onPressed: () => {
-              Navigator.of(context).pop(),
-              showSimpleDialog(context)
-              },
-              child: Text(R.string.common_alert_reselect)
-          ),
-          FlatButton(
-              onPressed: () => {
-              toast(R.string.common_alert_canceled),
-              Navigator.of(context).pop()
-              },
-              child: Text(R.string.common_alert_cancel)
-          )
-        ],
-      )
   );
 }

@@ -35,6 +35,8 @@
   "leader_board_likes": "Likes",
   "leader_board_rating": "Rating",
   "leader_board_date": "Latest",
+  "leader_board_upload_camera": "Camera",
+  "leader_board_upload_gallery": "Gallery",
 
   "about_field_title": "My quests",
 
@@ -65,6 +67,7 @@
   "common_alert_button_next": "Next",
   "common_alert_button_prev": "Prev",
   "common_alert_button_submit": "Submit",
+  "common_alert_button_retry": "Retry",
   "common_alert_field_close_app": "Do you want to close Questrip?",
   "common_failure_unknown": "Unknown Error.",
   "common_failure_internal": "Sorry, but try later.",

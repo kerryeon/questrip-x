@@ -35,6 +35,8 @@
   "leader_board_likes": "Likes",
   "leader_board_rating": "추천순",
   "leader_board_date": "최신순",
+  "leader_board_upload_camera": "카메라로 사진촬영",
+  "leader_board_upload_gallery": "앨범에서 사진 가져오기",
 
   "about_field_title": "내가 도전한 퀘스트",
 
@@ -65,6 +67,7 @@
   "common_alert_button_next": "다음",
   "common_alert_button_prev": "이전",
   "common_alert_button_submit": "제출하기",
+  "common_alert_button_retry": "재선택",
   "common_alert_field_close_app": "Questrip 을 종료하시겠습니까?",
   "common_failure_unknown": "알 수 없는 오류",
   "common_failure_internal": "죄송합니다. 잠시 후 다시 시도해주세요.",

@@ -5,6 +5,7 @@ import 'package:questrip/controller/lib.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
+import 'package:questrip/widget/board/leader_board.dart';
 import 'package:questrip/widget/common/alert.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
@@ -88,35 +89,36 @@ abstract class ILeaderBoardController extends IController {
     }
   });
 
+  /// 사진을 촬영합니다.
+  void submitViaCamera() async {
+    final File image = await ImagePicker.pickImage(
+      source: ImageSource.camera,
+    );
+    if (image != null) {
+      ImageGallerySaver.save(image.readAsBytesSync());
+      LeaderBoardState.showSubmitConfirmDialog(context, image, this);
+    }
+  }
+
+  /// 앨범에서 사진을 불러옵니다.
+  void submitViaGallery() async {
+    final File image = await ImagePicker.pickImage(
+      source: ImageSource.gallery,
+    );
+    if (image != null)
+      LeaderBoardState.showSubmitConfirmDialog(context, image, this);
+  }
+
+  /// 서버에 사진을 제출합니다.
+  void trySubmit(final File image) {
+    // TODO to be implemented.
+    dialog(context, R.string.debug_todo);
+  }
+
 }
 
 /// 정렬 모드를 나열합니다.
 enum SortMode {
   Date,     // 최신순
   Rating,   // 추천순
-}
-
-/// 리더보드에 사진을 제출하기위해 카메라앱을 호출합니다.
-class CameraPicture{
-  static void showCamera(BuildContext context) async{
-    File picture = await ImagePicker.pickImage(
-      source: ImageSource.camera,
-    );
-    if(picture != null){
-      ImageGallerySaver.save(picture.readAsBytesSync());
-      showAlertDialog(context, picture);
-    }
-  }
-}
-
-/// 리더보드에 사진을 제출하기위해 앨범으로 접근합니다.
-class GallerySelect{
-  static void showGallery(BuildContext context) async{
-    File gallery = await ImagePicker.pickImage(
-      source: ImageSource.gallery,
-    );
-    if(gallery != null){
-      showAlertDialog(context, gallery);
-    }
-  }
 }
