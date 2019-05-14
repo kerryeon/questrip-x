@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/controller/quest/quest_map.dart';
+import 'package:questrip/widget/quest/quest_about.dart';
 import 'package:questrip/widget/quest/quest_menu.dart';
-import 'package:questrip/widget/quest/quest_view.dart';
 
 /// 메인화면을 담당하는 클래스입니다.
 /// 배경에는 지도를 띄워 퀘스트 마커를 보이게 합니다.
@@ -18,6 +18,7 @@ class QuestMapState extends State<QuestMapWidget> {
   /// 창을 구성합니다.
   List<Widget> get stack {
     List<Widget> result = [
+
       GoogleMap(
         initialCameraPosition: _controller.kPositionInit,
         mapType: MapType.normal,
@@ -28,6 +29,15 @@ class QuestMapState extends State<QuestMapWidget> {
         myLocationEnabled: false,
         onTap: (_) => _controller.closeAll(),
       ),
+      Container(
+        margin: EdgeInsets.all(16.0),
+        alignment: Alignment.bottomRight,
+        child: FloatingActionButton(
+          child: Icon(Icons.airplanemode_active),
+          onPressed: null,
+        ),
+      ),
+
       Container(
           margin: const EdgeInsets.only(top: 32, left: 16,),
           decoration: BoxDecoration(
@@ -42,12 +52,12 @@ class QuestMapState extends State<QuestMapWidget> {
       ),
     ];
     // 퀘스트 정보창
-    if (_controller.questViewController.visible)
+    if (_controller.questAboutController.visible)
       result.add(
           Positioned(
               child: Align(
                 alignment: FractionalOffset.bottomCenter,
-                child: QuestViewWidget(_controller.questViewController),
+                child: QuestAboutWidget(_controller.questAboutController),
               )
           ));
     // 메뉴창

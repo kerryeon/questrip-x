@@ -5,7 +5,7 @@ import 'package:questrip/lib.dart';
 ///
 /// 담당자: 김호
 ///
-class IController {
+abstract class IController {
 
   BuildContext _context;
   void Function(Runnable) _setState;

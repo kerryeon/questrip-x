@@ -23,6 +23,7 @@ class S implements WidgetsLocalizations {
   String get app_name => "Questrip";
   String get common_alert_button_next => "Next";
   String get common_alert_button_prev => "Prev";
+  String get common_alert_button_retry => "Retry";
   String get common_alert_button_submit => "Submit";
   String get common_alert_cancel => "Cancel";
   String get common_alert_canceled => "Canceled.";
@@ -46,6 +47,13 @@ class S implements WidgetsLocalizations {
   String get leader_board_date => "Latest";
   String get leader_board_likes => "Likes";
   String get leader_board_rating => "Rating";
+  String get leader_board_report_ads => "Advertising and Promotion";
+  String get leader_board_report_etc => "etc";
+  String get leader_board_report_irrelevant => "Not relevant";
+  String get leader_board_report_papering => "Papering";
+  String get leader_board_report_violent => "Violent and sensational";
+  String get leader_board_upload_camera => "Camera";
+  String get leader_board_upload_gallery => "Gallery";
   String get open_source_terms => "Open Source Terms\n TODO";
   String get permission_camera => "Camera";
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
@@ -111,6 +119,8 @@ class $ko_KR extends S {
   @override
   String get view_button_submit => "도전";
   @override
+  String get leader_board_upload_gallery => "앨범에서 사진 가져오기";
+  @override
   String get config_alert_sign_off_success => "그동안 Questrip 을 사랑해주셔서 감사했습니다. \n 다시 돌아오시기를 기다리겠습니다.";
   @override
   String get common_alert_button_submit => "제출하기";
@@ -133,6 +143,8 @@ class $ko_KR extends S {
   @override
   String get sign_up_alert_address => "주소를 확인해주세요.";
   @override
+  String get leader_board_report_etc => "기타";
+  @override
   String get intro_on_failure_canceled => "로그인하셔야 앱을 사용하실 수 있습니다.";
   @override
   String get sign_up_field_day => "일";
@@ -153,6 +165,8 @@ class $ko_KR extends S {
   @override
   String get common_alert_cancel => "취소";
   @override
+  String get leader_board_report_ads => "광고 및 홍보";
+  @override
   String get config_alert_logout => "로그아웃 하시겠습니까?";
   @override
   String get terms_alert_rejected => "죄송합니다. 내부 사정으로 인하여 일시적으로 회원가입을 진행할 수 없습니다.";
@@ -167,11 +181,15 @@ class $ko_KR extends S {
   @override
   String get view_field_title => "리더보드";
   @override
+  String get leader_board_report_papering => "도배";
+  @override
   String get sign_up_field_welcome => "환영합니다!";
   @override
   String get config_alert_sign_off => "정말 Questrip 을 회원탈퇴 하시겠습니까? 탈퇴한 계정은 복구하실 수 없습니다.";
   @override
   String get debug_todo => "구현 예정입니다.";
+  @override
+  String get leader_board_report_violent => "폭력적 및 선정적";
   @override
   String get view_alert_vote_duplicate => "이미 추천하였습니다";
   @override
@@ -188,6 +206,12 @@ class $ko_KR extends S {
   String get view_alert_submitted => "제출되었습니다!";
   @override
   String get config_field_title => "환경설정";
+  @override
+  String get leader_board_report_irrelevant => "관련없음";
+  @override
+  String get common_alert_button_retry => "재선택";
+  @override
+  String get leader_board_upload_camera => "카메라로 사진촬영";
   @override
   String get leader_board_likes => "Likes";
   @override
