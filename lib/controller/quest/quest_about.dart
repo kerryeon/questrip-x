@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/controller/lib.dart';
-import 'package:questrip/controller/quest/quest_view.dart';
 import 'package:questrip/data/quest.dart';
 import 'package:questrip/res/lib.dart';
 
@@ -31,7 +31,7 @@ class QuestAboutController extends IController {
 
   /// 리더보드를 보여줍니다.
   void showLeaderBoard() {
-    QuestViewController.quest = _quest;
+    ILeaderBoardController.quest = _quest;
     Navigator.pushNamed(context, R.widget.questView);
   }
 

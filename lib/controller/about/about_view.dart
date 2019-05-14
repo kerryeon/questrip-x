@@ -9,10 +9,8 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 class AboutViewController extends ILeaderBoardController {
 
-  /// 추천 기능 사용여부
-  bool get isUsableVote   => false;
-  /// 신고 기능 사용여부
-  bool get isUsableReport => false;
+  /// 제출 기능 사용여부
+  bool get isUsableSubmit => false;
 
   /// 제출물 목록을 다운로드합니다.
   @override

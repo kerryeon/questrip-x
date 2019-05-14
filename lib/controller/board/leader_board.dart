@@ -1,15 +1,18 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/leader_board/full_screen.dart';
+import 'package:questrip/data/quest.dart';
 import 'package:questrip/data/submission.dart';
 import 'package:questrip/controller/lib.dart';
-import 'package:questrip/lib.dart';
 import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/board/leader_board.dart';
 import 'package:questrip/widget/common/alert.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'dart:io';
+import 'package:tuple/tuple.dart';
 
 /// 리더보드의 동작을 담당합니다.
 ///
@@ -20,6 +23,9 @@ abstract class ILeaderBoardController extends IController {
   List<Submission> _submissions;
 
   SortMode _mode = SortMode.Rating;
+
+  /// 조회할 퀘스트 정보
+  static Quest quest;
 
   /// 이미지를 전체화면으로 보여줍니다.
   void showFullscreen(final Submission submission) {
@@ -60,10 +66,8 @@ abstract class ILeaderBoardController extends IController {
   bool get isModeDate   => _mode == SortMode.Date;
   bool get isModeRating => _mode == SortMode.Rating;
 
-  /// 추천 기능 사용여부
-  bool get isUsableVote;
-  /// 신고 기능 사용여부
-  bool get isUsableReport;
+  /// 제출 기능 사용여부
+  bool get isUsableSubmit;
 
   /// 제출물 목록을 다운로드합니다.
   @protected
@@ -89,8 +93,82 @@ abstract class ILeaderBoardController extends IController {
     }
   });
 
+  /// 도전하기 버튼을 터치한 경우의 이벤트입니다.
+  /// 사진을 촬영하거나, 앨범에서 사진을 가져옵니다.
+  void onClickedSubmit() =>
+      dialogCase(context, R.string.view_button_submit, cases: [
+        Tuple2(R.string.leader_board_upload_camera, _submitViaCamera),
+        Tuple2(R.string.leader_board_upload_gallery, _submitViaGallery),
+      ]);
+
+  /// 추천 버튼을 터치한 경우의 이벤트입니다.
+  /// 서버에 제출물 추천 요청을 합니다.
+  void onClickedVote(final Submission submission) async => dialog(
+    context, R.string.view_alert_vote(submission.nickname),
+    onConfirm: () => _tryVote(submission),
+    onCancel: () => {},
+  );
+
+  /// 신고 버튼을 터치한 경우의 이벤트입니다.
+  /// 사용자에게 신고 사유를 선택케 하는 알림창을 띄웁니다.
+  /// 서버에 제출물 신고 요청을 합니다.
+  void onClickedReport(final Submission submission) async => dialogCase(
+      context, R.string.view_field_report, cases: [
+    Tuple2(0, R.string.leader_board_report_violent),
+    Tuple2(1, R.string.leader_board_report_ads),
+    Tuple2(2, R.string.leader_board_report_papering),
+    Tuple2(3, R.string.leader_board_report_irrelevant),
+    Tuple2(4, R.string.leader_board_report_etc),
+  ].map(
+          (final t) => Tuple2(t.item2,
+              () => _tryReport(submission, t.item1)
+      )
+  ).toList());
+
+  /// 서버에 사진을 제출합니다.
+  void trySubmit(final File image) async => requestAccept(
+    R.uri.meSubmit,
+        () {
+          dialog(context, R.string.view_alert_submitted);
+          // 제출물 목록을 업데이트합니다.
+          _refresh();
+        },
+        (f) => dialogFailed(context, f),
+    data: {
+      "quest_id": quest.id,
+      "image": Base64Codec().encode(await image.readAsBytes()),
+    },
+  );
+
+  /// 서버에 제출물 추천 요청을 합니다.
+  void _tryVote(final Submission submission) async => requestAccept(
+    R.uri.meVote,
+        () {
+          dialog(context, R.string.view_alert_voted);
+          // 제출물 목록을 업데이트합니다.
+          _refresh();
+        },
+        (f) => dialogFailed(context, f,
+            rejected: R.string.view_alert_vote_duplicate),
+    data: {
+      "submission_id": submission.id
+    },
+  );
+
+  /// 서버에 제출물 신고 요청을 합니다.
+  void _tryReport(final Submission submission, final int reason) async => requestAccept(
+    R.uri.meReport,
+        () => dialog(context, R.string.view_alert_reported),
+        (f) => dialogFailed(context, f,
+            rejected: R.string.view_alert_report_duplicate),
+    data: {
+      "submission_id": submission.id,
+      "reason": reason,
+    },
+  );
+
   /// 사진을 촬영합니다.
-  void submitViaCamera() async {
+  void _submitViaCamera() async {
     final File image = await ImagePicker.pickImage(
       source: ImageSource.camera,
     );
@@ -101,7 +179,7 @@ abstract class ILeaderBoardController extends IController {
   }
 
   /// 앨범에서 사진을 불러옵니다.
-  void submitViaGallery() async {
+  void _submitViaGallery() async {
     final File image = await ImagePicker.pickImage(
       source: ImageSource.gallery,
     );
@@ -109,10 +187,10 @@ abstract class ILeaderBoardController extends IController {
       LeaderBoardState.showSubmitConfirmDialog(context, image, this);
   }
 
-  /// 서버에 사진을 제출합니다.
-  void trySubmit(final File image) {
-    // TODO to be implemented.
-    dialog(context, R.string.debug_todo);
+  /// 제출물 목록을 다시 불러옵니다.
+  void _refresh() async {
+    _submissions = null;
+    setState(() {});
   }
 
 }

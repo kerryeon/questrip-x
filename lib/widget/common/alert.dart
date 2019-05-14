@@ -2,10 +2,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/res/lib.dart';
+import 'package:tuple/tuple.dart';
 
 /// 알림창, Toast 팝업 다이얼로그 등의 기능을 총괄합니다.
 /// 
@@ -18,6 +18,24 @@ void dialog(final BuildContext context, final String msgId,
       ? _dialogSimple(context, msgId, onConfirm: onConfirm)
       : _dialogAsk(context, msgId, onConfirm: onConfirm, onCancel: onCancel);
 }
+
+/// 여러 선택지가 있는 알림창을 띄웁니다.
+void dialogCase(final BuildContext context, final String title,
+    { List<Tuple2<String, Runnable>> cases }) => showDialog(
+    context: context,
+    builder: (final BuildContext context) =>
+        SimpleDialog(
+          title: Text(title),
+          children: cases.map(
+                  (final t) => SimpleDialogOption(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  t.item2();
+                },
+                child: Text(t.item1),
+              )).toList(),
+        )
+);
 
 /// 사용자에게 오류를 알림창을 통해 알립니다.
 void dialogFailed(final BuildContext context, final Failed failed,

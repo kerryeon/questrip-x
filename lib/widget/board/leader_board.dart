@@ -85,14 +85,15 @@ class LeaderBoardState extends State<StatefulWidget> {
                   mainAxisAlignment: MainAxisAlignment.end,
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
+                  children: _controller.isUsableSubmit
+                      ? <Widget>[
                     SizedBox(
                       height: 24.0,
                       width: 32.0,
                       child: IconButton(
                           icon: Icon(Icons.report),
                           padding: EdgeInsets.all(0.0),
-                          onPressed: null,
+                          onPressed: () => _controller.onClickedReport(submission),
                           iconSize: 24.0,
                           color: const Color(0xff000000)
                       ),
@@ -103,12 +104,12 @@ class LeaderBoardState extends State<StatefulWidget> {
                       child: IconButton(
                           icon: Icon(Icons.thumb_up),
                           padding: EdgeInsets.all(0.0),
-                          onPressed: null,
+                          onPressed: () => _controller.onClickedVote(submission),
                           iconSize: 24.0,
                           color: const Color(0xff000000)
                       ),
                     )
-                  ],
+                  ] : [],
                 )
               ]
             ),
@@ -122,10 +123,11 @@ class LeaderBoardState extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     _controller.init(context, setState: setState);
     return Scaffold(
-      floatingActionButton: FloatingActionButton(
-        onPressed: () => onClickedSubmit(context, _controller),
+      floatingActionButton: _controller.isUsableSubmit
+          ? FloatingActionButton(
+        onPressed: _controller.onClickedSubmit,
         child: Icon(Icons.camera_enhance),
-      ),
+      ) : null,
         body: SingleChildScrollView(
             child: Container(
                 decoration: BoxDecoration(color: Colors.amber),
@@ -140,7 +142,7 @@ class LeaderBoardState extends State<StatefulWidget> {
                       Text(
                         R.string.about_field_title,
                         textAlign : TextAlign.center,
-                        style: new TextStyle(fontSize:36.0,
+                        style: new TextStyle(fontSize: 36.0,
                             color: const Color(0xFF000000),
                             fontWeight: FontWeight.w200,
                             fontFamily: "Roboto"),
@@ -204,36 +206,6 @@ class LeaderBoardState extends State<StatefulWidget> {
     );
   }
 
-  /// 도전하기 버튼을 터치한 경우의 이벤트입니다.
-  /// 사진을 촬영하거나, 앨범에서 사진을 가져옵니다.
-  static void onClickedSubmit(final BuildContext context, final controller) =>
-      showDialog(
-          context: context,
-          builder: (final BuildContext context) =>
-              SimpleDialog(
-                title: Text(R.string.view_button_submit),
-                children: <Widget>[
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      controller.submitViaCamera();
-                    },
-                    child: Text(R.string.leader_board_upload_camera),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.all(4.0),
-                  ),
-                  SimpleDialogOption(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      controller.submitViaGallery();
-                    },
-                    child: Text(R.string.leader_board_upload_gallery),
-                  ),
-                ],
-              )
-      );
-
   /// 결과물을 제출하거나, 다시 가져오거나, 취소할 수 있는 알림창을 생성합니다.
   static void showSubmitConfirmDialog(final BuildContext context, final File image,
       final controller) => showDialog(
@@ -267,7 +239,7 @@ class LeaderBoardState extends State<StatefulWidget> {
                   FlatButton(
                       onPressed: () {
                         Navigator.of(context).pop();
-                        onClickedSubmit(context, controller);
+                        controller.onClickedSubmit();
                       },
                       child: Text(R.string.common_alert_button_retry)
                   ),

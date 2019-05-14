@@ -38,6 +38,12 @@
   "leader_board_upload_camera": "Camera",
   "leader_board_upload_gallery": "Gallery",
 
+  "leader_board_report_violent": "Violent and sensational",
+  "leader_board_report_ads": "Advertising and Promotion",
+  "leader_board_report_papering": "Papering",
+  "leader_board_report_irrelevant": "Not relevant",
+  "leader_board_report_etc": "etc",
+
   "about_field_title": "My quests",
 
   "config_field_title": "Config",

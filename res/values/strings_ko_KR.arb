@@ -38,6 +38,12 @@
   "leader_board_upload_camera": "카메라로 사진촬영",
   "leader_board_upload_gallery": "앨범에서 사진 가져오기",
 
+  "leader_board_report_violent": "폭력적 및 선정적",
+  "leader_board_report_ads": "광고 및 홍보",
+  "leader_board_report_papering": "도배",
+  "leader_board_report_irrelevant": "관련없음",
+  "leader_board_report_etc": "기타",
+
   "about_field_title": "내가 도전한 퀘스트",
 
   "config_field_title": "환경설정",
