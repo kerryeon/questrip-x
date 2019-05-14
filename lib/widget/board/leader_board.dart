@@ -1,7 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/data/submission.dart';
 import 'package:questrip/res/lib.dart';
+import 'package:questrip/widget/common/alert.dart';
 
 class LeaderBoardState extends State<StatefulWidget> {
 
@@ -50,7 +53,7 @@ class LeaderBoardState extends State<StatefulWidget> {
           ),
           /// 퀘스트 수행 사진
           Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.only(top: 16.0, left: 16.0, right: 16.0),
               child: GestureDetector(
                   onTap: () => _controller.showFullscreen(submission),
                   child: Image.network(
@@ -62,22 +65,55 @@ class LeaderBoardState extends State<StatefulWidget> {
           /// 좋아요
           Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              mainAxisSize: MainAxisSize.max,
-              crossAxisAlignment: CrossAxisAlignment.center,
+            child: Stack(
               children: <Widget>[
-                Text(
-                    "Like ${submission.rating}",
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontSize: 12.0,
+                Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                      "Like ${submission.rating}",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 12.0,
+                      )
+                  ),
+                ],
+              ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  mainAxisSize: MainAxisSize.max,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: _controller.isUsableSubmit
+                      ? <Widget>[
+                    SizedBox(
+                      height: 24.0,
+                      width: 32.0,
+                      child: IconButton(
+                          icon: Icon(Icons.report),
+                          padding: EdgeInsets.all(0.0),
+                          onPressed: () => _controller.onClickedReport(submission),
+                          iconSize: 24.0,
+                          color: const Color(0xff000000)
+                      ),
+                    ),
+                    SizedBox(
+                      height: 24.0,
+                      width: 32.0,
+                      child: IconButton(
+                          icon: Icon(Icons.thumb_up),
+                          padding: EdgeInsets.all(0.0),
+                          onPressed: () => _controller.onClickedVote(submission),
+                          iconSize: 24.0,
+                          color: const Color(0xff000000)
+                      ),
                     )
-                ),
-              ],
+                  ] : [],
+                )
+              ]
             ),
           ),
-          /// TODO to be implemented [Vote, Report]
         ],
       ),
     );
@@ -87,6 +123,11 @@ class LeaderBoardState extends State<StatefulWidget> {
   Widget build(BuildContext context) {
     _controller.init(context, setState: setState);
     return Scaffold(
+      floatingActionButton: _controller.isUsableSubmit
+          ? FloatingActionButton(
+        onPressed: _controller.onClickedSubmit,
+        child: Icon(Icons.camera_enhance),
+      ) : null,
         body: SingleChildScrollView(
             child: Container(
                 decoration: BoxDecoration(color: Colors.amber),
@@ -101,7 +142,7 @@ class LeaderBoardState extends State<StatefulWidget> {
                       Text(
                         R.string.about_field_title,
                         textAlign : TextAlign.center,
-                        style: new TextStyle(fontSize:36.0,
+                        style: new TextStyle(fontSize: 36.0,
                             color: const Color(0xFF000000),
                             fontWeight: FontWeight.w200,
                             fontFamily: "Roboto"),
@@ -164,4 +205,53 @@ class LeaderBoardState extends State<StatefulWidget> {
         )
     );
   }
+
+  /// 결과물을 제출하거나, 다시 가져오거나, 취소할 수 있는 알림창을 생성합니다.
+  static void showSubmitConfirmDialog(final BuildContext context, final File image,
+      final controller) => showDialog(
+          context: context,
+          builder: (final BuildContext context) =>
+              AlertDialog(
+                title: Container(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(R.string.view_button_submit)
+                      ],
+                    )
+                ),
+                content: Container(
+                  constraints: BoxConstraints(minWidth: 100.0, maxHeight: 250.0),
+                  child: Center(
+                    child: image == null
+                        ? Text(R.string.common_failure_unknown)
+                        : Image.file(image),
+                  ),
+                ),
+                actions: <Widget>[
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        controller.trySubmit(image);
+                      },
+                      child: Text(R.string.common_alert_button_submit)
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        controller.onClickedSubmit();
+                      },
+                      child: Text(R.string.common_alert_button_retry)
+                  ),
+                  FlatButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        toast(R.string.common_alert_canceled);
+                      },
+                      child: Text(R.string.common_alert_cancel)
+                  )
+                ],
+              )
+      );
+
 }

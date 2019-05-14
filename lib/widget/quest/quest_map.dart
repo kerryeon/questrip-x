@@ -18,6 +18,7 @@ class QuestMapState extends State<QuestMapWidget> {
   /// 창을 구성합니다.
   List<Widget> get stack {
     List<Widget> result = [
+
       GoogleMap(
         initialCameraPosition: _controller.kPositionInit,
         mapType: MapType.normal,
@@ -28,6 +29,15 @@ class QuestMapState extends State<QuestMapWidget> {
         myLocationEnabled: false,
         onTap: (_) => _controller.closeAll(),
       ),
+      Container(
+        margin: EdgeInsets.all(16.0),
+        alignment: Alignment.bottomRight,
+        child: FloatingActionButton(
+          child: Icon(Icons.airplanemode_active),
+          onPressed: null,
+        ),
+      ),
+
       Container(
           margin: const EdgeInsets.only(top: 32, left: 16,),
           decoration: BoxDecoration(
