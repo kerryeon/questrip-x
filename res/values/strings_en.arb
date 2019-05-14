@@ -1,0 +1,83 @@
+{
+  "app_name": "Questrip",
+
+  "intro_on_failure_canceled": "You should login to use Questrip.",
+
+  "sign_up_field_welcome": "Welcome!",
+  "sign_up_field_nickname": "Nickname",
+  "sign_up_field_year": "Year",
+  "sign_up_field_month": "Month",
+  "sign_up_field_day": "Day",
+  "sign_up_field_address": "Address",
+  "sign_up_field_address_detail": "Address (Detail)",
+  "sign_up_alert_nickname": "Please check your nickname.",
+  "sign_up_alert_birthday": "Please check your date of birth.",
+  "sign_up_alert_address": "Please check your address.",
+
+  "terms_field_title": "Terms",
+  "terms_field_terms": "Terms\nHello world.",
+  "terms_button_agree": "I agree to the above terms.",
+  "terms_alert_rejected": "Sorry. Due to internal circumstances, sign-up can not be temporarily done.",
+  "terms_alert_welcome": "Congratulations! All Questrip features are now available.",
+
+  "quest_map_field_period": "${month} ${day}, ${year}",
+
+  "view_field_title": "LeaderBoard",
+  "view_field_report": "Report",
+  "view_button_submit": "Submit",
+  "view_alert_submitted": "Submitted!",
+  "view_alert_reported": "Report has been received",
+  "view_alert_report_duplicate": "Already reported",
+  "view_alert_vote": "Would you recommend it to \"${user}\"?",
+  "view_alert_vote_duplicate": "Already recommended",
+  "view_alert_voted": "Recommended",
+
+  "leader_board_likes": "Likes",
+  "leader_board_rating": "Rating",
+  "leader_board_date": "Latest",
+  "leader_board_upload_camera": "Camera",
+  "leader_board_upload_gallery": "Gallery",
+
+  "leader_board_report_violent": "Violent and sensational",
+  "leader_board_report_ads": "Advertising and Promotion",
+  "leader_board_report_papering": "Papering",
+  "leader_board_report_irrelevant": "Not relevant",
+  "leader_board_report_etc": "etc",
+
+  "about_field_title": "My quests",
+
+  "config_field_title": "Config",
+  "config_alert_logout": "Are you sure you want to logout?",
+  "config_alert_sign_off": "Are you sure you want to unsubscribe Questrip? You cannot recover an unsubscribed account.",
+  "config_alert_sign_off_success": "Thank you for loving Questrip.\n We look forward to coming back.",
+  "config_button_logout": "Logout",
+  "config_button_sign_off": "Withdrawal",
+  "config_button_open_source": "Open Source Terms",
+
+  "open_source_terms": "Open Source Terms\n TODO",
+
+  "shop_field_title": "Shop",
+  "shop_unit_money": "won",
+
+  "permission_denied": "Sorry, but you must accept permissions for using Questrip.",
+  "permission_camera": "Camera",
+  "permission_location": "Location",
+  "permission_internet": "Internet",
+
+  "common_alert_title": "Notice",
+  "common_alert_confirm": "Confirm",
+  "common_alert_cancel": "Cancel",
+  "common_alert_canceled": "Canceled.",
+  "common_alert_choose_yes": "Yes",
+  "common_alert_choose_no": "No",
+  "common_alert_button_next": "Next",
+  "common_alert_button_prev": "Prev",
+  "common_alert_button_submit": "Submit",
+  "common_alert_button_retry": "Retry",
+  "common_alert_field_close_app": "Do you want to close Questrip?",
+  "common_failure_unknown": "Unknown Error.",
+  "common_failure_internal": "Sorry, but try later.",
+  "common_failure_network": "Please check your network status and try again.",
+
+  "debug_todo": "To be implemented."
+}
