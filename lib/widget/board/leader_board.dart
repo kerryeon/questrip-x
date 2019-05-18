@@ -246,7 +246,7 @@ class LeaderBoardState extends State<StatefulWidget> {
                   FlatButton(
                       onPressed: () {
                         Navigator.of(context).pop();
-                        toast(R.string.common_alert_canceled);
+                        toast(context, R.string.common_alert_canceled);
                       },
                       child: Text(R.string.common_alert_cancel)
                   )
