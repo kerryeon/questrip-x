@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/shop/shop_main.dart';
-import 'package:questrip/res/lib.dart';
-import 'package:questrip/widget/common/alert.dart';
-import 'package:questrip/widget/common/components.dart';
 
 /// 상점 메인화면을 담당하는 클래스입니다.
 ///
@@ -10,12 +7,14 @@ import 'package:questrip/widget/common/components.dart';
 ///
 
 /// 상품 컨텐츠 위젯입니다.
-class ProductCard extends StatelessWidget{
-  var name;   // 상품이름
-  var price;  // 상품가격
-  var image;  // 상품 이미지
-  var cnt = 0;    // 상품개수
-  ProductCard(this.name, this.price, this.image);
+class _ProductCard extends StatelessWidget {
+
+  final name;     // 상품이름
+  final price;    // 상품가격
+  final image;    // 상품 이미지
+  final cnt = 0;  // 상품개수
+
+  _ProductCard(this.name, this.price, this.image);
 
   @override
   Widget build(BuildContext context) {
@@ -40,8 +39,8 @@ class ProductCard extends StatelessWidget{
                   Container(
                       width: 160,
                       height: 160,
-                      decoration: new BoxDecoration(
-                        borderRadius: new BorderRadius.only(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
                           topLeft: Radius.circular(8.0),
                           topRight: Radius.circular(8.0),
                         ),
@@ -188,36 +187,36 @@ class ShopMainState extends State<ShopMainWidget> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      ProductCard("감자","256,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
-                      ProductCard("포도","241,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("감자","256,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("포도","241,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      ProductCard("취두부","156,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
-                      ProductCard("오이","123,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("취두부","156,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("오이","123,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      ProductCard("가지","555,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
-                      ProductCard("깻잎","1,980,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("가지","555,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("깻잎","1,980,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      ProductCard("상추","22,994,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
-                      ProductCard("굴","12,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("상추","22,994,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("굴","12,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      ProductCard("오렌지","34,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
-                      ProductCard("갈비","533,120,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("오렌지","34,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
+                      _ProductCard("갈비","533,120,000","https://iso.500px.com/wp-content/uploads/2015/10/lohi_cover.jpeg"),
                     ],
                   ),
                 ]
@@ -233,4 +232,3 @@ class ShopMainWidget extends StatefulWidget {
   @override
   State<ShopMainWidget> createState() => ShopMainState();
 }
-
