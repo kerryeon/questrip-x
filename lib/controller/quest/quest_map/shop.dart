@@ -25,4 +25,12 @@ mixin IQuestMapShopsController on IQuestMapController {
     shops.sort(Shop.compareRank);
   }
 
+  /// 상점 목록 보기 모드면 true 를 반환합니다.
+  @protected
+  bool isModeShops() => markersData == shops;
+
+  /// 상점 목록 보기 모드로 전환합니다.
+  @protected
+  void showShops() => markersData = shops;
+
 }

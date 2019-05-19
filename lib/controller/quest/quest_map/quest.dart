@@ -24,8 +24,16 @@ mixin IQuestMapQuestsController on IQuestMapController {
     quests = raw.map((q) => Quest.fromJSON(q)).toList();
     quests.sort(Quest.compareRating);
     // 퀘스트 목록을 화면에 뿌리도록 합니다.
-    markersData = quests;
+    showQuests();
     updateMarkers();
   }
+
+  /// 퀘스트 목록 보기 모드면 true 를 반환합니다.
+  @protected
+  bool isModeQuests() => markersData == quests || markersData == null;
+
+  /// 퀘스트 목록 보기 모드로 전환합니다.
+  @protected
+  void showQuests() => markersData = quests;
 
 }

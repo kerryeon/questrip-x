@@ -50,21 +50,21 @@ abstract class IQuestMapController extends IController {
     // 새로 그립니다.
     (await _whereInCamera).forEach(_addMarker);
     // 화면을 갱신합니다.
-    _updateState();
+    updateState();
   }
 
   /// 메뉴창을 엽니다.
   void openMenu() {
     _closeQuest();
     questMenuController.show();
-    _updateState();
+    updateState();
   }
 
   /// 메뉴창과 퀘스트 정보창을 닫습니다.
   void closeAll() {
     _closeMenu();
     _closeQuest();
-    _updateState();
+    updateState();
   }
 
   /// 사용자가 뒤로가기 버튼을 누른 경우의 이벤트입니다.
@@ -107,7 +107,8 @@ abstract class IQuestMapController extends IController {
   void _removeMarkers() => markers.clear();
 
   /// 화면을 갱신합니다.
-  void _updateState() async {
+  @protected
+  void updateState() async {
     final void Function(Runnable) setState = await _setState.future;
     setState(() {});
   }

@@ -31,6 +31,7 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
             child: Stack(
                 children: <Widget>[
 
+                  // 지도 레이아웃
                   GoogleMap(
                     initialCameraPosition: _controller.kPositionInit,
                     mapType: MapType.normal,
@@ -41,15 +42,18 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
                     myLocationEnabled: false,
                     onTap: (_) => _controller.closeAll(),
                   ),
+
+                  // 보기 모드 전환 버튼
                   Container(
                     margin: EdgeInsets.all(16.0),
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
                       child: Icon(Icons.airplanemode_active),
-                      onPressed: null,
+                      onPressed: _controller.switchMode,
                     ),
                   ),
 
+                  // 메뉴 버튼
                   Container(
                       margin: const EdgeInsets.only(top: 32, left: 16,),
                       decoration: BoxDecoration(
