@@ -9,7 +9,7 @@ import 'package:questrip/widget/intro/terms.dart';
 import 'package:questrip/widget/leader_board/full_screen.dart';
 import 'package:questrip/widget/quest/quest_map.dart';
 import 'package:questrip/widget/quest/quest_view.dart';
-import 'package:questrip/widget/shop/shop_main.dart';
+import 'package:questrip/widget/shop/shop_about.dart';
 
 /// 위젯 리소스를 관리합니다.
 ///
@@ -31,8 +31,6 @@ class Widgets extends Resource {
   String get config => '/config';
   String get openSource => '/config/terms';
 
-  String get shopMain => '/shop';
-
 }
 
 Map<String, WidgetBuilder> makeRoutes(final Widgets w) => {
@@ -45,5 +43,4 @@ Map<String, WidgetBuilder> makeRoutes(final Widgets w) => {
   w.boardFullScreen: (BuildContext context) => FullScreenWidget(),
   w.config: (BuildContext context) => ConfigWidget(),
   w.openSource: (BuildContext context) => OpenSourceWidget(),
-  w.shopMain: (BuildContext context) => ShopMainWidget(),
 };

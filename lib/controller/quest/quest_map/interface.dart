@@ -6,8 +6,10 @@ import 'package:location/location.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/controller/quest/quest_about.dart';
 import 'package:questrip/controller/quest/quest_menu.dart';
+import 'package:questrip/controller/shop/shop_main.dart';
 import 'package:questrip/data/marker.dart';
 import 'package:questrip/data/quest.dart';
+import 'package:questrip/data/shop.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
@@ -20,6 +22,7 @@ abstract class IQuestMapController extends IController {
 
   final QuestAboutController questAboutController = QuestAboutController();
   final QuestMenuController questMenuController = QuestMenuController();
+  final ShopAboutController shopAboutController = ShopAboutController();
 
   static const double _ZOOM_RATING = 7.25;
   static const double _ZOOM_DISTANCE = 8.25;
@@ -55,7 +58,7 @@ abstract class IQuestMapController extends IController {
 
   /// 메뉴창을 엽니다.
   void openMenu() {
-    _closeQuest();
+    _closeAbout();
     questMenuController.show();
     updateState();
   }
@@ -63,7 +66,7 @@ abstract class IQuestMapController extends IController {
   /// 메뉴창과 퀘스트 정보창을 닫습니다.
   void closeAll() {
     _closeMenu();
-    _closeQuest();
+    _closeAbout();
     updateState();
   }
 
@@ -71,7 +74,9 @@ abstract class IQuestMapController extends IController {
   /// 메뉴창, 퀘스트 정보창을 닫거나,
   /// 혹은 앱을 종료할 것인지 물어봅니다.
   Future<bool> onBackPressed() async {
-    if (questAboutController.visible || questMenuController.visible)
+    if (questAboutController.visible
+        || questMenuController.visible
+        || shopAboutController.visible)
       closeAll();
     else return dialogExit(context);
     return false;
@@ -118,14 +123,17 @@ abstract class IQuestMapController extends IController {
   void _onTouchMarker(final IMarker marker) {
     _closeMenu();
     if (marker is Quest) questAboutController.showAbout(marker);
-    // TODO to be implemented.
+    else if (marker is Shop) shopAboutController.showAbout(marker);
   }
 
   /// 메뉴창을 닫습니다.
   void _closeMenu() => questMenuController.hide();
 
   /// 퀘스트 설명창을 닫습니다.
-  void _closeQuest() => questAboutController.hide();
+  void _closeAbout() {
+    questAboutController.hide();
+    shopAboutController.hide();
+  }
 
   /// 맵뷰가 처음 보여줄 위치를 반환합니다.
   CameraPosition get kPositionInit => CameraPosition(

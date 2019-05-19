@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/controller/quest/quest_map/interface.dart';
 import 'package:questrip/controller/quest/quest_map/quest.dart';
@@ -6,6 +7,13 @@ import 'package:questrip/lib.dart';
 
 class QuestMapController extends IQuestMapController
     with IQuestMapQuestsController, IQuestMapShopsController {
+
+  /// 애니메이션을 초기화합니다.
+  void initAnimation(TickerProvider provider) {
+    questAboutController.initAnimation(provider);
+    questMenuController.initAnimation(provider);
+    shopAboutController.initAnimation(provider);
+  }
 
   /// 맵뷰를 초기화합니다.
   @override

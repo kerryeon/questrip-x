@@ -22,6 +22,7 @@ class URI {
 
   // shop
   String get shopList => "/shop/list";
+  String get shopView => "/shop/view";
 
   // External
   String get address => _root + "/address.html";

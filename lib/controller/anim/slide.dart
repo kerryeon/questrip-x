@@ -38,13 +38,13 @@ mixin SlideAnimation on IController {
   Offset get defaultOffset;
 
   /// 레이아웃을 등장시킵니다.
-  void show() {
+  void show() async {
     _visible = true;
     _animationController.reverse();
   }
 
   /// 레이아웃을 퇴장시킵니다.
-  void hide() {
+  void hide() async {
     _visible = false;
     _animationController.forward();
   }

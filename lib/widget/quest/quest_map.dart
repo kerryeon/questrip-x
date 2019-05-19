@@ -3,6 +3,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:questrip/controller/quest/quest_map/quest_map.dart';
 import 'package:questrip/widget/quest/quest_about.dart';
 import 'package:questrip/widget/quest/quest_menu.dart';
+import 'package:questrip/widget/shop/shop_about.dart';
 
 /// 메인화면을 담당하는 클래스입니다.
 /// 배경에는 지도를 띄워 퀘스트 마커를 보이게 합니다.
@@ -18,8 +19,7 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
   @override
   void initState() {
     super.initState();
-    _controller.questAboutController.initAnimation(this);
-    _controller.questMenuController.initAnimation(this);
+    _controller.initAnimation(this);
   }
 
   @override
@@ -78,6 +78,17 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
                       )
                   ),
 
+                  // 상점 정보창
+                  Positioned(
+                      child: Align(
+                        alignment: FractionalOffset.bottomCenter,
+                        child: SlideTransition(
+                          position: _controller.shopAboutController.offset,
+                          child: ShopAboutWidget(_controller.shopAboutController),
+                        ),
+                      )
+                  ),
+
                   // 메뉴창
                   Positioned(
                       child: Align(
@@ -88,6 +99,7 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
                         ),
                       )
                   ),
+
                 ],
             )
         )

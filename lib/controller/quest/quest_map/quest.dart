@@ -14,12 +14,12 @@ mixin IQuestMapQuestsController on IQuestMapController {
   /// 만약 실패하면, 그 이유를 알려줍니다.
   @protected
   void tryLoadQuests() async => request(
-      R.uri.meQuest, _onLoadQuests,
+      R.uri.meQuest, _onLoad,
           (e) => dialogFailed(context, e)
   );
 
   /// 퀘스트 목록을 성공적으로 불러온 경우의 이벤트입니다.
-  void _onLoadQuests(final Map<String, Object> response) async {
+  void _onLoad(final Map<String, Object> response) async {
     final List<Object> raw = response['list'];
     quests = raw.map((q) => Quest.fromJSON(q)).toList();
     quests.sort(Quest.compareRating);
