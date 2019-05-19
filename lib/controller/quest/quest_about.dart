@@ -18,8 +18,6 @@ class QuestAboutController extends IController with SlideAnimation {
 
   Quest _quest;
 
-  bool visible = false;
-
   /// 레이아웃을 보여줍니다.
   void showAbout(final Quest quest) {
     _quest = quest;

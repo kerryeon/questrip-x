@@ -13,7 +13,6 @@ import 'package:questrip/widget/quest/quest_menu.dart';
 ///
 class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin {
 
-
   final QuestMapController _controller = QuestMapController();
 
   @override
