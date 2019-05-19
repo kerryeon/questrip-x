@@ -37,19 +37,6 @@ class QuestMapState extends State<QuestMapWidget> {
           onPressed: null,
         ),
       ),
-
-      Container(
-          margin: const EdgeInsets.only(top: 32, left: 16,),
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: new BorderRadius.all(Radius.circular(30.0)),
-          ),
-          child: IconButton(
-            padding:EdgeInsets.all(12.0),
-            icon: const Icon(Icons.menu),
-            onPressed: _controller.openMenu,
-          )
-      ),
     ];
     // 퀘스트 정보창
     if (_controller.questAboutController.visible)
@@ -60,15 +47,6 @@ class QuestMapState extends State<QuestMapWidget> {
                 child: QuestAboutWidget(_controller.questAboutController),
               )
           ));
-    // 메뉴창
-    if (_controller.questMenuController.visible)
-      result.add(
-          Positioned(
-              child: Align(
-                alignment: FractionalOffset.topLeft,
-                child: QuestMenuWidget(_controller.questMenuController),
-              )
-          ));
     return result;
   }
 
@@ -76,6 +54,10 @@ class QuestMapState extends State<QuestMapWidget> {
   Widget build(BuildContext context) {
     _controller.init(context);
     return Scaffold(
+        drawer: Theme(
+            data: Theme.of(context).copyWith(canvasColor: Colors.transparent),
+            child: Drawer(child: QuestMenuWidget(_controller.questMenuController))
+        ),
         body: WillPopScope(
             onWillPop: _controller.onBackPressed,
             child: Stack(
