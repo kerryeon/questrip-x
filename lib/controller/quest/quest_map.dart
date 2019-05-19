@@ -133,7 +133,7 @@ class QuestMapController extends IController {
   /// 메뉴창을 닫고, 퀘스트 설명창을 보여줍니다.
   void _onTouchMarker(final Quest quest) {
     _closeMenu();
-    questAboutController.show(quest);
+    questAboutController.showAbout(quest);
   }
 
   /// 메뉴창을 닫습니다.

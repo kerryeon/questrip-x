@@ -11,65 +11,16 @@ import 'package:questrip/widget/quest/quest_menu.dart';
 ///
 /// 담당자: 김호, 이동욱, 구본근
 ///
-class QuestMapState extends State<QuestMapWidget> {
+class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin {
+
 
   final QuestMapController _controller = QuestMapController();
 
-  /// 창을 구성합니다.
-  List<Widget> get stack {
-    List<Widget> result = [
-
-      GoogleMap(
-        initialCameraPosition: _controller.kPositionInit,
-        mapType: MapType.normal,
-        markers: _controller.markers,
-        onMapCreated: (c) => _controller.initMap(c, setState),
-        onCameraIdle: _controller.updateMarkers,
-        compassEnabled: false,
-        myLocationEnabled: false,
-        onTap: (_) => _controller.closeAll(),
-      ),
-      Container(
-        margin: EdgeInsets.all(16.0),
-        alignment: Alignment.bottomRight,
-        child: FloatingActionButton(
-          child: Icon(Icons.airplanemode_active),
-          onPressed: null,
-        ),
-      ),
-
-      Container(
-          margin: const EdgeInsets.only(top: 32, left: 16,),
-          decoration: BoxDecoration(
-            color: Colors.amber,
-            borderRadius: new BorderRadius.all(Radius.circular(30.0)),
-          ),
-          child: IconButton(
-            padding:EdgeInsets.all(12.0),
-            icon: const Icon(Icons.menu),
-            onPressed: _controller.openMenu,
-          )
-      ),
-    ];
-    // 퀘스트 정보창
-    if (_controller.questAboutController.visible)
-      result.add(
-          Positioned(
-              child: Align(
-                alignment: FractionalOffset.bottomCenter,
-                child: QuestAboutWidget(_controller.questAboutController),
-              )
-          ));
-    // 메뉴창
-    if (_controller.questMenuController.visible)
-      result.add(
-          Positioned(
-              child: Align(
-                alignment: FractionalOffset.topLeft,
-                child: QuestMenuWidget(_controller.questMenuController),
-              )
-          ));
-    return result;
+  @override
+  void initState() {
+    super.initState();
+    _controller.questAboutController.initAnimation(this);
+    _controller.questMenuController.initAnimation(this);
   }
 
   @override
@@ -79,7 +30,62 @@ class QuestMapState extends State<QuestMapWidget> {
         body: WillPopScope(
             onWillPop: _controller.onBackPressed,
             child: Stack(
-                children: stack,
+                children: <Widget>[
+
+                  GoogleMap(
+                    initialCameraPosition: _controller.kPositionInit,
+                    mapType: MapType.normal,
+                    markers: _controller.markers,
+                    onMapCreated: (c) => _controller.initMap(c, setState),
+                    onCameraIdle: _controller.updateMarkers,
+                    compassEnabled: false,
+                    myLocationEnabled: false,
+                    onTap: (_) => _controller.closeAll(),
+                  ),
+                  Container(
+                    margin: EdgeInsets.all(16.0),
+                    alignment: Alignment.bottomRight,
+                    child: FloatingActionButton(
+                      child: Icon(Icons.airplanemode_active),
+                      onPressed: null,
+                    ),
+                  ),
+
+                  Container(
+                      margin: const EdgeInsets.only(top: 32, left: 16,),
+                      decoration: BoxDecoration(
+                        color: Colors.amber,
+                        borderRadius: new BorderRadius.all(Radius.circular(30.0)),
+                      ),
+                      child: IconButton(
+                        padding:EdgeInsets.all(12.0),
+                        icon: const Icon(Icons.menu),
+                        onPressed: _controller.openMenu,
+                      )
+                  ),
+
+                  // 퀘스트 정보창
+                  Positioned(
+                      child: Align(
+                        alignment: FractionalOffset.bottomCenter,
+                        child: SlideTransition(
+                          position: _controller.questAboutController.offset,
+                          child: QuestAboutWidget(_controller.questAboutController),
+                        ),
+                      )
+                  ),
+
+                  // 메뉴창
+                  Positioned(
+                      child: Align(
+                        alignment: FractionalOffset.topLeft,
+                        child: SlideTransition(
+                          position: _controller.questMenuController.offset,
+                          child: QuestMenuWidget(_controller.questMenuController),
+                        ),
+                      )
+                  ),
+                ],
             )
         )
     );

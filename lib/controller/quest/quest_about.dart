@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:questrip/controller/anim/slide.dart';
 import 'package:questrip/controller/board/leader_board.dart';
 import 'package:questrip/controller/lib.dart';
 import 'package:questrip/data/quest.dart';
@@ -8,7 +9,7 @@ import 'package:questrip/res/lib.dart';
 ///
 /// 담당자: 김호, 이동욱
 ///
-class QuestAboutController extends IController {
+class QuestAboutController extends IController with SlideAnimation {
 
   String cTitle = "";
   String cDescription = "";
@@ -20,14 +21,11 @@ class QuestAboutController extends IController {
   bool visible = false;
 
   /// 레이아웃을 보여줍니다.
-  void show(final Quest quest) {
-    visible = true;
+  void showAbout(final Quest quest) {
     _quest = quest;
     _update();
+    show();
   }
-
-  /// 레이아웃을 숨깁니다.
-  void hide() => visible = false;
 
   /// 리더보드를 보여줍니다.
   void showLeaderBoard() {
@@ -42,5 +40,8 @@ class QuestAboutController extends IController {
     cLocation = _quest.location;
     cTitle = _quest.title;
   }
+
+  @override
+  Offset get defaultOffset => SliderAnimationOffset.bottomLayout;
 
 }
