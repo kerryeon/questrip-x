@@ -36,7 +36,7 @@ class QuestAboutController extends IController with SlideAnimation {
     cTitle = _quest.title;
     cDescription = _quest.description;
     cLocation = _quest.location;
-    cTitle = _quest.title;
+    cDateEnd = (_quest.dateEnd / 1000000).round().toString();
   }
 
   @override

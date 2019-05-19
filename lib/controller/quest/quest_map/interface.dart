@@ -1,14 +1,14 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart';
+import 'package:questrip/controller/lib.dart';
 import 'package:questrip/controller/quest/quest_about.dart';
 import 'package:questrip/controller/quest/quest_menu.dart';
+import 'package:questrip/data/marker.dart';
 import 'package:questrip/data/quest.dart';
 import 'package:questrip/lib.dart';
-import 'package:questrip/controller/lib.dart';
-import 'package:questrip/controller/quest/quest_map_marker.dart';
-import 'package:questrip/net/client.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 
@@ -16,7 +16,7 @@ import 'package:questrip/widget/common/alert.dart';
 ///
 /// 담당자: 김호
 ///
-class QuestMapController extends IController {
+abstract class IQuestMapController extends IController {
 
   final QuestAboutController questAboutController = QuestAboutController();
   final QuestMenuController questMenuController = QuestMenuController();
@@ -30,7 +30,8 @@ class QuestMapController extends IController {
   /// 마커 목록입니다.
   final Set<Marker> markers = {};
 
-  List<Quest> quests;
+  @protected
+  List<IMarker> markersData;
 
   /// 맵뷰를 초기화합니다.
   void initMap(
@@ -39,16 +40,15 @@ class QuestMapController extends IController {
     _controller.complete(controller);
     _setState.complete(setState);
     _tryShowMyLocation();
-    _tryLoadQuests();
   }
 
   /// 마커를 다시 그립니다.
   void updateMarkers() async {
-    if (quests == null) return;
+    if (markersData == null) return;
     // 기존의 마커는 모두 지웁니다.
     _removeMarkers();
     // 새로 그립니다.
-    (await _questsInCamera).forEach(_addMarker);
+    (await _whereInCamera).forEach(_addMarker);
     // 화면을 갱신합니다.
     _updateState();
   }
@@ -82,43 +82,26 @@ class QuestMapController extends IController {
   void _tryShowMyLocation() async {
     final LocationData currentLocation = await R.location.getLocation();
     final CameraPosition currentPosition = CameraPosition(
-        target: LatLng(currentLocation.latitude, currentLocation.longitude),
-        zoom: _ZOOM_DISTANCE,
+      target: LatLng(currentLocation.latitude, currentLocation.longitude),
+      zoom: _ZOOM_DISTANCE,
     );
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(currentPosition));
   }
 
-  /// 퀘스트 목록을 불러옵니다.
-  /// 만약 실패하면, 그 이유를 알려줍니다.
-  void _tryLoadQuests() async => request(
-      R.uri.meQuest, _onLoadQuests,
-      (e) => dialogFailed(context, e)
-  );
-
-  /// 퀘스트 목록을 성공적으로 불러온 경우의 이벤트입니다.
-  void _onLoadQuests(final Map<String, Object> response) async {
-    final List<Object> raw = response['list'];
-    quests = raw.map((q) => Quest.fromJSON(q)).toList();
-    quests.sort(Quest.compareRating);
-    updateMarkers();
-    _tryShowMyLocation();
-  }
-
   /// 현재 화면에 보일 수 있는 퀘스트를 선출합니다.
-  Future<Iterable<Quest>> get _questsInCamera async {
+  Future<Iterable<IMarker>> get _whereInCamera async {
     final GoogleMapController controller = await _controller.future;
     // 현재 화면 영역 (사각형)을 구합니다.
     final LatLngBounds bounds = await controller.getVisibleRegion();
     // 현재 화면에 속하는 퀘스트를 추출합니다.
     // 그중, 인기가 높은 몇몇 퀘스트만 추출합니다.
-    return quests.where((q) => bounds.contains(q.latLng)).take(_MAX_VIEW);
+    return markersData.where((q) => bounds.contains(q.latLng)).take(_MAX_VIEW);
   }
 
   /// 마커를 하나 그립니다.
-  void _addMarker(final Quest quest) async =>
-      // TODO to be implemented.
-      markers.add(QuestMapMarker.fromQuest(quest, _onTouchMarker));
+  void _addMarker(final IMarker marker) async =>
+      markers.add(marker.toMarker(_onTouchMarker));
 
   /// 마커를 모두 지웁니다.
   void _removeMarkers() => markers.clear();
@@ -131,9 +114,10 @@ class QuestMapController extends IController {
 
   /// 마커를 터치한 경우의 이벤트입니다.
   /// 메뉴창을 닫고, 퀘스트 설명창을 보여줍니다.
-  void _onTouchMarker(final Quest quest) {
+  void _onTouchMarker(final IMarker marker) {
     _closeMenu();
-    questAboutController.showAbout(quest);
+    if (marker is Quest) questAboutController.showAbout(marker);
+    // TODO to be implemented.
   }
 
   /// 메뉴창을 닫습니다.

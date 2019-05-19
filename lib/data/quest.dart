@@ -1,11 +1,12 @@
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
+import 'package:questrip/data/marker.dart';
 
 /// 퀘스트에 대한 자세한 정보를 담고 있는 클래스입니다.
 ///
 /// 담당자: 김호
 ///
-class Quest {
+class Quest with IMarker {
 
   final int id;
   final String title;
@@ -18,7 +19,7 @@ class Quest {
   final int rating;
   final bool isCleared;
 
-  const Quest({
+  Quest({
     @required this.id,
     @required this.title,
     @required this.description,
@@ -55,7 +56,19 @@ class Quest {
   );
 
   /// 위경도 정보를 반환합니다.
+  @override
   LatLng get latLng => LatLng(latitude, longitude);
+
+  /// 마커의 제목을 반환합니다.
+  @override
+  String get markerName => this.title;
+
+  /// 마커에 아이콘을 부여합니다.
+  @override
+  BitmapDescriptor get markerIcon {
+    // TODO to be implemented.
+    return null;
+  }
 
   /// [a]와 [b]의 인기도를 비교합니다.
   /// [b]가 더 인기있으면 +를 반환합니다.

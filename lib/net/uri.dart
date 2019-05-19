@@ -20,6 +20,9 @@ class URI {
   // about leader_board
   String get meBoard => "/me/board";
 
+  // shop
+  String get shopList => "/shop/list";
+
   // External
   String get address => _root + "/address.html";
   String get pathImage => _root + "/u/img/";

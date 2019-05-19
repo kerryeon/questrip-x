@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:questrip/controller/quest/quest_map.dart';
+import 'package:questrip/controller/quest/quest_map/quest_map.dart';
 import 'package:questrip/widget/quest/quest_about.dart';
 import 'package:questrip/widget/quest/quest_menu.dart';
 
