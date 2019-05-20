@@ -4,6 +4,7 @@ import 'package:questrip/controller/quest/quest_map/quest_map.dart';
 import 'package:questrip/widget/quest/quest_about.dart';
 import 'package:questrip/widget/quest/quest_menu.dart';
 import 'package:questrip/widget/shop/shop_about.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 메인화면을 담당하는 클래스입니다.
 /// 배경에는 지도를 띄워 퀘스트 마커를 보이게 합니다.
@@ -50,19 +51,16 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
                     child: FloatingActionButton(
                       child: Icon(Icons.airplanemode_active),
                       onPressed: _controller.switchMode,
+                      heroTag: R.string.floating_action_button_menu_tag
                     ),
                   ),
 
                   // 메뉴 버튼
                   Container(
-                      margin: const EdgeInsets.only(top: 32, left: 16,),
-                      decoration: BoxDecoration(
-                        color: Colors.amber,
-                        borderRadius: new BorderRadius.all(Radius.circular(30.0)),
-                      ),
-                      child: IconButton(
-                        padding:EdgeInsets.all(12.0),
-                        icon: const Icon(Icons.menu),
+                      margin: EdgeInsets.all(16.0),
+                      alignment: Alignment.topLeft,
+                      child: FloatingActionButton(
+                        child: Icon(Icons.menu),
                         onPressed: _controller.openMenu,
                       )
                   ),
