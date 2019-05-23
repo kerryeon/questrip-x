@@ -49,7 +49,8 @@ class QuestMapState extends State<QuestMapWidget> with TickerProviderStateMixin 
                     margin: EdgeInsets.all(16.0),
                     alignment: Alignment.bottomRight,
                     child: FloatingActionButton(
-                      child: Icon(Icons.airplanemode_active),
+                      //child: Icon(Icons.airplanemode_active),
+                        child: Icon(Icons.shopping_cart),
                       onPressed: _controller.switchMode,
                       heroTag: R.string.floating_action_button_menu_tag
                     ),

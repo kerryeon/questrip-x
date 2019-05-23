@@ -96,6 +96,23 @@ class _QuestAboutState extends State<QuestAboutWidget> {
 
               ),
             ),
+            /// 퀘스트 적립 포인트
+            Container(
+              alignment: Alignment.topRight,
+              margin: const EdgeInsets.only(
+                top: 8,
+                right: 16,
+                bottom: 8,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: <Widget>[
+                  Icon(Icons.monetization_on,),
+                  Text( " 5000원",),
+                ],
+              ),
+            ),
             /// 리더보드 버튼
             Container(
                 margin: const EdgeInsets.only(bottom: 24, left: 24, right: 24),
