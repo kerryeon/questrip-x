@@ -9,6 +9,7 @@ import 'package:questrip/widget/intro/terms.dart';
 import 'package:questrip/widget/leader_board/full_screen.dart';
 import 'package:questrip/widget/quest/quest_map.dart';
 import 'package:questrip/widget/quest/quest_view.dart';
+import 'package:questrip/widget/shop/shop_about.dart';
 
 /// 위젯 리소스를 관리합니다.
 ///

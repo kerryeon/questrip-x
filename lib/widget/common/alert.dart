@@ -1,7 +1,6 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/net/lib.dart';
 import 'package:questrip/res/lib.dart';
@@ -68,13 +67,11 @@ Future<bool> dialogExit(final BuildContext context) async {
 }
 
 /// Toast 메세지를 띄웁니다.
-void toast(String msgId) {
-  Fluttertoast.showToast(
-    msg: msgId,
-    toastLength: Toast.LENGTH_LONG,
-    backgroundColor: Colors.grey,
-  );
-}
+void toast(final BuildContext context, final String msg) async =>
+    Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(msg),
+));
 
 /// 확인 버튼 하나있는 간단한 알림창을 띄웁니다.
 void _dialogSimple(final BuildContext context, final String msg,

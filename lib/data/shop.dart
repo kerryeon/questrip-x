@@ -2,70 +2,57 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:meta/meta.dart';
 import 'package:questrip/data/marker.dart';
 
-/// 퀘스트에 대한 자세한 정보를 담고 있는 클래스입니다.
+/// 상점에 대한 정보를 담고 있는 클래스입니다.
 ///
 /// 담당자: 김호
 ///
-class Quest with IMarker {
+class Shop with IMarker {
 
   final int id;
-  final String title;
+  final String name;
   final String description;
+  final int seller;
   final String location;
   final double latitude;
   final double longitude;
-  final int dateBegin;
-  final int dateEnd;
-  final int reward;
-  final int rating;
-  final bool isCleared;
+  final int rank;
 
-  Quest({
+  Shop({
     @required this.id,
-    @required this.title,
+    @required this.name,
     @required this.description,
+    @required this.seller,
     @required this.location,
     @required this.latitude,
     @required this.longitude,
-    @required this.dateBegin,
-    @required this.dateEnd,
-    @required this.reward,
-    @required this.rating,
-    @required this.isCleared,
+    @required this.rank,
   })  : assert(id != null),
-        assert(title != null),
+        assert(name != null),
         assert(description != null),
+        assert(seller != null),
         assert(location != null),
         assert(latitude != null),
         assert(longitude != null),
-        assert(dateBegin != null),
-        assert(dateEnd != null),
-        assert(reward != null),
-        assert(rating != null),
-        assert(isCleared != null);
+        assert(rank != null);
 
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
-  static Quest fromJSON(Map<String, Object> response) => Quest(
+  static Shop fromJSON(Map<String, Object> response) => Shop(
     id: response['_id'],
-    title: response['title'],
+    name: response['name'],
     description: response['description'],
+    seller: response['seller'],
     location: response['location'],
     latitude: response['latitude'],
     longitude: response['longitude'],
-    dateBegin: response['date_begin'],
-    dateEnd: response['date_end'],
-    reward: response['reward'],
-    rating: response['rating'],
-    isCleared: response['is_cleared'],
+    rank: response['rank'],
   );
 
   /// 위경도 정보를 반환합니다.
-  @override
   LatLng get latLng => LatLng(latitude, longitude);
 
   /// 마커의 제목을 반환합니다.
   @override
-  String get markerName => this.title;
+  String get markerName => this.name;
 
   /// 마커에 아이콘을 부여합니다.
   @override
@@ -74,8 +61,8 @@ class Quest with IMarker {
     return null;
   }
 
-  /// [a]와 [b]의 인기도를 비교합니다.
-  /// [b]가 더 인기있으면 +를 반환합니다.
-  static int compareRating(Quest a, Quest b) => b.rating - a.rating;
+  /// [a]와 [b]의 판매자 등급을 비교합니다.
+  /// [b]가 등급이 더 높다면 +를 반환합니다.
+  static int compareRank(Shop a, Shop b) => b.rank - a.rank;
 
 }
