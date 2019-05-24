@@ -127,7 +127,7 @@ class _ProductCard extends StatelessWidget {
   }
 }
 
-/// 메인화면의 상점 정보 표시합니다.
+/// 메인화면의 상점 정보를 표시합니다.
 /// 상호명, 물품 목록이 나열됩니다.
 ///
 /// 담당자: 이동욱, 김호
@@ -166,13 +166,29 @@ class _ShopAboutState extends State<ShopAboutWidget> {
                 )
             ),
 
-            /// 물품 목록
+            // 물품 목록
             Container(
                 height: 500,
                 child: ListView(
                   children: (_controller.products ?? [])
                       .map((product) => _ProductCard(product))
                       .toList(),
+                )
+            ),
+
+            // 결제 버튼
+            Container(
+                margin: const EdgeInsets.only(bottom: 24, left: 24, right: 24),
+                child: RaisedButton(
+                  padding: const EdgeInsets.only(top: 8, bottom: 8),
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),
+                  onPressed: _controller.gotoOrder,
+                  color: Colors.amber[200],
+                  child: Icon(
+                    Icons.credit_card,
+                    size: 40.0,
+                    color: Colors.black87,
+                  ),
                 )
             ),
 

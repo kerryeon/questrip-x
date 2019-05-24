@@ -28,6 +28,13 @@ class ShopAboutController extends IController with SlideAnimation {
     show();
   }
 
+  /// 결제 진행화면으로 이동합니다.
+  void gotoOrder() async {
+    // 현재 창은 숨깁니다.
+    hide();
+    Navigator.pushNamed(context, R.widget.shopPayment);
+  }
+
   /// 주어진 정보를 토대로 화면을 갱신합니다.
   void _update() async {
     cName = _shop.name;
