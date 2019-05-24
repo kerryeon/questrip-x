@@ -61,8 +61,15 @@ class S implements WidgetsLocalizations {
   String get permission_location => "Location";
   String get quest_map_button_menu => "menu";
   String get shop_field_title => "Shop";
+  String get shop_payment_button_order => "Order";
+  String get shop_payment_field_agree => "I have confirmed the order above and agree to the payment.";
+  String get shop_payment_field_loading => "Payment is in progress...\nPlease wait a moment...";
+  String get shop_payment_field_ordered => "Payment has been made!\nThank you for using!";
+  String get shop_payment_field_title => "Order/Payment";
+  String get shop_payment_field_title_address => "Select destination";
+  String get shop_payment_field_title_pay_method => "Select payment method";
+  String get shop_payment_field_total_price => "Total price";
   String get shop_unit_money => "won";
-  String get shop_payment_lading => "Payment is in progress...\nPlease wait a moment...";
   String get sign_up_alert_address => "Please check your address.";
   String get sign_up_alert_birthday => "Please check your date of birth.";
   String get sign_up_alert_nickname => "Please check your nickname.";
@@ -99,9 +106,13 @@ class $ko_KR extends S {
   @override
   String get common_alert_choose_no => "아니오";
   @override
+  String get shop_payment_field_total_price => "총 결제금액";
+  @override
   String get terms_field_terms => "신체 포기 각서\n본인은 Questrip 운영자에게 신체의 모든 지위를 박탈당하는 데에 동의합니다.";
   @override
   String get sign_up_field_address_detail => "상세주소";
+  @override
+  String get shop_payment_field_ordered => "결제 되었습니다!\n이용해 주셔서 감사합니다!";
   @override
   String get common_alert_title => "알림";
   @override
@@ -120,6 +131,8 @@ class $ko_KR extends S {
   String get common_failure_internal => "죄송합니다. 잠시 후 다시 시도해주세요.";
   @override
   String get view_button_submit => "도전";
+  @override
+  String get shop_payment_field_title_address => "배송지 선택";
   @override
   String get leader_board_upload_gallery => "앨범에서 사진 가져오기";
   @override
@@ -173,7 +186,13 @@ class $ko_KR extends S {
   @override
   String get config_alert_logout => "로그아웃 하시겠습니까?";
   @override
+  String get shop_payment_button_order => "결제";
+  @override
+  String get shop_payment_field_loading => "결제 진행중입니다...\n잠시만 기다려주세요...";
+  @override
   String get terms_alert_rejected => "죄송합니다. 내부 사정으로 인하여 일시적으로 회원가입을 진행할 수 없습니다.";
+  @override
+  String get shop_payment_field_title_pay_method => "결제수단 선택";
   @override
   String get terms_button_agree => "상기 약관에 동의합니다.";
   @override
@@ -187,7 +206,11 @@ class $ko_KR extends S {
   @override
   String get leader_board_report_papering => "도배";
   @override
+  String get shop_payment_field_agree => "위 주문 내용을 확인하였으며, 결제에 동의합니다.";
+  @override
   String get sign_up_field_welcome => "환영합니다!";
+  @override
+  String get shop_payment_field_title => "주문/결제";
   @override
   String get config_alert_sign_off => "정말 Questrip 을 회원탈퇴 하시겠습니까? 탈퇴한 계정은 복구하실 수 없습니다.";
   @override
@@ -228,8 +251,6 @@ class $ko_KR extends S {
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
-  @override
-  String get shop_payment_lading => "결제 진행중입니다...\n잠시만 기다려주세요...";
   @override
   String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
   @override

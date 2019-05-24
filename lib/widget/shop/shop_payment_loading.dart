@@ -1,53 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/res/lib.dart';
 
-class ShopPaymentLoading extends StatefulWidget{
-  @override
-  _ShopPaymentLoadingState createState() =>_ShopPaymentLoadingState();
-}
+/// 결제가 진행중일 때 표시하는 화면입니다.
+/// 결제가 완료될 때까지 사용자의 입력을 제한합니다.
+///
+/// 담당자: 정홍기
+///
+class _ShopPaymentLoadingState extends State<ShopPaymentLoading> {
 
-class _ShopPaymentLoadingState extends State<ShopPaymentLoading>{
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: new Stack(
+      child: Stack(
         children: <Widget>[
-          new Container(
+          Container(
             alignment: AlignmentDirectional.center,
-            child: new Container(
-              decoration: new BoxDecoration(
+            child: Container(
+              decoration: BoxDecoration(
                   color: Colors.amber[500],
-                  borderRadius: new BorderRadius.circular(10.0)
+                  borderRadius: BorderRadius.circular(10.0)
               ),
               width: 300.0,
               height: 200.0,
               alignment: AlignmentDirectional.center,
-              child: new Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  new Center(
-                    child: new SizedBox(
+
+                  // 로딩 애니메이션
+                  Center(
+                    child: SizedBox(
                       height: 50.0,
                       width: 50.0,
-                      child: new CircularProgressIndicator(
-                        value: null,
+                      child: CircularProgressIndicator(
                         strokeWidth: 7.0,
                       ),
                     ),
                   ),
-                  new Container(
+
+                  // 결제중 메세지
+                  Container(
                     margin: const EdgeInsets.only(top: 25.0),
-                    child: new Center(
-                      child: new Text(
-                        R.string.shop_payment_lading,
-                        style: new TextStyle(
+                    child: Center(
+                      child: Text(
+                        R.string.shop_payment_field_loading,
+                        style: TextStyle(
                             fontSize: 17.0,
-                            color: Colors.white
+                            color: Colors.white,
                         ),
                       ),
                     ),
                   ),
+
                 ],
               ),
             ),
@@ -56,4 +61,12 @@ class _ShopPaymentLoadingState extends State<ShopPaymentLoading>{
       ),
     );
   }
+
+}
+
+class ShopPaymentLoading extends StatefulWidget {
+
+  @override
+  _ShopPaymentLoadingState createState() =>_ShopPaymentLoadingState();
+
 }
