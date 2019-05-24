@@ -29,8 +29,7 @@ mixin IQuestMapQuestsController on IQuestMapController {
   }
 
   /// 퀘스트 목록 보기 모드면 true 를 반환합니다.
-  @protected
-  bool isModeQuests() => markersData == quests || markersData == null;
+  bool get isModeQuests => markersData == quests || markersData == null;
 
   /// 퀘스트 목록 보기 모드로 전환합니다.
   @protected

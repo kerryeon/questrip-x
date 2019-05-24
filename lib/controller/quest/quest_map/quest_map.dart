@@ -28,7 +28,7 @@ class QuestMapController extends IQuestMapController
 
   /// 퀘스트, 상점 목록 보기를 서로 전환합니다.
   void switchMode() async {
-    if (isModeQuests()) showShops();
+    if (isModeQuests) showShops();
     else showQuests();
     // 마커를 갱신합니다.
     updateMarkers();

@@ -21,6 +21,7 @@
   "terms_alert_welcome": "Congratulations! All Questrip features are now available.",
 
   "quest_map_field_period": "${month} ${day}, ${year}",
+  "quest_map_button_menu": "menu",
 
   "view_field_title": "LeaderBoard",
   "view_field_report": "Report",

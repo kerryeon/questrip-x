@@ -19,6 +19,7 @@ class _ProductCard extends StatelessWidget {
       margin: const EdgeInsets.only(
         left: 16.0,
         right: 16.0,
+        bottom: 16.0,
       ),
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/quest/quest_about.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 해당 화면에서 사용하는 글자 템플릿입니다.
 Container defaultText(text, { margin, controller, final fontSize = 20.0, textAlign}) =>
@@ -68,14 +69,14 @@ class _QuestAboutState extends State<QuestAboutWidget> {
                 /// 위치
                 defaultText(
                     _controller.cLocation,
-                    margin: const EdgeInsets.only(bottom: 8, right:24),
+                    margin: const EdgeInsets.only(bottom: 8, right: 24),
                     fontSize: 14.0,
                     textAlign: TextAlign.right
                 ),
                 /// 기간
                 defaultText(
                   _controller.cDateEnd,
-                  margin: const EdgeInsets.only(bottom: 8),
+                  margin: const EdgeInsets.only(bottom: 8, right: 12),
                     fontSize: 14.0,
                     textAlign: TextAlign.right
                 ),
@@ -93,7 +94,6 @@ class _QuestAboutState extends State<QuestAboutWidget> {
                   _controller.cDescription,
                   fontSize: 16.0,
                   textAlign: TextAlign.center
-
               ),
             ),
             /// 퀘스트 적립 포인트
@@ -108,8 +108,8 @@ class _QuestAboutState extends State<QuestAboutWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  Icon(Icons.monetization_on,),
-                  Text( " 5000원",),
+                  Icon(Icons.monetization_on),
+                  Text(' ${_controller.cReward}${R.string.shop_unit_money}'),
                 ],
               ),
             ),

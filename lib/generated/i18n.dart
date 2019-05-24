@@ -43,7 +43,6 @@ class S implements WidgetsLocalizations {
   String get config_button_sign_off => "Withdrawal";
   String get config_field_title => "Config";
   String get debug_todo => "To be implemented.";
-  String get floating_action_button_menu_tag => "menu";
   String get intro_on_failure_canceled => "You should login to use Questrip.";
   String get leader_board_date => "Latest";
   String get leader_board_likes => "Likes";
@@ -60,6 +59,7 @@ class S implements WidgetsLocalizations {
   String get permission_denied => "Sorry, but you must accept permissions for using Questrip.";
   String get permission_internet => "Internet";
   String get permission_location => "Location";
+  String get quest_map_button_menu => "menu";
   String get shop_field_title => "Shop";
   String get shop_unit_money => "won";
   String get sign_up_alert_address => "Please check your address.";
@@ -131,6 +131,8 @@ class $ko_KR extends S {
   String get leader_board_rating => "추천순";
   @override
   String get view_alert_reported => "신고가 접수되었습니다";
+  @override
+  String get quest_map_button_menu => "메뉴";
   @override
   String get shop_unit_money => "원";
   @override
@@ -225,8 +227,6 @@ class $ko_KR extends S {
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
-  @override
-  String get floating_action_button_menu_tag => "메뉴";
   @override
   String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
   @override

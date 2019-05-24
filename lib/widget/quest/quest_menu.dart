@@ -26,7 +26,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                /// 사용자 닉네임
+                // 사용자 닉네임
                 Container(
                   padding: const EdgeInsets.only(top: 104.0, left: 24.0, right: 16.0),
                   decoration: BoxDecoration(
@@ -41,7 +41,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
                     style: TextStyle(fontSize: 25.0),
                   ),
                 ),
-                /// 사용자 집주소
+                // 사용자 집주소
                 Container(
                   padding: const EdgeInsets.only(
                     top: 8.0, bottom: 16.0,
@@ -54,7 +54,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
                     style: TextStyle(fontSize: 15.0),
                   ),
                 ),
-                /// 내가 도전한 퀘스트
+                // 내가 도전한 퀘스트
                 Container(
                   padding: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
                   child: RaisedButton(
@@ -77,7 +77,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
                     color: Colors.transparent,
                   ),
                 ),
-                /// 환경설정
+                // 환경설정
                 Container(
                   padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                   child: RaisedButton(
@@ -102,7 +102,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
                 ),
               ],
             ),
-            ///적립금
+            // 적립금
             Container(
               alignment: Alignment.bottomRight,
               padding: const EdgeInsets.all(16),
@@ -111,7 +111,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Icon(Icons.monetization_on),
-                  Text(" 10000원"),
+                  Text(' ${R.account.savings}${R.string.shop_unit_money}'),
                 ],
               ),
             ),

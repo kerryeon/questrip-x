@@ -16,6 +16,7 @@ class Quest with IMarker {
   final double longitude;
   final int dateBegin;
   final int dateEnd;
+  final int reward;
   final int rating;
   final bool isCleared;
 
@@ -28,6 +29,7 @@ class Quest with IMarker {
     @required this.longitude,
     @required this.dateBegin,
     @required this.dateEnd,
+    @required this.reward,
     @required this.rating,
     @required this.isCleared,
   })  : assert(id != null),
@@ -38,21 +40,23 @@ class Quest with IMarker {
         assert(longitude != null),
         assert(dateBegin != null),
         assert(dateEnd != null),
+        assert(reward != null),
         assert(rating != null),
         assert(isCleared != null);
 
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
   static Quest fromJSON(Map<String, Object> response) => Quest(
-      id: response['_id'],
-      title: response['title'],
-      description: response['description'],
-      location: response['location'],
-      latitude: response['latitude'],
-      longitude: response['longitude'],
-      dateBegin: response['date_begin'],
-      dateEnd: response['date_end'],
-      rating: response['rating'],
-      isCleared: response['is_cleared'],
+    id: response['_id'],
+    title: response['title'],
+    description: response['description'],
+    location: response['location'],
+    latitude: response['latitude'],
+    longitude: response['longitude'],
+    dateBegin: response['date_begin'],
+    dateEnd: response['date_end'],
+    reward: response['reward'],
+    rating: response['rating'],
+    isCleared: response['is_cleared'],
   );
 
   /// 위경도 정보를 반환합니다.

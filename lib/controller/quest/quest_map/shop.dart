@@ -27,7 +27,7 @@ mixin IQuestMapShopsController on IQuestMapController {
 
   /// 상점 목록 보기 모드면 true 를 반환합니다.
   @protected
-  bool isModeShops() => markersData == shops;
+  bool get isModeShops => markersData == shops;
 
   /// 상점 목록 보기 모드로 전환합니다.
   @protected

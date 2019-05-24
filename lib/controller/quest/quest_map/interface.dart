@@ -26,7 +26,7 @@ abstract class IQuestMapController extends IController {
 
   static const double _ZOOM_RATING = 7.25;
   static const double _ZOOM_DISTANCE = 8.25;
-  static const int    _MAX_VIEW = 10;
+  static const int    _MAX_VIEW = 8;
 
   final Completer<GoogleMapController> _controller = Completer();
   final Completer<void Function(Runnable)> _setState = Completer();
