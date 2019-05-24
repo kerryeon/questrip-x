@@ -20,7 +20,10 @@ abstract class ISelectCard<T> extends StatelessWidget {
 
   final T data;
 
-  ISelectCard(this.data);
+  @protected
+  final void Function(T) _onPressed;
+
+  ISelectCard(this.data, this._onPressed);
 
   @protected
   List<Widget> get body;
@@ -41,9 +44,12 @@ abstract class ISelectCard<T> extends StatelessWidget {
             borderRadius: const BorderRadius.all(Radius.circular(8.0),
             ),
           ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: body,
+          child: GestureDetector(
+              onTap: () => _onPressed(data),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: body,
+              )
           )
       ),
     );

@@ -91,6 +91,7 @@ class SignUpController extends IController {
       birthday: _calendarController.dateTime2int(_mBirthday),
       address: await _tryGetText(cAddress, InputCode.Address, minLength: 4),
       addressDetail: await _tryGetText(cAddressDetail, InputCode.AddressDetail, maxLength: 64),
+      savings: 0,
     );
   }
 

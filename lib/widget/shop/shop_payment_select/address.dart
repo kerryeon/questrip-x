@@ -11,7 +11,7 @@ import 'package:questrip/widget/shop/shop_payment_select/interface.dart';
 ///
 class CardAddress extends ISelectCard<CardAddressContent> {
 
-  CardAddress(card) : super(card);
+  CardAddress(card, _onPressed) : super(card, _onPressed);
 
   @override
   List<Widget> get body => <Widget> [

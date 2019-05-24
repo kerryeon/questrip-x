@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:questrip/controller/shop/shop_payment_select/address.dart';
+import 'package:questrip/controller/shop/shop_payment_select/pay_method.dart';
 import 'package:questrip/data/shop_payment/interface.dart';
 import 'package:questrip/data/shop_payment/pay_method.dart';
 import 'package:questrip/res/lib.dart';
@@ -11,7 +11,7 @@ import 'package:questrip/widget/shop/shop_payment_select/interface.dart';
 ///
 class CardPayMethod extends ISelectCard<CardPayMethodContent> {
 
-  CardPayMethod(card) : super(card);
+  CardPayMethod(card, _onPressed) : super(card, _onPressed);
 
   @override
   List<Widget> get body => <Widget> [
@@ -45,7 +45,7 @@ class CardPayMethod extends ISelectCard<CardPayMethodContent> {
 ///
 class ShopPaymentSelectPayMethodWidget extends StatefulWidget {
 
-  final ShopPaymentSelectAddressController _controller = ShopPaymentSelectAddressController();
+  final ShopPaymentSelectPayMethodController _controller = ShopPaymentSelectPayMethodController();
 
   @override
   State<ShopPaymentSelectPayMethodWidget> createState() =>

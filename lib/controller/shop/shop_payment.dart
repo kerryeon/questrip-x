@@ -3,6 +3,7 @@ import 'package:questrip/controller/lib.dart';
 import 'package:questrip/data/shop_payment/address.dart';
 import 'package:questrip/data/shop_payment/interface.dart';
 import 'package:questrip/data/shop_payment/pay_method.dart';
+import 'package:questrip/lib.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
 import 'package:questrip/widget/shop/shop_payment_loading.dart';
@@ -14,8 +15,8 @@ import 'package:questrip/widget/shop/shop_payment_loading.dart';
 class ShopPaymentController extends IController {
 
   // 선택 카드 목록
-  final CardAddressContent _cardAddress = CardAddressContent("학교", "경상남도 진주시 진주대로 501 경상대학교", "30동 310호");
-  final CardPayMethodContent _cardPayMethod = CardPayMethodContent("신용카드", "NH농협 5353-1511-1123-1234");
+  static CardAddressContent cardAddress;
+  static CardPayMethodContent cardPayMethod;
 
   /// TODO to be implemented.
   /// 총 주문금액을 반환합니다.
@@ -26,9 +27,17 @@ class ShopPaymentController extends IController {
 
   /// 선택 카드 목록을 반환합니다.
   List<ISelectCardContent> get cards => [
-    _cardAddress,
-    _cardPayMethod,
+    cardAddress.clone(_gotoSelectAddress),
+    cardPayMethod.clone(_gotoSelectPayMethod),
   ];
+
+  /// 객체를 초기화합니다.
+  @override
+  void init(BuildContext context, {void Function(Runnable) setState}) async {
+    super.init(context, setState: setState);
+    cardAddress = (cardAddress ?? CardAddressContent.primary ?? null);
+    cardPayMethod = (cardPayMethod ?? CardPayMethodContent.primary ?? null);
+  }
 
   /// 주문 절차를 진행합니다.
   void tryOrder() async {
@@ -79,5 +88,11 @@ class ShopPaymentController extends IController {
       _onSuccessOrder,
     );
   }
+
+  /// 배송지 선택화면으로 이동합니다.
+  void _gotoSelectAddress(_) => Navigator.pushNamed(context, R.widget.shopSelectAddress);
+
+  /// 결제수단 선택화면으로 이동합니다.
+  void _gotoSelectPayMethod(_) => Navigator.pushNamed(context, R.widget.shopSelectPayMethod);
 
 }

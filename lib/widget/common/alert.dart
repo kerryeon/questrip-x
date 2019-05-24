@@ -11,11 +11,11 @@ import 'package:tuple/tuple.dart';
 /// 담당자: 김호
 
 /// 알림창을 띄웁니다.
-void dialog(final BuildContext context, final String msg,
+void dialog(final BuildContext context, final String msgId,
     { Runnable onConfirm, Runnable onCancel }) {
   onCancel == null
-      ? _dialogSimple(context, msg, onConfirm: onConfirm)
-      : _dialogAsk(context, msg, onConfirm: onConfirm, onCancel: onCancel);
+      ? _dialogSimple(context, msgId, onConfirm: onConfirm)
+      : _dialogAsk(context, msgId, onConfirm: onConfirm, onCancel: onCancel);
 }
 
 /// 여러 선택지가 있는 알림창을 띄웁니다.
