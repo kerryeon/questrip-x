@@ -62,6 +62,7 @@ class S implements WidgetsLocalizations {
   String get quest_map_button_menu => "menu";
   String get shop_field_title => "Shop";
   String get shop_unit_money => "won";
+  String get shop_payment_lading => "Payment is in progress...\nPlease wait a moment...";
   String get sign_up_alert_address => "Please check your address.";
   String get sign_up_alert_birthday => "Please check your date of birth.";
   String get sign_up_alert_nickname => "Please check your nickname.";
@@ -227,6 +228,8 @@ class $ko_KR extends S {
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
+  @override
+  String get shop_payment_lading => "결제 진행중입니다...\n잠시만 기다려주세요...";
   @override
   String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
   @override

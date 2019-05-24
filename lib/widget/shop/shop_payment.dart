@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/shop/shop_payment.dart';
+import 'package:questrip/res/lib.dart';
+import 'package:questrip/widget/shop/shop_payment_loading.dart';
 
 /// 카드 메인 컨텐츠
 class CardMainContents {
@@ -155,8 +157,8 @@ class CardList<T> extends StatelessWidget{
       alignment: Alignment.topCenter,
       child: Column(
         children: <Widget>[
-          for(var i=0; i<card.length; i++)
-            getCardUI(card[i]),
+          getCardUI(card[0]),
+          getCardUI(card[1]),
         ],
       ),
     );
@@ -175,12 +177,27 @@ class ShopPaymentState extends State<ShopPaymentWidget>{
   final ShopPaymentController _controller;
   final String appbar_title;
   final int total_price;
+  bool _loading = false;
 
   // 카드 객체 생성 후 정보를 작성합니다. 필드는 타이틀(title)과 내용(contents)으로 이루어집니다. (title, contents)
   final CardMainContents card1 = CardMainContents("배송지", "경상남도 진주시 진주대로 501 경상대학교 30동 310호");
   final CardMainContents card2 = CardMainContents("결제수단", "NH농협 5353-1511-1123-1234");
 
   ShopPaymentState(this._controller, this.appbar_title, this.total_price);
+
+  void _onLoading() {
+    setState(() {
+      _loading = true;
+      new Future.delayed(new Duration(seconds: 3), _login);
+    });
+  }
+
+
+  Future _login() async{
+    setState((){
+      _loading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -220,7 +237,26 @@ class ShopPaymentState extends State<ShopPaymentWidget>{
                     buttonColor: Colors.amber,
                     child: RaisedButton(
                         key: null,
-                        onPressed: null,
+                        onPressed: () => {
+                          showOverlayLoading(context),
+                          showDialog(
+                              context: context,
+                              builder: (BuildContext) {
+                                return AlertDialog(
+                                  title: Text("알림"),
+                                  content: Text("결제 되었습니다!\n이용해 주셔서 감사합니다!"),
+                                  actions: <Widget>[
+                                    FlatButton(
+                                        onPressed: () => {
+                                          Navigator.pushNamed(context, R.widget.questMap)
+                                        },
+                                        child: Text("확인")
+                                    )
+                                  ],
+                                );
+                              }
+                          )
+                        },
                         elevation: 4.0,
                         shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
                         color: Colors.amber,
@@ -239,5 +275,24 @@ class ShopPaymentState extends State<ShopPaymentWidget>{
         ),
       )
     );
+  }
+
+  showOverlayLoading(BuildContext context) async {
+    OverlayState overlayState = Overlay.of(context);
+    OverlayEntry overlayEntry = OverlayEntry(
+        builder: (context) =>
+            Material(
+              child: Container(
+                  decoration: new BoxDecoration(
+                      color: Color(0xfff2f2f2)
+                  ),
+                  child: _loading ? ShopPaymentLoading() : null
+              ),
+            )
+    );
+    _onLoading();
+    overlayState.insert(overlayEntry);
+    await Future.delayed(Duration(seconds: 3));
+    overlayEntry.remove();
   }
 }

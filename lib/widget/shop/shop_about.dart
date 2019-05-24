@@ -176,6 +176,25 @@ class _ShopAboutState extends State<ShopAboutWidget> {
                 )
             ),
 
+            /// 결제 버튼
+            Container(
+                margin: const EdgeInsets.only(bottom: 24, left: 24, right: 24),
+                child: RaisedButton(
+                  padding: const EdgeInsets.only(top: 8, bottom: 8),
+                  shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(40.0)),
+                  onPressed: () => {
+                  Navigator.pushNamed(context, R.widget.shoppayment)
+
+                  },
+                  color: Colors.amber[200],
+                  child: Icon(
+                    Icons.credit_card,
+                    size:40.0,
+                    color:Colors.black87,
+                  ),
+                )
+            ),
+
           ]
       ),
     );
