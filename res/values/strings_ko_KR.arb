@@ -21,6 +21,7 @@
   "terms_alert_welcome": "축하드립니다! 이제 Questrip 의 모든 기능을 이용하실 수 있습니다.",
 
   "quest_map_field_period": "${year}년 ${month}월 ${day}일까지",
+  "quest_map_button_menu": "메뉴",
 
   "view_field_title": "리더보드",
   "view_field_report": "신고하기",
@@ -59,12 +60,23 @@
   "shop_field_title": "상점",
   "shop_unit_money": "원",
 
+  "shop_about_field_max_value": "최대 ${max}개까지 구매할 수 있습니다.",
+  "shop_payment_field_agree": "위 주문 내용을 확인하였으며, 결제에 동의합니다.",
+  "shop_payment_field_loading": "결제 진행중입니다...\n잠시만 기다려주세요...",
+  "shop_payment_field_ordered": "결제 되었습니다!\n이용해 주셔서 감사합니다!",
+  "shop_payment_field_title": "주문/결제",
+  "shop_payment_field_title_address": "배송지 선택",
+  "shop_payment_field_title_pay_method": "결제수단 선택",
+  "shop_payment_field_total_price": "총 결제금액",
+  "shop_payment_button_order": "결제",
+
   "permission_denied": "죄송합니다. Questrip 을 사용하기 위해선 권한이 필요합니다.",
   "permission_camera": "사진 촬영",
   "permission_location": "위치 정보",
   "permission_internet": "인터넷",
 
   "common_alert_title": "알림",
+  "common_alert_select": "선택",
   "common_alert_confirm": "확인",
   "common_alert_cancel": "취소",
   "common_alert_canceled": "취소하였습니다.",

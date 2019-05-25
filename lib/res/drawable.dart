@@ -14,7 +14,15 @@ class Drawable extends Resource {
   String get marker => _routeSVG('marker');
   String get trophy => _routeSVG('trophy');
 
+  String routeMarkerQuest(final int sector) => sector == 0 ? null :
+      _routePNG(_routeDir('quest', sector.toString()));
+  String routeMarkerShop(final int sector) => sector == 0 ? null :
+      _routePNG(_routeDir('shop', sector.toString()));
+
   String _route(final String route) => 'res/drawable/' + route;
+  String _routePNG(final String route) => _route(route + '.png');
   String _routeSVG(final String route) => _route(route + '.svg');
+
+  String _routeDir(final String dir, final String route) => dir + '/' + route;
 
 }
