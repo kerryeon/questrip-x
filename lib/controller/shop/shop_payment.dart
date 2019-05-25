@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/lib.dart';
+import 'package:questrip/data/product.dart';
 import 'package:questrip/data/shop_payment/address.dart';
 import 'package:questrip/data/shop_payment/interface.dart';
 import 'package:questrip/data/shop_payment/pay_method.dart';
 import 'package:questrip/lib.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
+import 'package:questrip/widget/common/input.dart';
 import 'package:questrip/widget/shop/shop_payment_loading.dart';
 
 /// 결제 진행화면의 동작을 담당합니다.
@@ -18,9 +20,8 @@ class ShopPaymentController extends IController {
   static CardAddressContent cardAddress;
   static CardPayMethodContent cardPayMethod;
 
-  /// TODO to be implemented.
-  /// 총 주문금액을 반환합니다.
-  String get cTotalPrice => formatPrice(45400).toString();
+  /// 구매 목록
+  static List<Product> products;
 
   /// 결제 진행중 레이아웃
   OverlayEntry _overlayEntry;
@@ -46,6 +47,34 @@ class ShopPaymentController extends IController {
     // 주문을 요청합니다.
     _tryOrder();
   }
+
+  /// 선택한 상품의 수량을 조절합니다.
+  /// 0 으로 설정한다면, 목록에서 제거합니다.
+  void editCount(final Product product) => dialogRangeSlider(context,
+    msg: R.string.shop_about_field_max_value(Product.COUNT_MAX.toString()),
+    initValue: product.count,
+    maxValue: Product.COUNT_MAX,
+    onSelect: (count) {
+      // 제외
+      if (count == 0) {
+        products.remove(product);
+        // 구매할 상품이 없다면 결제화면을 빠져나옵니다.
+        if (products.length == 0) {
+          Navigator.pop(context);
+          return;
+        }
+      }
+      // 수량 조절
+      else product.count = count;
+      setState(() {});
+    },
+  );
+
+  /// 총 주문금액을 반환합니다.
+  String get cTotalPrice => formatPrice(products
+      .map((product) => product.totalPrice)
+      .reduce((a, b) => a + b)
+  );
 
   /// 주문이 진행중이라는 창을 띄웁니다.
   OverlayEntry _showOverlayLoading() {

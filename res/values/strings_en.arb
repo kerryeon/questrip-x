@@ -60,6 +60,7 @@
   "shop_field_title": "Shop",
   "shop_unit_money": "won",
 
+  "shop_about_field_max_value": "You can purchase up to ${max}.",
   "shop_payment_field_agree": "I have confirmed the order above and agree to the payment.",
   "shop_payment_field_loading": "Payment is in progress...\nPlease wait a moment...",
   "shop_payment_field_ordered": "Payment has been made!\nThank you for using!",
@@ -75,6 +76,7 @@
   "permission_internet": "Internet",
 
   "common_alert_title": "Notice",
+  "common_alert_select": "Select",
   "common_alert_confirm": "Confirm",
   "common_alert_cancel": "Cancel",
   "common_alert_canceled": "Canceled.",

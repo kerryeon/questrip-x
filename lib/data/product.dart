@@ -14,10 +14,19 @@ class Product {
   final int price;
   final String imagePath;
 
+  /// 최대 구매가능 수량
+  static const int COUNT_MAX = 9;
+
   int count = 0;
+
+  /// 금액과 수량의 곱인 소계를 반환합니다.
+  int get totalPrice => count * price;
 
   /// 가격을 원화로, 단위를 구별하여 문자열로 반환합니다.
   String get cPrice => formatPrice(price);
+
+  /// 총액을 원화로, 단위를 구별하여 문자열로 반환합니다.
+  String get cTotalPrice => formatPrice(totalPrice);
 
   Product({
     @required this.id,
@@ -32,9 +41,6 @@ class Product {
         assert(unit != null),
         assert(price != null),
         assert(imagePath != null);
-
-  /// 가격을 원화로, 단위를 구별하여 문자열로 반환합니다.
-  String get priceWon => formatPrice(price).toString();
 
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
   static Product fromJSON(Map<String, Object> response) => Product(
