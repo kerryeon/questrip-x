@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:meta/meta.dart';
 import 'package:questrip/data/marker.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 상점에 대한 정보를 담고 있는 클래스입니다.
 ///
@@ -15,6 +16,7 @@ class Shop with IMarker {
   final String location;
   final double latitude;
   final double longitude;
+  final int sector;
   final int rank;
 
   Shop({
@@ -25,6 +27,7 @@ class Shop with IMarker {
     @required this.location,
     @required this.latitude,
     @required this.longitude,
+    @required this.sector,
     @required this.rank,
   })  : assert(id != null),
         assert(name != null),
@@ -33,6 +36,7 @@ class Shop with IMarker {
         assert(location != null),
         assert(latitude != null),
         assert(longitude != null),
+        assert(sector != null),
         assert(rank != null);
 
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
@@ -44,6 +48,7 @@ class Shop with IMarker {
     location: response['location'],
     latitude: response['latitude'],
     longitude: response['longitude'],
+    sector: response['sector'],
     rank: response['rank'],
   );
 
@@ -56,10 +61,7 @@ class Shop with IMarker {
 
   /// 마커에 아이콘을 부여합니다.
   @override
-  BitmapDescriptor get markerIcon {
-    // TODO to be implemented.
-    return null;
-  }
+  String get markerIcon => R.drawable.routeMarkerShop(sector);
 
   /// [a]와 [b]의 판매자 등급을 비교합니다.
   /// [b]가 등급이 더 높다면 +를 반환합니다.

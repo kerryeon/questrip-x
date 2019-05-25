@@ -106,7 +106,7 @@ abstract class IQuestMapController extends IController {
 
   /// 마커를 하나 그립니다.
   void _addMarker(final IMarker marker) async =>
-      markers.add(marker.toMarker(_onTouchMarker));
+      markers.add(await marker.toMarker(_onTouchMarker));
 
   /// 마커를 모두 지웁니다.
   void _removeMarkers() => markers.clear();

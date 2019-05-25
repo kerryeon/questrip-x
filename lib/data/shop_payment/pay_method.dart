@@ -8,11 +8,30 @@ import 'package:questrip/widget/shop/shop_payment_select/pay_method.dart';
 ///
 class CardPayMethodContent with ISelectCardContent {
 
-  String method;
-  String info;
+  final int id;
 
-  CardPayMethodContent(this.method, this.info);
+  final String method;
+  final String info;
 
-  Widget createUI() => CardPayMethod(this);
+  final void Function(CardPayMethodContent) _onPressed;
+
+  // TODO to be implemented.
+  static List<CardPayMethodContent> contents = [
+    CardPayMethodContent(0, "신용카드", "NH농협 5353-1511-1123-1234", null),
+    CardPayMethodContent(1, "무통장입금", "경남은행 700-21-0011532", null),
+  ];
+
+  /// 사용자가 자주 사용하는 카드입니다.
+  static CardPayMethodContent primary = contents[0];
+
+  const CardPayMethodContent(this.id, this.method, this.info, this._onPressed);
+
+  /// 터치 이벤트를 추가한 새로운 객체를 생성합니다.
+  CardPayMethodContent clone(_onPressed) => CardPayMethodContent(
+    this.id, this.method, this.info, _onPressed,
+  );
+
+  @override
+  Widget createUI() => CardPayMethod(this, _onPressed);
 
 }

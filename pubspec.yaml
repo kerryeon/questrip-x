@@ -1,7 +1,7 @@
 name: questrip
 description: SW Team [12] LevelUp
 
-version: 0.1.0+1
+version: 0.1.1
 
 environment:
   sdk: ">=2.2.0 <3.0.0"
@@ -33,6 +33,8 @@ flutter:
 
   assets:
     - res/drawable/
+    - res/drawable/quest/
+    - res/drawable/shop/
     - res/values/
 
   # example:

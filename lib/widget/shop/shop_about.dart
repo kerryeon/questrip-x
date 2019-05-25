@@ -9,9 +9,11 @@ import 'package:questrip/res/lib.dart';
 ///
 class _ProductCard extends StatelessWidget {
 
+  final ShopAboutController _controller;
+
   final Product product;
 
-  _ProductCard(this.product);
+  _ProductCard(this._controller, this.product);
 
   @override
   Widget build(BuildContext context) {
@@ -24,106 +26,114 @@ class _ProductCard extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(8.0),
       ),
-      child: Stack(
-          children: <Widget> [
-            Container(
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: const BorderRadius.all(Radius.circular(8.0))
-              ),
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-
-                  // 이미지
-                  Container(
-                      height: 160,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(8.0),
-                        ),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(8.0),
-                          topRight: Radius.circular(8.0)
-                        ),
-                        child: Image.network(
-                          R.uri.pathImage + product.imagePath,
-                          fit:BoxFit.cover,
-                        ),
-                      )
+        child: GestureDetector(
+          onTap: () => _controller.addCount(product),
+          onLongPress: () => _controller.addCountManual(product),
+          child: Stack(
+              children: <Widget> [
+                Container(
+                  decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: const BorderRadius.all(Radius.circular(8.0))
                   ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
 
-                  // 상품명
-                  Container(
-                    padding: const EdgeInsets.only(left: 16.0, top: 8.0),
-                    child: Align(
-                      alignment: Alignment.bottomLeft,
-                      child: Text(
-                          product.name,
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20.0
+                      // 이미지
+                      Container(
+                          height: 160,
+                          margin: const EdgeInsets.only(top: 12, left: 12),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(8.0),
+                              topRight: Radius.circular(8.0),
+                            ),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.only(
+                                topLeft: Radius.circular(8.0),
+                                topRight: Radius.circular(8.0)
+                            ),
+                            child: Image.network(
+                              R.uri.pathImage + product.imagePath,
+                              fit: BoxFit.cover,
+                            ),
                           )
                       ),
-                    ),
-                  ),
 
-                  // 가격
-                  Container(
-                    padding: const EdgeInsets.only(right: 8, bottom: 8),
-                    child: Align(
-                      alignment: Alignment.bottomRight,
-                      child: Text("${product.priceWon} 원"),
-                    ),
-                  ),
+                      // 상품명
+                      Container(
+                        padding: const EdgeInsets.only(left: 32.0, top: 8.0),
+                        child: Align(
+                          alignment: Alignment.bottomLeft,
+                          child: Text(
+                              product.name,
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 20.0
+                              )
+                          ),
+                        ),
+                      ),
 
-                ],
-              ),
-            ),
+                      // 단위 및 가격
+                      Container(
+                        padding: const EdgeInsets.only(right: 8, bottom: 8),
+                        child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Text("${product.unit} ${product.cPrice}원"),
+                        ),
+                      ),
 
-            // 상품갯수, 삭제 버튼
-            // 이 요소들은 처음에 보여지지 않다가 이벤트 발생시 보여져야 합니다.
-            Container(
-              padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
-              child: Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                    '${product.count}',
-                    style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                    )
-                ),
-              ),
-            ),
-
-            // 취소 버튼
-            Container(
-              constraints: BoxConstraints.expand(height: 40),
-              padding: const EdgeInsets.all(0.0),
-              child: Align(
-                alignment: Alignment.centerRight,
-                child: SizedBox(
-                  height: 40.0,
-                  child: IconButton(
-                    icon: Icon(
-                      Icons.do_not_disturb_on,
-                      color: Colors.red,
-                      size: 24.0,
-                    ),
-                    onPressed: null,
+                    ],
                   ),
                 ),
-              ),
-            ),
 
-          ]
-      ),
-    );
+                Column(
+                  children: <Widget> [
+
+                    // 취소 버튼
+                    Container(
+                      constraints: BoxConstraints.expand(height: 40),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: SizedBox(
+                          height: 40.0,
+                          child: IconButton(
+                            icon: Icon(
+                              Icons.do_not_disturb_on,
+                              color: Colors.red,
+                              size: 24.0,
+                            ),
+                            onPressed: () => _controller.removeCount(product),
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    // 상품갯수
+                    Container(
+                      padding: const EdgeInsets.only(right: 18),
+                      child: Align(
+                        alignment: Alignment.centerRight,
+                        child: Text(
+                            '${product.count}',
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            )
+                        ),
+                      ),
+                    ),
+
+                  ],
+                )
+
+              ]
+          ),
+        ));
   }
 }
 
@@ -168,17 +178,17 @@ class _ShopAboutState extends State<ShopAboutWidget> {
 
             // 물품 목록
             Container(
-                height: 500,
+                height: 320,
                 child: ListView(
                   children: (_controller.products ?? [])
-                      .map((product) => _ProductCard(product))
+                      .map((product) => _ProductCard(_controller, product))
                       .toList(),
                 )
             ),
 
             // 결제 버튼
             Container(
-                margin: const EdgeInsets.only(bottom: 24, left: 24, right: 24),
+                margin: const EdgeInsets.only(top: 12, bottom: 24, left: 24, right: 24),
                 child: RaisedButton(
                   padding: const EdgeInsets.only(top: 8, bottom: 8),
                   shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(40.0)),

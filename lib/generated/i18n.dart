@@ -31,6 +31,7 @@ class S implements WidgetsLocalizations {
   String get common_alert_choose_yes => "Yes";
   String get common_alert_confirm => "Confirm";
   String get common_alert_field_close_app => "Do you want to close Questrip?";
+  String get common_alert_select => "Select";
   String get common_alert_title => "Notice";
   String get common_failure_internal => "Sorry, but try later.";
   String get common_failure_network => "Please check your network status and try again.";
@@ -94,6 +95,7 @@ class S implements WidgetsLocalizations {
   String get view_field_report => "Report";
   String get view_field_title => "LeaderBoard";
   String quest_map_field_period(String month, String day, String year) => "${month} ${day}, ${year}";
+  String shop_about_field_max_value(String max) => "You can purchase up to ${max}.";
   String view_alert_vote(String user) => "Would you recommend it to \"${user}\"?";
 }
 
@@ -192,6 +194,8 @@ class $ko_KR extends S {
   @override
   String get terms_alert_rejected => "죄송합니다. 내부 사정으로 인하여 일시적으로 회원가입을 진행할 수 없습니다.";
   @override
+  String get common_alert_select => "선택";
+  @override
   String get shop_payment_field_title_pay_method => "결제수단 선택";
   @override
   String get terms_button_agree => "상기 약관에 동의합니다.";
@@ -251,6 +255,8 @@ class $ko_KR extends S {
   String get permission_internet => "인터넷";
   @override
   String get common_alert_button_next => "다음";
+  @override
+  String shop_about_field_max_value(String max) => "최대 ${max}개까지 구매할 수 있습니다.";
   @override
   String quest_map_field_period(String year, String month, String day) => "${year}년 ${month}월 ${day}일까지";
   @override

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/lib.dart';
+import 'package:questrip/data/product.dart';
 import 'package:questrip/data/shop_payment/address.dart';
 import 'package:questrip/data/shop_payment/interface.dart';
 import 'package:questrip/data/shop_payment/pay_method.dart';
+import 'package:questrip/lib.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/common/alert.dart';
+import 'package:questrip/widget/common/input.dart';
 import 'package:questrip/widget/shop/shop_payment_loading.dart';
 
 /// 결제 진행화면의 동작을 담당합니다.
@@ -14,21 +17,28 @@ import 'package:questrip/widget/shop/shop_payment_loading.dart';
 class ShopPaymentController extends IController {
 
   // 선택 카드 목록
-  final CardAddressContent _cardAddress = CardAddressContent("학교", "경상남도 진주시 진주대로 501 경상대학교", "30동 310호");
-  final CardPayMethodContent _cardPayMethod = CardPayMethodContent("신용카드", "NH농협 5353-1511-1123-1234");
+  static CardAddressContent cardAddress;
+  static CardPayMethodContent cardPayMethod;
 
-  /// TODO to be implemented.
-  /// 총 주문금액을 반환합니다.
-  String get cTotalPrice => 45400.toString();
+  /// 구매 목록
+  static List<Product> products;
 
   /// 결제 진행중 레이아웃
   OverlayEntry _overlayEntry;
 
   /// 선택 카드 목록을 반환합니다.
   List<ISelectCardContent> get cards => [
-    _cardAddress,
-    _cardPayMethod,
+    cardAddress.clone(_gotoSelectAddress),
+    cardPayMethod.clone(_gotoSelectPayMethod),
   ];
+
+  /// 객체를 초기화합니다.
+  @override
+  void init(BuildContext context, {void Function(Runnable) setState}) async {
+    super.init(context, setState: setState);
+    cardAddress = (cardAddress ?? CardAddressContent.primary ?? null);
+    cardPayMethod = (cardPayMethod ?? CardPayMethodContent.primary ?? null);
+  }
 
   /// 주문 절차를 진행합니다.
   void tryOrder() async {
@@ -37,6 +47,34 @@ class ShopPaymentController extends IController {
     // 주문을 요청합니다.
     _tryOrder();
   }
+
+  /// 선택한 상품의 수량을 조절합니다.
+  /// 0 으로 설정한다면, 목록에서 제거합니다.
+  void editCount(final Product product) => dialogRangeSlider(context,
+    msg: R.string.shop_about_field_max_value(Product.COUNT_MAX.toString()),
+    initValue: product.count,
+    maxValue: Product.COUNT_MAX,
+    onSelect: (count) {
+      // 제외
+      if (count == 0) {
+        products.remove(product);
+        // 구매할 상품이 없다면 결제화면을 빠져나옵니다.
+        if (products.length == 0) {
+          Navigator.pop(context);
+          return;
+        }
+      }
+      // 수량 조절
+      else product.count = count;
+      setState(() {});
+    },
+  );
+
+  /// 총 주문금액을 반환합니다.
+  String get cTotalPrice => formatPrice(products
+      .map((product) => product.totalPrice)
+      .reduce((a, b) => a + b)
+  );
 
   /// 주문이 진행중이라는 창을 띄웁니다.
   OverlayEntry _showOverlayLoading() {
@@ -79,5 +117,11 @@ class ShopPaymentController extends IController {
       _onSuccessOrder,
     );
   }
+
+  /// 배송지 선택화면으로 이동합니다.
+  void _gotoSelectAddress(_) => Navigator.pushNamed(context, R.widget.shopSelectAddress);
+
+  /// 결제수단 선택화면으로 이동합니다.
+  void _gotoSelectPayMethod(_) => Navigator.pushNamed(context, R.widget.shopSelectPayMethod);
 
 }

@@ -76,7 +76,7 @@ class _QuestAboutState extends State<QuestAboutWidget> {
                 /// 기간
                 defaultText(
                   _controller.cDateEnd,
-                  margin: const EdgeInsets.only(bottom: 8, right: 12),
+                  margin: const EdgeInsets.only(bottom: 8, right: 24),
                     fontSize: 14.0,
                     textAlign: TextAlign.right
                 ),
