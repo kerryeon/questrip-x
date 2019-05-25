@@ -11,16 +11,24 @@ mixin IMarker {
 
   /// 마커에 아이콘을 부여합니다.
   @protected
-  BitmapDescriptor get markerIcon;
+  String get markerIcon;
 
   /// 마커를 생성합니다.
-  Marker toMarker(final void Function(IMarker) onTap) {
+  Future<Marker> toMarker(final void Function(IMarker) onTap) async {
     final String markerIdVal = this.markerName;
     final MarkerId markerId = MarkerId(markerIdVal);
+    final String cMarkerIcon = markerIcon;
     return Marker(
       markerId: markerId,
       position: this.latLng,
-      icon: markerIcon,
+      icon: cMarkerIcon != null
+          ? await BitmapDescriptor.fromAssetImage(
+        const ImageConfiguration(
+          // FIXME Not working?
+          size: const Size(32.0, 32.0),
+        ),
+        markerIcon,
+      ) : BitmapDescriptor.defaultMarker,
       infoWindow: InfoWindow(title: markerIdVal),
       onTap: () => onTap(this),
     );

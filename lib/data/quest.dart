@@ -1,6 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:meta/meta.dart';
 import 'package:questrip/data/marker.dart';
+import 'package:questrip/res/lib.dart';
 
 /// 퀘스트에 대한 자세한 정보를 담고 있는 클래스입니다.
 ///
@@ -16,6 +17,7 @@ class Quest with IMarker {
   final double longitude;
   final int dateBegin;
   final int dateEnd;
+  final int sector;
   final int reward;
   final int rating;
   final bool isCleared;
@@ -29,6 +31,7 @@ class Quest with IMarker {
     @required this.longitude,
     @required this.dateBegin,
     @required this.dateEnd,
+    @required this.sector,
     @required this.reward,
     @required this.rating,
     @required this.isCleared,
@@ -40,6 +43,7 @@ class Quest with IMarker {
         assert(longitude != null),
         assert(dateBegin != null),
         assert(dateEnd != null),
+        assert(sector != null),
         assert(reward != null),
         assert(rating != null),
         assert(isCleared != null);
@@ -54,6 +58,7 @@ class Quest with IMarker {
     longitude: response['longitude'],
     dateBegin: response['date_begin'],
     dateEnd: response['date_end'],
+    sector: response['sector'],
     reward: response['reward'],
     rating: response['rating'],
     isCleared: response['is_cleared'],
@@ -69,10 +74,7 @@ class Quest with IMarker {
 
   /// 마커에 아이콘을 부여합니다.
   @override
-  BitmapDescriptor get markerIcon {
-    // TODO to be implemented.
-    return null;
-  }
+  String get markerIcon => R.drawable.routeMarkerQuest(sector);
 
   /// [a]와 [b]의 인기도를 비교합니다.
   /// [b]가 더 인기있으면 +를 반환합니다.

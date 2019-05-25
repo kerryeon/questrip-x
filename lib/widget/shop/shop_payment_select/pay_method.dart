@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/shop/shop_payment_select/pay_method.dart';
-import 'package:questrip/data/shop_payment/interface.dart';
 import 'package:questrip/data/shop_payment/pay_method.dart';
 import 'package:questrip/res/lib.dart';
 import 'package:questrip/widget/shop/shop_payment_select/interface.dart';
