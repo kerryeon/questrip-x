@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:questrip/lib.dart';
 
 /// 각 화면의 동작을 추상화합니다.
@@ -36,3 +37,6 @@ abstract class IController {
   void btnUnlock() => _btnLocked = false;
 
 }
+
+/// 가격을 원화로, 단위를 구별하여 문자열로 반환합니다.
+String formatPrice(final int price) => NumberFormat('#,###').format(price).toString();

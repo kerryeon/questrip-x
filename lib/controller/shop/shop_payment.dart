@@ -20,7 +20,7 @@ class ShopPaymentController extends IController {
 
   /// TODO to be implemented.
   /// 총 주문금액을 반환합니다.
-  String get cTotalPrice => 45400.toString();
+  String get cTotalPrice => formatPrice(45400).toString();
 
   /// 결제 진행중 레이아웃
   OverlayEntry _overlayEntry;

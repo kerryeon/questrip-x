@@ -1,5 +1,5 @@
-import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
+import 'package:questrip/controller/lib.dart';
 
 /// 상점 물품에 대한 자세한 정보를 담고 있는 클래스입니다.
 ///
@@ -16,6 +16,9 @@ class Product {
 
   int count = 0;
 
+  /// 가격을 원화로, 단위를 구별하여 문자열로 반환합니다.
+  String get cPrice => formatPrice(price);
+
   Product({
     @required this.id,
     @required this.name,
@@ -31,8 +34,7 @@ class Product {
         assert(imagePath != null);
 
   /// 가격을 원화로, 단위를 구별하여 문자열로 반환합니다.
-  /// TODO to be implemented.
-  String get priceWon => NumberFormat('#,###').format(price).toString();
+  String get priceWon => formatPrice(price).toString();
 
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
   static Product fromJSON(Map<String, Object> response) => Product(

@@ -1,4 +1,5 @@
 import 'package:meta/meta.dart';
+import 'package:questrip/controller/lib.dart';
 
 /// 사용자 정보를 담고 있는 클래스입니다.
 ///
@@ -11,6 +12,9 @@ class Account {
   final String address;
   final String addressDetail;
   final int savings;
+
+  /// 포인트를 원화로, 단위를 구별하여 문자열로 반환합니다.
+  String get cSavings => formatPrice(savings);
 
   const Account({
     @required this.nickname,

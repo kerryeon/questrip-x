@@ -111,7 +111,7 @@ class QuestMenuState extends State<QuestMenuWidget> {
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
                   Icon(Icons.monetization_on),
-                  Text(' ${R.account.savings}${R.string.shop_unit_money}'),
+                  Text(' ${R.account.cSavings}${R.string.shop_unit_money}'),
                 ],
               ),
             ),
