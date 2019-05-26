@@ -103,7 +103,7 @@ class _ShopPaymentState extends State<ShopPaymentWidget> {
 
   /// 상품 정보를 UI 로 변환합니다.
   Widget _mapProduct(final Product product) => Card(
-    margin: const EdgeInsets.only(top: 8.0, left: 8.0, right: 8.0),
+    margin: const EdgeInsets.only(top: 4.0, left: 8.0, right: 8.0),
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(8.0),
     ),

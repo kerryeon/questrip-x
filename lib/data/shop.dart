@@ -12,7 +12,7 @@ class Shop with IMarker {
   final int id;
   final String name;
   final String description;
-  final int seller;
+  final int sellerId;
   final String location;
   final double latitude;
   final double longitude;
@@ -23,7 +23,7 @@ class Shop with IMarker {
     @required this.id,
     @required this.name,
     @required this.description,
-    @required this.seller,
+    @required this.sellerId,
     @required this.location,
     @required this.latitude,
     @required this.longitude,
@@ -32,7 +32,7 @@ class Shop with IMarker {
   })  : assert(id != null),
         assert(name != null),
         assert(description != null),
-        assert(seller != null),
+        assert(sellerId != null),
         assert(location != null),
         assert(latitude != null),
         assert(longitude != null),
@@ -44,7 +44,7 @@ class Shop with IMarker {
     id: response['_id'],
     name: response['name'],
     description: response['description'],
-    seller: response['seller'],
+    sellerId: response['seller'],
     location: response['location'],
     latitude: response['latitude'],
     longitude: response['longitude'],

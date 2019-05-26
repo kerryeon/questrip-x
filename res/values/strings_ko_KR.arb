@@ -61,6 +61,10 @@
   "shop_unit_money": "원",
 
   "shop_about_field_max_value": "최대 ${max}개까지 구매할 수 있습니다.",
+  "shop_about_seller_field_title": "판매자 정보",
+  "shop_about_seller_field_name_shop": "상호명",
+  "shop_about_seller_field_name_seller": "판매자",
+  "shop_about_seller_field_contact": "연락처",
   "shop_payment_field_agree": "위 주문 내용을 확인하였으며, 결제에 동의합니다.",
   "shop_payment_field_loading": "결제 진행중입니다...\n잠시만 기다려주세요...",
   "shop_payment_field_ordered": "결제 되었습니다!\n이용해 주셔서 감사합니다!",
