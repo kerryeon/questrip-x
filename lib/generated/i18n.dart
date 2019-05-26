@@ -61,6 +61,10 @@ class S implements WidgetsLocalizations {
   String get permission_internet => "Internet";
   String get permission_location => "Location";
   String get quest_map_button_menu => "menu";
+  String get shop_about_seller_field_contact => "Contact";
+  String get shop_about_seller_field_name_seller => "Seller";
+  String get shop_about_seller_field_name_shop => "Name";
+  String get shop_about_seller_field_title => "Seller Information";
   String get shop_field_title => "Shop";
   String get shop_payment_button_order => "Order";
   String get shop_payment_field_agree => "I have confirmed the order above and agree to the payment.";
@@ -140,6 +144,8 @@ class $ko_KR extends S {
   @override
   String get config_alert_sign_off_success => "그동안 Questrip 을 사랑해주셔서 감사했습니다. \n 다시 돌아오시기를 기다리겠습니다.";
   @override
+  String get shop_about_seller_field_contact => "연락처";
+  @override
   String get common_alert_button_submit => "제출하기";
   @override
   String get view_alert_report_duplicate => "이미 신고하였습니다";
@@ -171,6 +177,8 @@ class $ko_KR extends S {
   String get common_alert_button_prev => "이전";
   @override
   String get sign_up_field_address => "주소";
+  @override
+  String get shop_about_seller_field_name_seller => "판매자";
   @override
   String get config_button_open_source => "오픈소스 약관";
   @override
@@ -212,6 +220,8 @@ class $ko_KR extends S {
   @override
   String get shop_payment_field_agree => "위 주문 내용을 확인하였으며, 결제에 동의합니다.";
   @override
+  String get shop_about_seller_field_name_shop => "상호명";
+  @override
   String get sign_up_field_welcome => "환영합니다!";
   @override
   String get shop_payment_field_title => "주문/결제";
@@ -225,6 +235,8 @@ class $ko_KR extends S {
   String get view_alert_vote_duplicate => "이미 추천하였습니다";
   @override
   String get view_alert_voted => "추천하였습니다";
+  @override
+  String get shop_about_seller_field_title => "판매자 정보";
   @override
   String get config_button_sign_off => "회원탈퇴";
   @override
