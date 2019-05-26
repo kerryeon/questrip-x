@@ -167,12 +167,15 @@ class _ShopAboutState extends State<ShopAboutWidget> {
             // 상호명
             Container(
                 padding: const EdgeInsets.all(24.0),
-                child: Text(
-                    _controller.cName,
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontSize: 32.0,
-                    )
+                child: GestureDetector(
+                  onTap: _controller.showAboutSeller,
+                  child: Text(
+                      _controller.cName,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontSize: 32.0,
+                      )
+                  ),
                 )
             ),
 

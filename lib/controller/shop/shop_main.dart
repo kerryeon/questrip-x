@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:questrip/controller/anim/slide.dart';
 import 'package:questrip/controller/lib.dart';
+import 'package:questrip/controller/shop/shop_about_seller.dart';
 import 'package:questrip/controller/shop/shop_payment.dart';
 import 'package:questrip/data/product.dart';
 import 'package:questrip/data/shop.dart';
@@ -44,6 +45,12 @@ class ShopAboutController extends IController with SlideAnimation {
       hide();
       Navigator.pushNamed(context, R.widget.shopPayment);
     }
+  }
+
+  /// 판매자 정보 화면으로 이동합니다.
+  void showAboutSeller() {
+    ShopAboutSellerController.shop = _shop;
+    Navigator.pushNamed(context, R.widget.shopAboutSeller);
   }
 
   /// 선택한 상품을 구매목록에 하나 추가합니다.
