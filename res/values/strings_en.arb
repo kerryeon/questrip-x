@@ -11,6 +11,7 @@
   "sign_up_field_address": "Address",
   "sign_up_field_address_detail": "Address (Detail)",
   "sign_up_alert_nickname": "Please check your nickname.",
+  "sign_up_alert_nickname_too_short": "Your nickname should be at least 4 characters long.",
   "sign_up_alert_birthday": "Please check your date of birth.",
   "sign_up_alert_address": "Please check your address.",
 
