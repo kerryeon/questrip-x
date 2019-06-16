@@ -71,6 +71,9 @@ class SignUpController extends IController {
       case InputCode.Nickname:
         msg = R.string.sign_up_alert_nickname;
         break;
+      case InputCode.NicknameTooShort:
+        msg = R.string.sign_up_alert_nickname_too_short;
+        break;
       case InputCode.Birthday:
         msg = R.string.sign_up_alert_birthday;
         break;
@@ -87,7 +90,7 @@ class SignUpController extends IController {
     if (_mBirthday == null)
       throw(InputCode.Birthday);
     return Account(
-      nickname: await _tryGetText(cNickname, InputCode.Nickname, minLength: 4, maxLength: 12),
+      nickname: await _tryGetText(cNickname, InputCode.Nickname, minLength: 4, maxLength: 12, codeMin: InputCode.NicknameTooShort),
       birthday: _calendarController.dateTime2int(_mBirthday),
       address: await _tryGetText(cAddress, InputCode.Address, minLength: 4),
       addressDetail: await _tryGetText(cAddressDetail, InputCode.AddressDetail, maxLength: 64),
@@ -99,13 +102,15 @@ class SignUpController extends IController {
   Future<String> _tryGetText(TextEditingController controller, InputCode code, {
     int minLength,
     int maxLength,
+    InputCode codeMin,
+    InputCode codeMax,
   }) async {
     final text = controller.text;
     final length = text.length;
     if (minLength != null && length < minLength)
-      throw(code);
+      throw(codeMin ?? code);
     if (maxLength != null && length > maxLength)
-      throw(code);
+      throw(codeMax ?? code);
     return text;
   }
 
@@ -133,6 +138,7 @@ class SignUpController extends IController {
 /// 담당자: 김호
 enum InputCode {
   Nickname,
+  NicknameTooShort,
   Birthday,
   Address,
   AddressDetail,

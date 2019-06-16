@@ -1,8 +1,6 @@
-import 'package:intl/intl.dart';
 import 'package:meta/meta.dart';
-import 'package:questrip/controller/lib.dart';
 
-/// 사용자 정보를 담고 있는 클래스입니다.
+/// 판매자 정보를 담고 있는 클래스입니다.
 ///
 /// 담당자: 김호
 ///

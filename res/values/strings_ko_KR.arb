@@ -11,6 +11,7 @@
   "sign_up_field_address": "주소",
   "sign_up_field_address_detail": "상세주소",
   "sign_up_alert_nickname": "닉네임을 확인해주세요.",
+  "sign_up_alert_nickname_too_short": "닉네임은 4자 이상이어야 합니다.",
   "sign_up_alert_birthday": "생년월일을 확인해주세요.",
   "sign_up_alert_address": "주소를 확인해주세요.",
 

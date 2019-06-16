@@ -78,6 +78,7 @@ class S implements WidgetsLocalizations {
   String get sign_up_alert_address => "Please check your address.";
   String get sign_up_alert_birthday => "Please check your date of birth.";
   String get sign_up_alert_nickname => "Please check your nickname.";
+  String get sign_up_alert_nickname_too_short => "Your nickname should be at least 4 characters long.";
   String get sign_up_field_address => "Address";
   String get sign_up_field_address_detail => "Address (Detail)";
   String get sign_up_field_day => "Day";
@@ -129,6 +130,8 @@ class $ko_KR extends S {
   String get leader_board_date => "최신순";
   @override
   String get common_alert_confirm => "확인";
+  @override
+  String get sign_up_alert_nickname_too_short => "닉네임은 4자 이상이어야 합니다.";
   @override
   String get config_button_logout => "로그아웃";
   @override

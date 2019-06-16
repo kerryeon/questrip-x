@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:questrip/controller/lib.dart';
 import 'package:questrip/controller/shop/shop_payment.dart';
 import 'package:questrip/data/product.dart';
 import 'package:questrip/res/lib.dart';
