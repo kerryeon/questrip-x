@@ -51,7 +51,7 @@ void dialogFailed(final BuildContext context, final Failed failed,
       msgId = rejected ?? R.string.common_failure_unknown;
       break;
     case Failed.USER_CANCELED:
-      msgId = canceled ?? R.string.common_failure_unknown;
+      msgId = canceled ?? R.string.intro_on_failure_canceled;
       break;
     case Failed.UNEXPECTED:
       msgId = R.string.common_failure_unknown;

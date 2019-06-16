@@ -53,6 +53,7 @@ class Shop with IMarker {
   );
 
   /// 위경도 정보를 반환합니다.
+  @override
   LatLng get latLng => LatLng(latitude, longitude);
 
   /// 마커의 제목을 반환합니다.
