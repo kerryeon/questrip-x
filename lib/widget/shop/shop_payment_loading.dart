@@ -8,6 +8,10 @@ import 'package:questrip/res/lib.dart';
 ///
 class _ShopPaymentLoadingState extends State<ShopPaymentLoading> {
 
+  final String method;
+
+  _ShopPaymentLoadingState(this.method);
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -66,7 +70,11 @@ class _ShopPaymentLoadingState extends State<ShopPaymentLoading> {
 
 class ShopPaymentLoading extends StatefulWidget {
 
+  final String method;
+
+  const ShopPaymentLoading(this.method);
+
   @override
-  _ShopPaymentLoadingState createState() =>_ShopPaymentLoadingState();
+  _ShopPaymentLoadingState createState() =>_ShopPaymentLoadingState(method);
 
 }

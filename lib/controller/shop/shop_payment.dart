@@ -86,7 +86,7 @@ class ShopPaymentController extends IController {
                 decoration: BoxDecoration(
                     color: Color(0xfff2f2f2)
                 ),
-                child: ShopPaymentLoading(),
+                child: ShopPaymentLoading(cardPayMethod.method),
               ),
             )
     );

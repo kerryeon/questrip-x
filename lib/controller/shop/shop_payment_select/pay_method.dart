@@ -19,7 +19,7 @@ class ShopPaymentSelectPayMethodController extends IShopPaymentSelectController 
 
   /// 새로운 카드를 등록합니다.
   /// TODO to be implemented.
-  void tryAddCard() async => dialog(context, R.string.debug_todo);
+  void tryAddCard() async => Navigator.pushNamed(context, R.widget.shopAddPayment);
 
   /// 카드를 선택한 경우의 이벤트입니다.
   /// 선택한 카드 정보를 상위로 넘기고 이전화면으로 이동합니다.

@@ -28,7 +28,7 @@ class CardPayMethod extends ISelectCard<CardPayMethodContent> {
 
     // 결제수단 정보
     Text(
-      data.info,
+      data.info + " "+ data.number,
       style: TextStyle(
         fontSize: 16.0,
       ),
