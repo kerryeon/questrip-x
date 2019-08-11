@@ -34,8 +34,10 @@ class AddPaymethodController extends IController{
     super.init(context, setState: setState);
     creditdropdownmenuItem = getDropDownMenuItems(_creditcompany);
     bankdropdownmenuItem = getDropDownMenuItems(_bank);
-    _currentCredit = creditdropdownmenuItem[0].value;
-    _currentBank = bankdropdownmenuItem[0].value;
+    if(_currentCredit == null)
+      _currentCredit = creditdropdownmenuItem[0].value;
+    if(_currentBank == null)
+      _currentBank = bankdropdownmenuItem[0].value;
   }
 
   /// 콤보박스 생성
