@@ -126,7 +126,7 @@ abstract class ILeaderBoardController extends IController {
   ).toList());
 
   /// 서버에 사진을 제출합니다.
-  void trySubmit(final File image) async => requestAccept(
+  void trySubmit(final List<File> images) async => requestAccept(
     R.uri.meSubmit,
         () {
           dialog(context, R.string.view_alert_submitted);
@@ -136,7 +136,9 @@ abstract class ILeaderBoardController extends IController {
         (f) => dialogFailed(context, f),
     data: {
       "quest_id": quest.id,
-      "image": Base64Codec().encode(await image.readAsBytes()),
+      "image": images
+          .map((image) async => Base64Codec().encode(await image.readAsBytes()))
+          .toList(),
     },
   );
 
@@ -173,7 +175,7 @@ abstract class ILeaderBoardController extends IController {
       source: ImageSource.camera,
     );
     if (image != null) {
-      ImageGallerySaver.save(image.readAsBytesSync());
+      ImageGallerySaver.saveImage(image.readAsBytesSync());
       LeaderBoardState.showSubmitConfirmDialog(context, image, this);
     }
   }

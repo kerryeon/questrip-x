@@ -232,7 +232,7 @@ class LeaderBoardState extends State<StatefulWidget> {
                   FlatButton(
                       onPressed: () {
                         Navigator.of(context).pop();
-                        controller.trySubmit(image);
+                        controller.trySubmit([image]);
                       },
                       child: Text(R.string.common_alert_button_submit)
                   ),

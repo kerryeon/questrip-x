@@ -22,7 +22,7 @@ class FacebookLoginManager extends ILoginManager {
       onSuccess(await accessToken);
       return;
     }
-    final result = await api.logInWithReadPermissions(['email']);
+    final result = await api.logIn(['email']);
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
