@@ -10,6 +10,7 @@ class Submission {
   final int userId;
   final String nickname;
   final String imagePath;
+  final int amount;
   final int date;
   final int rating;
 
@@ -18,12 +19,14 @@ class Submission {
     @required this.userId,
     @required this.nickname,
     @required this.imagePath,
+    @required this.amount,
     @required this.date,
     @required this.rating,
   })  : assert(id != null),
         assert(userId != null),
         assert(nickname != null),
         assert(imagePath != null),
+        assert(amount != null),
         assert(date != null),
         assert(rating != null);
 
@@ -39,6 +42,7 @@ class Submission {
       userId: response['user_id'],
       nickname: response['nickname'],
       imagePath: response['path'],
+      amount: response['amount'],
       date: response['date'],
       rating: response['rating'],
   );
