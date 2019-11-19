@@ -57,7 +57,7 @@ class LeaderBoardState extends State<StatefulWidget> {
               child: GestureDetector(
                   onTap: () => _controller.showFullscreen(submission),
                   child: Image.network(
-                    R.uri.pathImage + submission.imagePath,
+                    R.uri.pathImage + submission.imageNum(0),
                     fit: BoxFit.contain,
                   )
               )

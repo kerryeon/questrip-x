@@ -31,6 +31,8 @@ class Submission {
   int get month => ((this.date / 100000000) % 100).round();
   int get day   => ((this.date / 1000000) % 100).round();
 
+  String imageNum(final int idx) => '$imagePath.$idx';
+
   /// 서버로부터 전송받은 JSON 데이터를 해독합니다.
   static Submission fromJSON(Map<String, Object> response) => Submission(
       id: response['_id'],

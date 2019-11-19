@@ -9,6 +9,6 @@ class FullScreenController extends IController {
 
   static Submission submission;
 
-  String get imagePath => submission.imagePath;
+  String get imagePath => submission.imageNum(0);
 
 }

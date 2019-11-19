@@ -126,21 +126,26 @@ abstract class ILeaderBoardController extends IController {
   ).toList());
 
   /// 서버에 사진을 제출합니다.
-  void trySubmit(final List<File> images) async => requestAccept(
-    R.uri.meSubmit,
-        () {
-          dialog(context, R.string.view_alert_submitted);
-          // 제출물 목록을 업데이트합니다.
-          _refresh();
-        },
-        (f) => dialogFailed(context, f),
-    data: {
-      "quest_id": quest.id,
-      "image": images
-          .map((image) async => Base64Codec().encode(await image.readAsBytes()))
-          .toList(),
-    },
-  );
+  void trySubmit(final List<File> images) async {
+    List<String> _images = [];
+    for (final image in images) {
+      _images.add(Base64Codec().encode(await image.readAsBytes()));
+    }
+
+    requestAccept(
+      R.uri.meSubmit,
+          () {
+        dialog(context, R.string.view_alert_submitted);
+        // 제출물 목록을 업데이트합니다.
+        _refresh();
+      },
+          (f) => dialogFailed(context, f),
+      data: {
+        "quest_id": quest.id,
+        "image": _images.toList(),
+      },
+    );
+  }
 
   /// 서버에 제출물 추천 요청을 합니다.
   void _tryVote(final Submission submission) async => requestAccept(
